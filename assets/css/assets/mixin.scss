@@ -1,0 +1,7 @@
+@mixin degrade($color1, $color2){
+    background-color: $color1;
+    background-image: -moz-linear-gradient(30deg, $color1, $color2);
+    background-image: -webkit-linear-gradient(30deg, $color1, $color2);
+    background-image: -o-linear-gradient(30deg, $color1, $color2);
+    background-image: linear-gradient(60deg, $color1, $color2);
+}
