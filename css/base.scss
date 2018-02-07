@@ -1,0 +1,21 @@
+@import 'assets/reset';
+@import 'assets/vars';
+
+.color-theme {
+    color: $color-theme;
+}
+
+.none {
+    display: none !important;
+}
+
+.page-loader {
+    margin: 0 auto;
+    text-align: center;
+    background-color: grey;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    padding-top: 20%;
+    z-index: 999;
+}
