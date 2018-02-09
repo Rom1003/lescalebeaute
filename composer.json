@@ -1,0 +1,16 @@
+{
+    "minimum-stability": "dev",
+    
+    "require": {
+        "twig/twig": "^2.0",
+        "dannyvankooten/php-router": "master",
+        "symfony/yaml": "^4.1@dev"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "App\\": "model/",
+            "AppController\\": "controller/"
+        }
+    }
+}

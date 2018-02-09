@@ -1,0 +1,31 @@
+@import 'base';
+
+.page-error {
+  @include degrade($color-theme, $color-second);
+  display: table;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+
+  #error-content {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+
+  }
+
+  #error-text1 {
+    font-family: Good Vibration;
+    font-size: 6em;
+    margin-bottom: 10px;
+    line-height: 75px;
+  }
+
+  #error-text2 {
+    font-size: 1.5em;
+  }
+}

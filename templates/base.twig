@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
-    <link rel="stylesheet" href="assets/css/foundation.css">
-    <link rel="stylesheet" href="assets/css/base.css">
+    <title>L'escale beauté</title>
+    <link rel="stylesheet" href="{{ glb['ASSET_ROOT'] }}css/foundation.css">
+    <link rel="stylesheet" href="{{ glb['ASSET_ROOT'] }}css/base.css">
 </head>
 
 <body>
@@ -16,9 +16,9 @@
         <div id="loader-content">
             <div id="loader-img">
                 <div id="loader-img-border"></div>
-                <img src="assets/img/logoFondBlanc.svg" alt="l'escale beauté" />
+                <img src="{{ image("logoFondBlanc.svg") }}" alt="l'escale beauté" />
             </div>
-            
+
             <p id="loader-text1">L'escale beauté se prépare ...</p>
             <p id="loader-text2">Veuillez patienter ...</p>
         </div>
@@ -46,3 +46,18 @@
             </ul>
         </div>
     </div>
+
+
+
+    {# Contenu #}
+    {% block content %}
+    {% endblock %}
+
+
+    <script src="{{ glb['ASSET_ROOT'] }}js/vendor/jquery.js"></script>
+    <script src="{{ glb['ASSET_ROOT'] }}js/base.js"></script>
+    <script src="{{ glb['ASSET_ROOT'] }}js/vendor/what-input.js"></script>
+    <script src="{{ glb['ASSET_ROOT'] }}js/vendor/foundation.js"></script>
+</body>
+
+</html>

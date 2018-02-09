@@ -1,0 +1,6 @@
+base_path: /
+
+routes:
+  base: [/, \AppController\indexController.indexAction, GET]
+  index: [/index, \AppController\indexController.indexAction, GET]
+  produit: [/produit, \AppController\produitController.indexAction, GET]
