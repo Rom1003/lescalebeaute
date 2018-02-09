@@ -1,0 +1,14 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+#Pas de redirection pour les extensions listées
+RewriteCond ${REQUEST_URI} ^.+$
+RewriteCond %{REQUEST_FILENAME} \.(gif|jpe?g|png|js|css|swf|php|ico|txt|pdf|xml|svg|ttf)$
+#RewriteCond %{REQUEST_FILENAME} -f [OR]
+#RewriteCond %{REQUEST_FILENAME} -d [OR]
+#RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^ - [L]
+
+#RewriteRule (.*) /app.php?go=$1 [L]
+
+RewriteRule ^(.*)$ index.php [NC,L]
