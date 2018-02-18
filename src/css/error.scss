@@ -1,4 +1,4 @@
-@import 'base';
+@import 'base.scss';
 
 .page-error {
   @include degrade($color-theme, $color-second);

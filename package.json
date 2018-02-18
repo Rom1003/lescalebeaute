@@ -1,0 +1,31 @@
+{
+  "name": "lescalebeaute",
+  "version": "1.0.0",
+  "description": "Création du site pour \"L'escale beauté\"",
+  "main": "index.js",
+  "dependencies": {
+    "compass": "^0.1.1",
+    "foundation-sites": "^6.4.4-rc1",
+    "gulp": "^3.9.1",
+    "node-sass": "^4.7.2"
+  },
+  "devDependencies": {
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rom1003/lescalebeaute.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rom1003/lescalebeaute/issues"
+  },
+  "homepage": "https://github.com/Rom1003/lescalebeaute#readme"
+}

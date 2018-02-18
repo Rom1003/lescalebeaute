@@ -103,14 +103,14 @@ $tailleImageLoader: 170px;
 
 /* Safari */
 
-@-webkit-keyframes spin {
+/*@-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
     }
     100% {
         -webkit-transform: rotate(360deg);
     }
-}
+}*/
 
 @keyframes spin {
     0% {
@@ -120,3 +120,5 @@ $tailleImageLoader: 170px;
         transform: rotate(360deg);
     }
 }
+
+

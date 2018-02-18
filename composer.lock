@@ -224,12 +224,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "a8906f0709fd3b0e6020886014aeb423f584993e"
+                "reference": "b33f2fbe7349704d2a06bacc5a15b1a4c94e468f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/a8906f0709fd3b0e6020886014aeb423f584993e",
-                "reference": "a8906f0709fd3b0e6020886014aeb423f584993e",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/b33f2fbe7349704d2a06bacc5a15b1a4c94e468f",
+                "reference": "b33f2fbe7349704d2a06bacc5a15b1a4c94e468f",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +274,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-21T19:07:38+00:00"
+            "time": "2018-02-11T17:18:00+00:00"
         },
         {
             "name": "twig/twig",

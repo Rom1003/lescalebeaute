@@ -9,6 +9,6 @@
 $global = array();
 
 $global['HTTP_ROOT'] = 'http://lescalebeaute';
-$global['FILE_ROOT'] = 'C:/wamp64/www/lescalebeaute/';
-$global['ASSET_ROOT'] = $global['HTTP_ROOT'].'/assets/';
-$global['IMG_ROOT'] = $global['ASSET_ROOT'].'img/';
+$global['FILE_ROOT'] = 'C:\\wamp64\\www\\lescalebeaute/';
+$global['SRC_ROOT'] = $global['HTTP_ROOT'].'/src/';
+$global['IMG_ROOT'] = $global['SRC_ROOT'].'img/';
