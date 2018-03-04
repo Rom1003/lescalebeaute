@@ -11,7 +11,7 @@ gulp.task('workflow', function () {
         .pipe(sourcemaps.init())
         .pipe(sass(
             {
-                includePaths: ['node_modules/foundation-sites/scss/', 'another/path']
+                includePaths: ['node_modules/foundation-sites/scss/', 'node_modules/motion-ui/src']
             }
         ).on('error', sass.logError))
         .pipe(autoprefixer({

@@ -4,6 +4,9 @@
 @import 'assets/fonts';
 @import 'assets/settings';
 @import 'foundation';
+@import 'motion-ui';
+@include motion-ui-transitions;
+@include motion-ui-animations;
 
 $tailleImageLoader: 170px;
 
