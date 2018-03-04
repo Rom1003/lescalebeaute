@@ -9,7 +9,7 @@
 $global = array();
 
 $global['MODE'] = 'test';
-if (strpos($_SERVER['SERVER_NAME'], '144.172.80.209')){
+if ($_SERVER['HTTP_HOST'] == '144.172.80.209'){
     $global['MODE'] = 'prod';
 }
 
