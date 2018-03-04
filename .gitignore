@@ -4,3 +4,4 @@ composer.phar
 .sass-cache
 /node_modules/*
 *.css
+/config/global.php
