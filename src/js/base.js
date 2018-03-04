@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $(document).foundation();
     //TODO mettre le delai
-    pageLoader(1000);
-})
+    pageLoader(0);
+});
 
 function pageLoader(sec) {
     sec = sec || 1000;

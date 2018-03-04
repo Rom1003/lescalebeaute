@@ -1,0 +1,107 @@
+@import 'assets/reset';
+@import 'assets/vars';
+@import 'assets/mixin';
+@import 'assets/fonts';
+@import 'assets/settings';
+@import 'foundation';
+@import 'motion-ui';
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
+$tailleImageLoader: 170px;
+
+
+.color-theme {color: $color-theme;}
+.color-white {color: $white;}
+
+.no-margin{
+  margin: 0;
+}
+
+.none {
+  display: none !important;
+}
+
+
+/**********************
+ * Chargement de page *
+ **********************/
+.page-loader {
+  @include degrade($color-theme, $color-second);
+  display: table;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+
+  #loader-content {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+
+  }
+
+  #loader-img {
+    position: relative;
+    margin: 0 auto;
+    width: $tailleImageLoader;
+    height: $tailleImageLoader;
+    margin-bottom: 20px;
+  }
+
+
+  #loader-img::after {
+    $loaderImageDecale: -6px;
+    position: absolute;
+    top: $loaderImageDecale;
+    bottom: $loaderImageDecale;
+    left: $loaderImageDecale;
+    right: $loaderImageDecale;
+    background: linear-gradient(darken($color-theme, 1%), darken($color-second, 1%));
+    content: '';
+    z-index: -1;
+    border-radius: 50%;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+  }
+
+
+  img {
+    width: 100%;
+  }
+
+  #loader-text1 {
+    font-family: Good Vibration;
+    font-size: 2.5em;
+    margin-bottom: 0px;
+    line-height: 40px;
+  }
+
+  #loader-text2 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .page-loader #loader-text1 {
+    font-size: 10vw;
+  }
+
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/***********************/
+
+
