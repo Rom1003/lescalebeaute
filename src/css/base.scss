@@ -2,6 +2,7 @@
 //Ajout du framework css "Foundation"
 @include foundation-everything;
 
+
 .top-bar{
   @extend .top-bar;
   @include degrade($color-theme, $color-second);
@@ -12,7 +13,7 @@
 
   li {
     padding-right: 10px;
-    font-family: "Lato Light";
+    @include font("Lato Light");
     font-size: 15px;
     color: $white;
     margin-bottom: 0;
@@ -36,11 +37,46 @@
 
 #nav-bar {
   a {
-    color: black;
+    color: $color-black;
     font-weight: bold;
+  }
+
+  a:hover {
+    color: $color-theme;
   }
 
   li {
     //margin-left: 20px;
+  }
+}
+
+.orbit-container {
+    max-height: 500px;
+  img {
+    max-height: 500px;
+  }
+}
+
+.galerie-description {
+  background-color: $color-black;
+  color : $color-white;
+  padding: 23px;
+
+  .titre {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1em;
+  }
+
+  .description {
+    @include font('Lato Light');
+    font-size: 0.9em;
+    text-align: justify;
+  }
+
+  a {
+    display: block;
+    text-decoration: underline;
+    text-align: center;
   }
 }
