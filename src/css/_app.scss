@@ -8,8 +8,10 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
-$tailleImageLoader: 170px;
-
+body {
+  @include font("Lato");
+  color: $color-black;
+}
 
 .color-theme {color: $color-theme;}
 .color-white {color: $white;}
@@ -75,7 +77,7 @@ $tailleImageLoader: 170px;
   }
 
   #loader-text1 {
-    font-family: Good Vibration;
+    @include font("Great Vibes");
     font-size: 2.5em;
     margin-bottom: 0px;
     line-height: 40px;
@@ -104,4 +106,23 @@ $tailleImageLoader: 170px;
 
 /***********************/
 
+/**********************
+ *       Titres       *
+ **********************/
 
+.bloc-title {
+    text-align: center;
+    padding: 40px 0 40px 0;
+
+  h1 {
+    line-height: 30px;
+    margin-bottom: 0;
+    padding-top: 25px;
+  }
+
+  span {
+    color: $color-theme;
+  }
+}
+
+/***********************/

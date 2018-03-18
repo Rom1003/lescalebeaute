@@ -1,7 +1,10 @@
 <?php
 
 
+
 namespace App;
+
+//require_once 'Extension.php';
 
 use \Twig_Loader_Filesystem;
 use \Twig_Environment;
@@ -53,9 +56,10 @@ class Config {
 
 //Activation du debug()
         $twig->addExtension(new Twig_Extension_Debug());
+        $twig->addExtension(new My_Twig_Extension());
 
 //Ajout des fonctions custom
-        include_once $global['FILE_ROOT'].'model/Twig/Functions.php';
+//        include_once $global['FILE_ROOT'].'model/Twig/Functions.php';
 
 //Ajout des variables globales
         $twig->addGlobal('glb', $global);

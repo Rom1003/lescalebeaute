@@ -17,6 +17,11 @@ $twig = new Twig_Environment($loader, array(
 
 ));
 
+$function = new Twig_Function('titre', function ($titre, $texte) {
+    return 'ok';
+});
+$twig->addFunction($function);
+
 //Activation du debug()
 $twig->addExtension(new Twig_Extension_Debug());
 

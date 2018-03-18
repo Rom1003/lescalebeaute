@@ -1,6 +1,15 @@
+
+
 $(document).ready(function () {
     $(document).foundation();
-    //TODO mettre le delai
+
+    //Resize des blocs
+    $("div[data-match]").each(function () {
+        console.log($(this));
+        var elem = '.' + $(this).data("match");
+        $("div[data-match]").matchHeight();
+    });
+
     pageLoader(0);
 });
 

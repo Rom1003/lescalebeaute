@@ -4,7 +4,8 @@
     "require": {
         "twig/twig": "^2.0",
         "dannyvankooten/php-router": "master",
-        "symfony/yaml": "^4.1@dev"
+        "symfony/yaml": "^4.1@dev",
+        "symfony/finder": "^4.1@dev"
     },
 
     "autoload": {
