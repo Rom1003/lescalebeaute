@@ -2,15 +2,22 @@
 
 namespace AppController;
 
-use \App;
+use \App\Config;
+use \App\Database;
+use \App\Tables\Categorie;
+use \Illuminate\Database\Eloquent\Model;
 
-class indexController {
+class indexController{
 
     public static function indexAction(){
-        $config = new App\Config();
+        $config = new Config();
         $twig = $config->initTwig();
-        echo $twig->render('index.twig', array(
 
+        $menu = Categorie::getMenu();
+
+
+        echo $twig->render('index.twig', array(
+            'menu' => $menu
         ));
     }
 }

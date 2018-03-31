@@ -2,7 +2,7 @@
 
 namespace App;
 
-use \App;
+use \App\Config;
 use \Twig_Extension;
 
 class My_Twig_Extension extends Twig_Extension {
@@ -24,7 +24,7 @@ class My_Twig_Extension extends Twig_Extension {
     }
 
     public function url($name) {
-        $config = new App\Config();
+        $config = new Config();
         if (!$config)return false;
         $url = $config->getRoutes($name);
         if (!$url)return false;
@@ -32,7 +32,7 @@ class My_Twig_Extension extends Twig_Extension {
     }
 
     public function image($name) {
-        $config = new App\Config();
+        $config = new Config();
         if (!$config)return false;
         $url = $config->getGlobal('IMG_ROOT');
         if (!$url)return false;
