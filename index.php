@@ -13,10 +13,12 @@ use PHPRouter\RouteCollection;
 use PHPRouter\Config;
 use PHPRouter\Router;
 use PHPRouter\Route;
+use App\Database;
 
 //Identification du controller à appeler
 $config = Config::loadFromFile(__DIR__.'/config/routes.yml');
 $router = Router::parseConfig($config);
+new Database();
 $goto = $router->matchCurrentRequest();
 
 //Si aucune route trouvée

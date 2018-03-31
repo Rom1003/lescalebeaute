@@ -12,11 +12,11 @@
 
 <body>
 
-<div class="page-loader none">
+<div class="page-loader">
     <div id="loader-content">
         <div id="loader-img">
             <div id="loader-img-border"></div>
-            <img src="{{ image("logoFondBlanc.svg") }}" alt="l'escale beauté" />
+            <img src="{{ image("logoFondBlanc.svg") }}" alt="l'escale beauté"/>
         </div>
 
         <p id="loader-text1">L'escale beauté se prépare ...</p>
@@ -32,11 +32,10 @@
             <ul class="menu">
                 <li><i class="fas fa-phone fa-sm" data-fa-transform="rotate-100"></i> 06 01 02 03 04</li>
                 <li><i class="fas fa-map-marker-alt fa-sm"></i> 156 avenue Gallieni - 10 300 - Sainte Savine</li>
-                <li> <i class="far fa-clock fa-sm"></i> Ouvert</li>
+                <li><i class="far fa-clock fa-sm"></i> Ouvert</li>
             </ul>
         </div>
     </div>
-
 
 
     <div class="grid-x text-center">
@@ -46,18 +45,115 @@
 
     </div>
 
-
     <div id="nav-bar">
         <ul class="vertical medium-horizontal menu align-center">
-            <li><a href="#"><img src="{{ glb['SRC_ROOT'] }}img/logo_noir.png" /></a></li>
-            <li><a href="#">SOINS CORPS</a></li>
-            <li><a href="#">SOINS VISAGES</a></li>
-            <li><a href="#">HAMMAM</a></li>
+            <li><a href="#"><img src="{{ glb['SRC_ROOT'] }}img/logo_noir.png"/></a></li>
+            {% for menu1 in menu %}
+                <li class="menu-dropdown"><a href="#">{{ menu1.libelle | upper }}</a>
+                    {% if menu1.sub is defined and menu1.sub %}
+                        <ul class="sub-menu hidden">
+                            {% for menu2 in menu1.sub %}
+                                <li class="sub-dropdown"><a href="#">{{ menu2.libelle }}</a>
+                                    {% if menu2.sub is defined and menu2.sub %}
+                                        <ul class="sub-menu-2 hidden">
+                                            {% for menu3 in menu2.sub %}
+                                                <li><a href="#">{{ menu3.libelle }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                </li>
+
+            {% endfor %}
+            {#<li class="menu-dropdown"><a href="#">SOINS CORPS</a>
+                <ul class="sub-menu">
+                    <li class="sub-dropdown"><a href="#">Massages Corps</a>
+                        <ul class="sub-menu-2 hidden">
+                            <li><a href="#">Massages Corps</a></li>
+                            <li><a href="#">Massages Pieds&Mains</a></li>
+                            <li><a href="#">Gommages</a></li>
+                            <li><a href="#">Enveloppements</a></li>
+                            <li><a href="#">Enveloppements</a></li>
+                            <li><a href="#">Enveloppements</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-dropdown"><a href="#">Massages Pieds&Mains</a>
+                        <ul class="sub-menu-2 hidden">
+                            <li><a href="#">Massages Corps</a></li>
+                            <li><a href="#">Massages Pieds&Mains</a></li>
+                            <li><a href="#">Gommages</a></li>
+                            <li><a href="#">Enveloppements</a></li>
+                            <li><a href="#">Rituels</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-dropdown"><a href="#">Gommages</a>
+                        <ul class="sub-menu-2 hidden">
+                            <li><a href="#">Massages Corps</a></li>
+                            <li><a href="#">Massages Pieds&Mains</a></li>
+                            <li><a href="#">Gommages</a></li>
+                            <li><a href="#">Enveloppements</a></li>
+                            <li><a href="#">Rituels</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-dropdown"><a href="#">Enveloppements</a>
+                        <ul class="sub-menu-2 hidden">
+                            <li><a href="#">Massages Corps</a></li>
+                            <li><a href="#">Massages Pieds&Mains</a></li>
+                            <li><a href="#">Gommages</a></li>
+                            <li><a href="#">Enveloppements</a></li>
+                            <li><a href="#">Rituels</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Rituels</a>
+                        <ul class="sub-menu-2 hidden">
+                            <li><a href="#">Massages Corps</a></li>
+                            <li><a href="#">Massages Pieds&Mains</a></li>
+                            <li><a href="#">Gommages</a></li>
+                            <li><a href="#">Enveloppements</a></li>
+                            <li><a href="#">Rituels</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-dropdown"><a href="#">SOINS VISAGES</a>
+                <ul class="sub-menu hidden">
+                    <li><a href="#">Massages Corps</a></li>
+                    <li><a href="#">Massages Pieds&Mains</a></li>
+                    <li><a href="#">Gommages</a></li>
+                    <li><a href="#">Enveloppements</a></li>
+                    <li><a href="#">Rituels</a></li>
+                </ul>
+            </li>
+            <li class="menu-dropdown"><a href="#">HAMMAM</a>
+                <ul class="sub-menu hidden">
+                    <li><a href="#">Massages Corps</a></li>
+                    <li><a href="#">Massages Pieds&Mains</a></li>
+                    <li><a href="#">Gommages</a></li>
+                    <li><a href="#">Enveloppements</a></li>
+                    <li><a href="#">Rituels</a></li>
+                </ul>
+            </li>
             <li><a href="#">EPILATIONS</a></li>
             <li><a href="#">PRODUITS</a></li>
-            <li><a href="#">A PROPOS</a></li>
+            <li><a href="#">A PROPOS</a></li>#}
         </ul>
     </div>
+
+    {#    <div id="sub-menu">
+            <div class="sub-menu">
+                <ul class="sub">
+                    <li><a href="#">Massages Corps</a></li>
+                    <li><a href="#">Massages Pieds&Mains</a></li>
+                    <li><a href="#">Gommages</a></li>
+                    <li><a href="#">Enveloppements</a></li>
+                    <li><a href="#">Rituels</a></li>
+                </ul>
+            </div>
+        </div>#}
 
     <!-- Slider -->
     <div class="orbit" id="slider" role="region" aria-label="Favorite Space Pictures" data-orbit>
@@ -82,15 +178,14 @@
             </ul>
         </div>
         <nav class="orbit-bullets">
-            <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+            <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span
+                        class="show-for-sr">Current Slide</span></button>
             <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
         </nav>
     </div>
 
 
-
 </header>
-
 
 
 {# Contenu #}

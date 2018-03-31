@@ -9,10 +9,12 @@ namespace App;
 use \Twig_Loader_Filesystem;
 use \Twig_Environment;
 use \Twig_Extension_Debug;
+use \App;
 
 class Config {
 
     private $global = array();
+    private $db;
 
     public function __construct() {
         require './config/global.php';
@@ -21,6 +23,7 @@ class Config {
             return false;
         }
         $this->setGlobal($global);
+//        $this->setDB();
         return true;
     }
 
@@ -58,12 +61,18 @@ class Config {
         $twig->addExtension(new Twig_Extension_Debug());
         $twig->addExtension(new My_Twig_Extension());
 
-//Ajout des fonctions custom
-//        include_once $global['FILE_ROOT'].'model/Twig/Functions.php';
+
+//Récupération des informations du menu
+
 
 //Ajout des variables globales
         $twig->addGlobal('glb', $global);
         return $twig;
+    }
+
+
+    public function getDB(){
+        return $this->getDB();
     }
 
 }

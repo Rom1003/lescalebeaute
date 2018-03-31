@@ -1,0 +1,5 @@
+bdd:
+  host: 'localhost'
+  database: 'lecalebeaute'
+  user: root
+  password:
