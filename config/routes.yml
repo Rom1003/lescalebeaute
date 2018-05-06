@@ -4,3 +4,7 @@ routes:
   base: [/, \AppController\indexController.indexAction, GET]
   index: [/index, \AppController\indexController.indexAction, GET]
   produit: [/produit, \AppController\produitController.indexAction, GET]
+
+  #Partie administration
+  administration: [/administration, \AppController\Admin\adminController.indexAction, GET]
+  admin_information: [/administration/informations, \AppController\Admin\informationController.indexAction, GET]

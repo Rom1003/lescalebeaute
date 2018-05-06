@@ -31,7 +31,6 @@
 }
 
 #menu-image {
-  //padding-top: 35px;
   padding: 35px 0 35px 0;
 }
 
@@ -129,7 +128,7 @@
 }
 
 
-
+/* Slider */
 
 .orbit-container {
   max-height: 500px;
@@ -161,3 +160,110 @@
     text-align: center;
   }
 }
+
+/* FIN Slider */
+
+/*  Liste des articles */
+.liste-articles {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.image-article {
+  height: 180px;
+  border-bottom: solid 1px $color-grey;
+  padding-bottom: 5px;
+
+  .image-helper {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  img {
+    max-height: 180px;
+    vertical-align: middle;
+  }
+}
+
+.libelle-article {
+  @include font("Lato");
+  font-size: 12px;
+  color: $color-black;
+  text-transform: uppercase;
+}
+.marque-article {
+  @include font("Lato Light");
+  font-size: 12px;
+  color: $color-black;
+  line-height: 10px;
+}
+
+/* FIN Liste des articles */
+
+/* Footer */
+
+#pre-footer {
+  margin-top: 100px;
+  height: 100px;
+  background-color: $color-light-grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #follow-us {
+    display: inline-block;
+    @include degrade($color-theme, $color-second);
+    font-size: 0.9em;
+    @include font("Lato Light");
+    text-transform: uppercase;
+    color: $color-white;
+    padding: 10px 15px 10px 15px;
+    border-radius: 50px;
+
+    p {
+      margin: 0;
+
+      svg {
+        vertical-align: middle;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+#footer {
+  background-color: $color-black;
+  color: $color-white;
+  @include font("Lato");
+  padding-top: 35px;
+
+  p {
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  ul {
+    @include font("Lato Light");
+    font-size: 0.9em;
+    list-style: none;
+    margin-left: 0;
+  }
+  li {
+    line-height: 18px;
+    a {
+      color: $color-white;
+    }
+    a:hover{
+      color: $color-theme;
+    }
+  }
+}
+
+#footer-image {
+  width: 120px;
+  max-width: 80%;
+  @extend .circle-shadow;
+}
+
+/* FIN Footer */

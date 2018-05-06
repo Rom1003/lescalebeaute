@@ -12,7 +12,7 @@
 
 <body>
 
-<div class="page-loader">
+<div class="page-loader none">
     <div id="loader-content">
         <div id="loader-img">
             <div id="loader-img-border"></div>
@@ -30,8 +30,8 @@
     <div class="top-bar">
         <div class="top-bar-right">
             <ul class="menu">
-                <li><i class="fas fa-phone fa-sm" data-fa-transform="rotate-100"></i> 06 01 02 03 04</li>
-                <li><i class="fas fa-map-marker-alt fa-sm"></i> 156 avenue Gallieni - 10 300 - Sainte Savine</li>
+                <li><i class="fas fa-phone fa-sm" data-fa-transform="rotate-100"></i> {{ getVocabulaire(1)|phone }}</li>
+                <li><i class="fas fa-map-marker-alt fa-sm"></i> {{ getVocabulaire(2) }}</li>
                 <li><i class="far fa-clock fa-sm"></i> Ouvert</li>
             </ul>
         </div>
@@ -40,14 +40,14 @@
 
     <div class="grid-x text-center">
         <div class="cell" id="menu-image">
-            <img src="{{ glb['SRC_ROOT'] }}img/logo_full.png">
+            <a href="{{ glb['HTTP_ROOT'] }}"><img src="{{ glb['SRC_ROOT'] }}img/logo_full.png"></a>
         </div>
 
     </div>
 
     <div id="nav-bar">
         <ul class="vertical medium-horizontal menu align-center">
-            <li><a href="#"><img src="{{ glb['SRC_ROOT'] }}img/logo_noir.png"/></a></li>
+            <li><a href="{{ glb['HTTP_ROOT'] }}"><img src="{{ glb['SRC_ROOT'] }}img/logo_noir.png"/></a></li>
             {% for menu1 in menu %}
                 <li class="menu-dropdown"><a href="#">{{ menu1.libelle | upper }}</a>
                     {% if menu1.sub is defined and menu1.sub %}
@@ -69,92 +69,8 @@
                 </li>
 
             {% endfor %}
-            {#<li class="menu-dropdown"><a href="#">SOINS CORPS</a>
-                <ul class="sub-menu">
-                    <li class="sub-dropdown"><a href="#">Massages Corps</a>
-                        <ul class="sub-menu-2 hidden">
-                            <li><a href="#">Massages Corps</a></li>
-                            <li><a href="#">Massages Pieds&Mains</a></li>
-                            <li><a href="#">Gommages</a></li>
-                            <li><a href="#">Enveloppements</a></li>
-                            <li><a href="#">Enveloppements</a></li>
-                            <li><a href="#">Enveloppements</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-dropdown"><a href="#">Massages Pieds&Mains</a>
-                        <ul class="sub-menu-2 hidden">
-                            <li><a href="#">Massages Corps</a></li>
-                            <li><a href="#">Massages Pieds&Mains</a></li>
-                            <li><a href="#">Gommages</a></li>
-                            <li><a href="#">Enveloppements</a></li>
-                            <li><a href="#">Rituels</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-dropdown"><a href="#">Gommages</a>
-                        <ul class="sub-menu-2 hidden">
-                            <li><a href="#">Massages Corps</a></li>
-                            <li><a href="#">Massages Pieds&Mains</a></li>
-                            <li><a href="#">Gommages</a></li>
-                            <li><a href="#">Enveloppements</a></li>
-                            <li><a href="#">Rituels</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-dropdown"><a href="#">Enveloppements</a>
-                        <ul class="sub-menu-2 hidden">
-                            <li><a href="#">Massages Corps</a></li>
-                            <li><a href="#">Massages Pieds&Mains</a></li>
-                            <li><a href="#">Gommages</a></li>
-                            <li><a href="#">Enveloppements</a></li>
-                            <li><a href="#">Rituels</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Rituels</a>
-                        <ul class="sub-menu-2 hidden">
-                            <li><a href="#">Massages Corps</a></li>
-                            <li><a href="#">Massages Pieds&Mains</a></li>
-                            <li><a href="#">Gommages</a></li>
-                            <li><a href="#">Enveloppements</a></li>
-                            <li><a href="#">Rituels</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="menu-dropdown"><a href="#">SOINS VISAGES</a>
-                <ul class="sub-menu hidden">
-                    <li><a href="#">Massages Corps</a></li>
-                    <li><a href="#">Massages Pieds&Mains</a></li>
-                    <li><a href="#">Gommages</a></li>
-                    <li><a href="#">Enveloppements</a></li>
-                    <li><a href="#">Rituels</a></li>
-                </ul>
-            </li>
-            <li class="menu-dropdown"><a href="#">HAMMAM</a>
-                <ul class="sub-menu hidden">
-                    <li><a href="#">Massages Corps</a></li>
-                    <li><a href="#">Massages Pieds&Mains</a></li>
-                    <li><a href="#">Gommages</a></li>
-                    <li><a href="#">Enveloppements</a></li>
-                    <li><a href="#">Rituels</a></li>
-                </ul>
-            </li>
-            <li><a href="#">EPILATIONS</a></li>
-            <li><a href="#">PRODUITS</a></li>
-            <li><a href="#">A PROPOS</a></li>#}
         </ul>
     </div>
-
-    {#    <div id="sub-menu">
-            <div class="sub-menu">
-                <ul class="sub">
-                    <li><a href="#">Massages Corps</a></li>
-                    <li><a href="#">Massages Pieds&Mains</a></li>
-                    <li><a href="#">Gommages</a></li>
-                    <li><a href="#">Enveloppements</a></li>
-                    <li><a href="#">Rituels</a></li>
-                </ul>
-            </div>
-        </div>#}
-
     <!-- Slider -->
     <div class="orbit" id="slider" role="region" aria-label="Favorite Space Pictures" data-orbit>
         <div class="orbit-wrapper">
@@ -183,14 +99,58 @@
             <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
         </nav>
     </div>
-
-
 </header>
 
 
 {# Contenu #}
 {% block content %}
 {% endblock %}
+
+
+<footer>
+    <div id="pre-footer">
+            <a href="https://www.facebook.com/people/Lescale-Beaut%C3%A9-Sainte-Savine/100014319492079" target="_blank" id="follow-us" class="text-center">
+                <p><i class="fab fa-facebook-square fa-2x"></i>Suivez-nous sur Facebook</p>
+            </a>
+    </div>
+
+    <div id="footer" class="grid-x">
+        <div class="cell large-auto medium-auto small-centered text-center">
+            <img src="{{ glb['SRC_ROOT'] }}img/logo_inversed.png" alt="Logo L'escale beauté" id="footer-image">
+        </div>
+        <div class="cell large-auto medium-auto small-6">
+            <p>Accès rapide</p>
+            <ul>
+                <li><a href="#">Massages</a></li>
+                <li><a href="#">Soins visages</a></li>
+                <li><a href="#">Hammam</a></li>
+                <li><a href="#">Epilations</a></li>
+                <li><a href="#">Produits</a></li>
+            </ul>
+        </div>
+        <div class="cell large-auto medium-auto small-6">
+            <p>Informations légales</p>
+            <ul>
+                <li><a href="#">CGU</a></li>
+                <li><a href="#">mentions Légales</a></li>
+            </ul>
+        </div>
+        <div class="cell large-auto medium-auto small-6">
+            <p>Contactez-nous</p>
+            <ul>
+                <li>06 06 06 06 06</li>
+                <li>lescalebeaute@gmail.com</li>
+            </ul>
+        </div>
+        <div class="cell large-auto medium-auto small-6">
+            <p>Nos partenaires</p>
+        </div>
+        <div class="cell large-auto medium-auto small-6">
+            <p>Suivez-nous</p>
+        </div>
+
+    </div>
+</footer>
 
 
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.js"></script>

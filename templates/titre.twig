@@ -1,3 +1,5 @@
+{% if not logo or logo == 'left' %}
+
 <div class="grid-container bloc-title">
     <div class="grid-x grid-margin-x">
         <div class="cell small-auto medium-4 large-4">
@@ -11,3 +13,21 @@
         </div>
     </div>
 </div>
+
+{% else %}
+
+<div class="grid-container bloc-title">
+    <div class="grid-x grid-margin-x">
+        <div class="cell small-auto medium-5 large-4 large-offset-4 medium-offset-3 small-order-2 medium-order-1">
+            <div>
+                <h1>{{ titre | raw }}</h1>
+                <p>{{ texte | raw }}</p>
+            </div>
+        </div>
+        <div class="cell small-auto medium-4 large-4 small-order-1 medium-order-2 end">
+            <img src="{{ glb['SRC_ROOT'] }}img/logo_fond.png" width="100px">
+        </div>
+    </div>
+</div>
+
+{% endif %}
