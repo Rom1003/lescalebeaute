@@ -1,0 +1,34 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+    <div class="row column" id="admin-title">
+        <h4>Informations</h4>
+    </div>
+    <form>
+        <div class="grid-x grid-padding-x">
+
+            {# N° de téléphone #}
+            {% set voc = getVocabulaire(1, vocabulaire) %}
+            <div class="medium-6 cell">
+                <label for="vocabulaire_{{ voc['id'] }}">
+                    {{ voc['libelle'] }}
+                    <input type="text" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}"
+                           value="{{ voc['valeur']|phone }}" class="mask-phone">
+                </label>
+            </div>
+        </div>
+        <div class="grid-x grid-padding-x">
+            {# Adresse #}
+            {% set voc = getVocabulaire(2, vocabulaire) %}
+            <div class="medium-6 cell">
+                <label for="vocabulaire_{{ voc['id'] }}">
+                    {{ voc['libelle'] }}
+                    <input type="text" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}"
+                           value="{{ voc['valeur'] }}">
+                </label>
+            </div>
+
+
+        </div>
+    </form>
+{% endblock %}

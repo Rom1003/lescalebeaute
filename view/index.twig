@@ -7,7 +7,7 @@
 
     <section>
         {# Affichage du titre #}
-        {% include('titre.twig') with {'titre': 'Nos massage', 'texte': 'Découvrez nos <span>massages</span> du bout du monde'} only %}
+        {% include('titre.twig') with {'titre': 'Nos massage', 'texte': 'Découvrez nos <span>massages</span> du bout du monde', 'logo' : 'left'} only %}
 
         <div class="grid-container bloc-galerie">
 
@@ -16,7 +16,12 @@
 
                 <div class="cell small-12 medium-5 large-4 galerie-description" data-match="1">
                     <p class="titre">Détendez-vous !</p>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci erat molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blan. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt. Lorem ipsum dolor sit amet consectetuer adipiscing elit.</p>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                        nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
+                        veniam, quis nostrud exerci erat molestie consequat, vel illum dolore eu feugiat nulla facilisis
+                        at vero eros et accumsan et iusto odio dignissim qui blan. Lorem ipsum dolor sit amet,
+                        consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt. Lorem ipsum dolor sit
+                        amet consectetuer adipiscing elit.</p>
                     <a href="#">VOIR TOUS LES MASSAGES</a>
                 </div>
 
@@ -38,6 +43,126 @@
                     </div>
 
                 </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        {# Affichage du titre #}
+        {% include('titre.twig') with {'titre': 'Nos produits', 'texte': 'Découvrez nos <span>produits</span> à retrouver en institut', 'logo' : 'right'} only %}
+
+        <div class="grid-container bloc-galerie">
+
+            {# Bloc de description #}
+            <div class="grid-x grid-margin-x grid-margin-y align-top">
+
+                <div class="cell small-12 medium-7 large-8 liste-articles" data-match="2">
+
+                    <div class="grid-x grid-margin-x grid-margin-y align-top">
+                        <div class="cell small-6 medium-6 large-3 bloc-article">
+                            <div class="image-article">
+                                <span class="image-helper"></span>
+                                <img src="{{ image('produit.jpg') }}">
+                            </div>
+                            <p class="libelle-article">Gommage facile</p>
+                            <p class="marque-article">Guinot</p>
+                        </div>
+                        <div class="cell small-6 medium-6 large-3 bloc-article">
+                            <div class="image-article">
+                                <span class="image-helper"></span>
+                                <img src="{{ image('produit.jpg') }}">
+                            </div>
+                            <p class="libelle-article">Gommage facile</p>
+                            <p class="marque-article">Guinot</p>
+                        </div>
+                        <div class="cell small-6 medium-6 large-3 bloc-article">
+                            <div class="image-article">
+                                <span class="image-helper"></span>
+                                <img src="{{ image('produit.jpg') }}">
+                            </div>
+                            <p class="libelle-article">Gommage facile</p>
+                            <p class="marque-article">Guinot</p>
+                        </div>
+                        <div class="cell small-6 medium-6 large-3 bloc-article">
+                            <div class="image-article">
+                                <span class="image-helper"></span>
+                                <img src="{{ image('produit.jpg') }}">
+                            </div>
+                            <p class="libelle-article">Gommage facile</p>
+                            <p class="marque-article">Guinot</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-x grid-margin-x grid-margin-y align-top">
+                        <div class="cell small-6 medium-6 large-3 bloc-article">
+                            <div class="image-article">
+                                <span class="image-helper"></span>
+                                <img src="{{ image('produit.jpg') }}">
+                            </div>
+                            <p class="libelle-article">Gommage facile</p>
+                            <p class="marque-article">Guinot</p>
+                        </div>
+                        <div class="cell small-6 medium-6 large-3 bloc-article">
+                            <div class="image-article">
+                                <span class="image-helper"></span>
+                                <img src="{{ image('produit.jpg') }}">
+                            </div>
+                            <p class="libelle-article">Gommage facile</p>
+                            <p class="marque-article">Guinot</p>
+                        </div>
+                        <div class="cell small-6 medium-6 large-3 bloc-article">
+                            <div class="image-article">
+                                <span class="image-helper"></span>
+                                <img src="{{ image('produit.jpg') }}">
+                            </div>
+                            <p class="libelle-article">Gommage facile</p>
+                            <p class="marque-article">Guinot</p>
+                        </div>
+                        <div class="cell small-6 medium-6 large-3 bloc-article">
+                            <div class="image-article">
+                                <span class="image-helper"></span>
+                                <img src="{{ image('produit.jpg') }}">
+                            </div>
+                            <p class="libelle-article">Gommage facile</p>
+                            <p class="marque-article">Guinot</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell small-12 medium-5 large-4 galerie-description" data-match="2">
+                    <p class="titre">Retrouvez les en institut !</p>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                        nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
+                        veniam, quis nostrud exerci erat molestie consequat, vel illum dolore eu feugiat nulla facilisis
+                        at vero eros et accumsan et iusto odio dignissim qui blan. Lorem ipsum dolor sit amet,
+                        consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt. Lorem ipsum dolor sit
+                        amet consectetuer adipiscing elit.</p>
+                    <a href="#">VOIR TOUS LES MASSAGES</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        {# Affichage du titre #}
+        {% include('titre.twig') with {'titre': 'Nos secrets beauté', 'texte': 'Notre <span>expértise</span> au service de votre bien être', 'logo' : 'left'} only %}
+
+        <div class="grid-container bloc-galerie">
+
+            {# Bloc de description #}
+            <div class="grid-x grid-margin-x grid-margin-y align-top">
+                <div class="cell small-12 medium-6 large-4">
+                    <img src="{{ image('hammam.jpg') }}">
+                </div>
+                <div class="cell small-12 medium-6 large-4">
+                    <img src="{{ image('cinq_mondes.jpg') }}">
+                </div>
+                <div class="cell small-12 medium-6 large-4 medium-offset-3 large-offset-0">
+                    <img src="{{ image('guinot.jpg') }}">
+                </div>
+
             </div>
 
         </div>

@@ -44,6 +44,7 @@ $(document).ready(function () {
         })
     };
 
+    $('.mask-phone').mask('00 00 00 00 00');
 
     pageLoader(0);
 });

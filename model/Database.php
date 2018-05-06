@@ -2,27 +2,30 @@
 namespace App;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Symfony\Component\Yaml\Yaml;
+use App\Config;
 
 class Database {
     public function __construct()
     {
+        $config = $this->getConfig();
         $capsule = new Capsule;
-        $capsule->addConnection([
-            'driver'    => 'mysql',
-            'host'      => 'localhost',
-            'database'  => 'lescalebeaute',
-            'username'  => 'root',
-            'password'  => '',
-            'charset'   => 'utf8',
-            'collation' => 'utf8_general_ci',
-            'prefix'    => '',
-        ]);
+        $capsule->addConnection($config['bdd']);
+
+
+
 
 // Make this Capsule instance available globally via static methods... (optional)
         $capsule->setAsGlobal();
 
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
         $capsule->bootEloquent();
+    }
+
+    public function getConfig() {
+        $config = new Config();
+        $global = $config->getGlobal();
+        return Yaml::parseFile($global['FILE_ROOT'].'/config/config.yml');
     }
 }
 
