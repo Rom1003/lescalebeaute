@@ -8,14 +8,34 @@ use \Illuminate\Database\Eloquent\Model;
 class Categorie extends Model
 {
     protected $table = 'categorie';
+    public $timestamps = false;
 
-
-    public static function getMenu()
+    /**
+     * Récupération des catégories selon leur arborescence
+     * @param bool $services - true pour récupérer les articles liés aux catégories
+     * @return array
+     */
+    public static function getMenu($services = true, $showNotEditable = true)
     {
 
         try {
-            $categories = self::orderBy('niveau')->orderBy('categorie_id')->orderBy('ordre')->get()->toArray();
-        } catch (\PDOException $exception){
+
+            if ($showNotEditable === false){
+                $req = self::where('editable', 1);
+            } else {
+                $req = self::whereIn('editable', [0, 1]);
+            }
+
+            if ($services === true){
+                $req = $req->with(['service' => function ($q) {
+                    $q->take(5);
+                }]);
+            }
+
+            $categories = $req->orderBy('niveau')->orderBy('categorie_id')->orderBy('ordre')->get()->toArray();
+//            var_dump($req->orderBy('niveau')->orderBy('categorie_id')->orderBy('ordre')->get()->tosql());
+
+        } catch (\PDOException $exception) {
             \AppController\errorController::error500();
             exit;
         }
@@ -34,8 +54,6 @@ class Categorie extends Model
                 case 1:
                     $sous_menu[$category['id']] = $category;
                     break;
-                case 2:
-                    $sous_menu[$category['categorie_id']]['sub'][$category['ordre']] = $category;
             }
         }
         foreach ($sous_menu as $sm) {
@@ -45,6 +63,10 @@ class Categorie extends Model
         return $menu;
     }
 
+    public function service()
+    {
+        return $this->hasMany('App\Tables\Service');
+    }
 
 
 }

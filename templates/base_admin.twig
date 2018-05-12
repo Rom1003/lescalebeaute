@@ -16,14 +16,14 @@
         <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas="" data-position="left"
              aria-hidden="true" data-offcanvas="mquiey-offcanvas">
             <div class="row column" id="admin_logo">
-                <a href="{{ glb['HTTP_ROOT'] }}"><img src="{{ glb['SRC_ROOT'] }}img/logo_noir.png">
+                <a href="{{ getRouteUrl("base") }}"><img src="{{ glb['SRC_ROOT'] }}img/logo_noir.png">
                     <span>L'escale beauté</span>
                 </a>
             </div>
             <div class="row column">
                 <ul class="vertical menu menu_list">
                     <li>
-                        <a href="#">
+                        <a href="{{ getRouteUrl("admin_information") }}">
                             <span class="fa-layers fa-fw">
                               <i class="fas fa-circle fa-lg"></i>
                               <i class="fas fa-info color-second" data-fa-transform="shrink-6 right-1"></i>
@@ -32,12 +32,21 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ getRouteUrl("admin_categorie") }}">
                             <span class="fa-layers fa-fw">
                               <i class="fas fa-circle fa-lg"></i>
                               <i class="fas fa-code-branch color-second" data-fa-transform="shrink-6 right-1"></i>
                             </span>
                             <span>Catégories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ getRouteUrl("admin_service") }}">
+                            <span class="fa-layers fa-fw">
+                              <i class="fas fa-circle fa-lg"></i>
+                              <i class="fas fa-handshake color-second" data-fa-transform="shrink-6 right-1"></i>
+                            </span>
+                            <span>Services</span>
                         </a>
                     </li>
                 </ul>
@@ -71,6 +80,8 @@
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/foundation.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.mask.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/jquery.matchHeight.js" type="text/javascript"></script>
+{% block javascript %}
+{% endblock %}
 </body>
 
 </html>

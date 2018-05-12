@@ -54,13 +54,13 @@
                         <ul class="sub-menu hidden">
                             {% for menu2 in menu1.sub %}
                                 <li class="sub-dropdown"><a href="#">{{ menu2.libelle }}</a>
-                                    {% if menu2.sub is defined and menu2.sub %}
+                                    {#{% if menu2.service is defined and menu2.service %}#}
                                         <ul class="sub-menu-2 hidden">
-                                            {% for menu3 in menu2.sub %}
+                                            {% for menu3 in menu2.service %}
                                                 <li><a href="#">{{ menu3.libelle }}</a></li>
                                             {% endfor %}
                                         </ul>
-                                    {% endif %}
+                                    {#{% endif %}#}
                                 </li>
                             {% endfor %}
                         </ul>

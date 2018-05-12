@@ -67,6 +67,7 @@ class Config {
 
 //Ajout des variables globales
         $twig->addGlobal('glb', $global);
+        $twig->addGlobal('session', $_SESSION);
         return $twig;
     }
 
