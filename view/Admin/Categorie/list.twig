@@ -1,0 +1,46 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+    <div class="row column" id="admin-title">
+        <h4>Catégories</h4>
+    </div>
+
+    {% if session.notification %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% for menu1 in categories %}
+        <h5>{{ menu1.libelle|capitalize }}</h5>
+        <a href="{{ getRouteUrl('admin_categorie_new', {'categorie_id': menu1.id}) }}" class="button small"><i class="fas fa-plus"></i> Ajouter une sous catégorie</a>
+        {% if menu1.sub is defined and menu1.sub %}
+            <table class="hover">
+                <thead>
+                    <tr>
+                        <td>Libelle</td>
+                        <td>Description</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for menu2 in menu1.sub %}
+                        <tr>
+                            <td>{{ menu2.libelle }}</td>
+                            <td>{{ menu2.description|length > 100 ? menu2.description|slice(0, 100) ~ '...' : menu2.description  }}</td>
+                            <td>
+                                <a href="{{ getRouteUrl('admin_categorie_edit', {'id': menu2.id}) }}" data-trigger-class data-tooltip title="Modifier"><i class="fas fa-edit"></i></a>
+                                <a href="{{ getRouteUrl('admin_categorie_new', {'categorie_id': menu1.id}) }}" data-trigger-class data-tooltip title="Voir les services"><i class="fas fa-list"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    {% endfor %}
+
+
+{% endblock %}

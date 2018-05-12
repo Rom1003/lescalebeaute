@@ -6,7 +6,10 @@
         "dannyvankooten/php-router": "master",
         "symfony/yaml": "^4.1@dev",
         "symfony/finder": "^4.1@dev",
-        "illuminate/database": "^5.7@dev"
+        "illuminate/database": "^5.7@dev",
+        "respect/validation": "^2.0@dev",
+        "codeguy/upload": "dev-master",
+        "illuminate/pagination": "^5.7@dev"
     },
 
     "autoload": {

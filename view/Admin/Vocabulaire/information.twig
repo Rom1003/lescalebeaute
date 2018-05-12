@@ -4,7 +4,18 @@
     <div class="row column" id="admin-title">
         <h4>Informations</h4>
     </div>
-    <form>
+
+    {% if vars.notification %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                {{ showAlert(vars.notification.type, vars.notification.message, vars.notification.titre)|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+
+    <form method="post" action="{{ getRouteUrl('admin_information_edit') }}">
         <div class="grid-x grid-padding-x">
 
             {# N° de téléphone #}
@@ -13,7 +24,7 @@
                 <label for="vocabulaire_{{ voc['id'] }}">
                     {{ voc['libelle'] }}
                     <input type="text" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}"
-                           value="{{ voc['valeur']|phone }}" class="mask-phone">
+                           value="{{ vars['form_voc'][voc['id']] is defined ? vars['form_voc'][voc['id']]|phone : voc['valeur']|phone }}" class="mask-phone">
                 </label>
             </div>
         </div>
@@ -24,11 +35,16 @@
                 <label for="vocabulaire_{{ voc['id'] }}">
                     {{ voc['libelle'] }}
                     <input type="text" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}"
-                           value="{{ voc['valeur'] }}">
+                           value="{{ vars['form_voc'][voc['id']] is defined ? vars['form_voc'][voc['id']] : voc['valeur'] }}">
                 </label>
             </div>
+        </div>
 
-
+        <div class="grid-x grid-padding-x">
+            {# Validation #}
+            <div class="medium-6 cell">
+                <button class="button">Valider les modifications</button>
+            </div>
         </div>
     </form>
 {% endblock %}

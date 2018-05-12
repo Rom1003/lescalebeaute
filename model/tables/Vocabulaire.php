@@ -8,6 +8,7 @@ use \Illuminate\Database\Eloquent\Model;
 class Vocabulaire extends Model
 {
     protected $table = 'vocabulaire';
+    public $timestamps = false;
 
     public static function getLibelle($id){
         try {

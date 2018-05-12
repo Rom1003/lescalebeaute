@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ccf807b3b1eb5d5d32bf90a5df2fe45",
+    "content-hash": "62f7a0e791768173bc8a2ed12d0ecb3e",
     "packages": [
+        {
+            "name": "codeguy/upload",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brandonsavage/Upload.git",
+                "reference": "81db4eabba4f645f9747067211ce6f01f54e0701"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brandonsavage/Upload/zipball/81db4eabba4f645f9747067211ce6f01f54e0701",
+                "reference": "81db4eabba4f645f9747067211ce6f01f54e0701",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Upload\\": "src/Upload"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Lockhart",
+                    "email": "info@joshlockhart.com",
+                    "homepage": "https://github.com/codeguy/"
+                }
+            ],
+            "description": "Handle file uploads with extensible validation and storage strategies",
+            "homepage": "http://github.com/codeguy/Upload",
+            "keywords": [
+                "file",
+                "upload",
+                "validation"
+            ],
+            "time": "2016-03-03T15:58:57+00:00"
+        },
         {
             "name": "dannyvankooten/php-router",
             "version": "dev-master",
@@ -65,12 +112,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "89aedcb9b2a568efdd2ab376e0f60f428c977858"
+                "reference": "82890572668fc150f30046c5af7d6b277825c3b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/89aedcb9b2a568efdd2ab376e0f60f428c977858",
-                "reference": "89aedcb9b2a568efdd2ab376e0f60f428c977858",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/82890572668fc150f30046c5af7d6b277825c3b5",
+                "reference": "82890572668fc150f30046c5af7d6b277825c3b5",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +172,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2018-04-11T05:54:08+00:00"
+            "time": "2018-05-08T11:02:15+00:00"
         },
         {
             "name": "fig/http-message-util",
@@ -271,12 +318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "386c612568b7a8c5e46cf1b164fac7522d9a613a"
+                "reference": "2e0bf31c3cda3aed3813c4110d34bbe942ed7a6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/386c612568b7a8c5e46cf1b164fac7522d9a613a",
-                "reference": "386c612568b7a8c5e46cf1b164fac7522d9a613a",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/2e0bf31c3cda3aed3813c4110d34bbe942ed7a6b",
+                "reference": "2e0bf31c3cda3aed3813c4110d34bbe942ed7a6b",
                 "shasum": ""
             },
             "require": {
@@ -322,7 +369,51 @@
                 "orm",
                 "sql"
             ],
-            "time": "2018-04-29T19:13:14+00:00"
+            "time": "2018-05-07T17:30:57+00:00"
+        },
+        {
+            "name": "illuminate/pagination",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/pagination.git",
+                "reference": "1f64c40fc88fbaf6ab2918d2e9bd5ad12711cdb7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/pagination/zipball/1f64c40fc88fbaf6ab2918d2e9bd5ad12711cdb7",
+                "reference": "1f64c40fc88fbaf6ab2918d2e9bd5ad12711cdb7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.7.*",
+                "illuminate/support": "5.7.*",
+                "php": "^7.1.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Pagination\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Pagination package.",
+            "homepage": "https://laravel.com",
+            "time": "2018-05-07T17:30:57+00:00"
         },
         {
             "name": "illuminate/support",
@@ -330,12 +421,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "bdbd31d147ecc9972e62dfb8923ed70478afd578"
+                "reference": "1ac3d728fe53193e9f38a0e7a9d7b8823c6b146d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/bdbd31d147ecc9972e62dfb8923ed70478afd578",
-                "reference": "bdbd31d147ecc9972e62dfb8923ed70478afd578",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/1ac3d728fe53193e9f38a0e7a9d7b8823c6b146d",
+                "reference": "1ac3d728fe53193e9f38a0e7a9d7b8823c6b146d",
                 "shasum": ""
             },
             "require": {
@@ -379,7 +470,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-04-25T18:24:41+00:00"
+            "time": "2018-05-07T17:30:57+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -577,17 +668,134 @@
             "time": "2017-10-23T01:57:42+00:00"
         },
         {
+            "name": "respect/stringifier",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Respect/Stringifier.git",
+                "reference": "e55af3c8aeaeaa2abb5fa47a58a8e9688cc23b59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Respect/Stringifier/zipball/e55af3c8aeaeaa2abb5fa47a58a8e9688cc23b59",
+                "reference": "e55af3c8aeaeaa2abb5fa47a58a8e9688cc23b59",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.8",
+                "malukenho/docheader": "^0.1.7",
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Respect\\Stringifier\\": "src/"
+                },
+                "files": [
+                    "src/stringify.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Respect/Stringifier Contributors",
+                    "homepage": "https://github.com/Respect/Stringifier/graphs/contributors"
+                }
+            ],
+            "description": "Converts any value to a string",
+            "homepage": "http://respect.github.io/Stringifier/",
+            "keywords": [
+                "respect",
+                "stringifier",
+                "stringify"
+            ],
+            "time": "2017-12-29T19:39:25+00:00"
+        },
+        {
+            "name": "respect/validation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Respect/Validation.git",
+                "reference": "7b5a2928ff263723c7e65517e643932bad1e5655"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/7b5a2928ff263723c7e65517e643932bad1e5655",
+                "reference": "7b5a2928ff263723c7e65517e643932bad1e5655",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "respect/stringifier": "^0.2.0",
+                "symfony/polyfill-mbstring": "^1.2"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.0",
+                "friendsofphp/php-cs-fixer": "^2.8",
+                "malukenho/docheader": "^0.1.4",
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^6.4",
+                "symfony/validator": "^3.0",
+                "zendframework/zend-validator": "^2.0"
+            },
+            "suggest": {
+                "egulias/email-validator": "Strict (RFC compliant) email validation",
+                "ext-bcmath": "Arbitrary Precision Mathematics",
+                "ext-fileinfo": "File Information",
+                "ext-mbstring": "Multibyte String Functions",
+                "friendsofphp/php-cs-fixer": "Fix PSR2 and other coding style issues",
+                "symfony/validator": "Use Symfony validator through Respect\\Validation",
+                "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Respect\\Validation\\": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Respect/Validation Contributors",
+                    "homepage": "https://github.com/Respect/Validation/graphs/contributors"
+                }
+            ],
+            "description": "The most awesome validation engine ever created for PHP",
+            "homepage": "http://respect.github.io/Validation/",
+            "keywords": [
+                "respect",
+                "validation",
+                "validator"
+            ],
+            "time": "2018-05-02T14:04:05+00:00"
+        },
+        {
             "name": "symfony/finder",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "d78fff5c545a7ecb13f17efa8212ba13ef312fd8"
+                "reference": "17f1943377665117a345fae84f6454fdac98490d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/d78fff5c545a7ecb13f17efa8212ba13ef312fd8",
-                "reference": "d78fff5c545a7ecb13f17efa8212ba13ef312fd8",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/17f1943377665117a345fae84f6454fdac98490d",
+                "reference": "17f1943377665117a345fae84f6454fdac98490d",
                 "shasum": ""
             },
             "require": {
@@ -596,7 +804,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -623,7 +831,62 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-04T05:11:41+00:00"
+            "time": "2018-05-07T14:51:25+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2018-04-30T19:57:29+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -690,12 +953,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "3bae100c1de6f86f67d4c516854d605d64aa80c9"
+                "reference": "e27710d4265d49018db0d7c883913151d353a1e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/3bae100c1de6f86f67d4c516854d605d64aa80c9",
-                "reference": "3bae100c1de6f86f67d4c516854d605d64aa80c9",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/e27710d4265d49018db0d7c883913151d353a1e1",
+                "reference": "e27710d4265d49018db0d7c883913151d353a1e1",
                 "shasum": ""
             },
             "require": {
@@ -724,7 +987,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -751,7 +1014,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-30T01:24:02+00:00"
+            "time": "2018-05-07T14:51:25+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -759,16 +1022,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "abab82a85718604d95cbe58dbf464885f37b935a"
+                "reference": "55f138b02455b1053070e9a17be7915882c459bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/abab82a85718604d95cbe58dbf464885f37b935a",
-                "reference": "abab82a85718604d95cbe58dbf464885f37b935a",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/55f138b02455b1053070e9a17be7915882c459bd",
+                "reference": "55f138b02455b1053070e9a17be7915882c459bd",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3"
+                "php": "^7.1.3",
+                "symfony/polyfill-ctype": "~1.8"
             },
             "conflict": {
                 "symfony/console": "<3.4"
@@ -782,7 +1046,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -809,7 +1073,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-08T09:02:26+00:00"
+            "time": "2018-05-07T14:51:25+00:00"
         },
         {
             "name": "twig/twig",
@@ -884,7 +1148,10 @@
     "stability-flags": {
         "symfony/yaml": 20,
         "symfony/finder": 20,
-        "illuminate/database": 20
+        "illuminate/database": 20,
+        "respect/validation": 20,
+        "codeguy/upload": 20,
+        "illuminate/pagination": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

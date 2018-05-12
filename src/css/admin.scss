@@ -2,7 +2,7 @@
 //Ajout du framework css "Foundation"
 @include foundation-everything;
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   @include font("Lato");
 }
 
@@ -56,4 +56,9 @@ a:hover {
 
 #admin_content {
   margin-left: 25px;
+}
+
+#admin-title {
+  border-bottom: 1px solid $color-black;
+  margin-bottom: 50px;
 }
