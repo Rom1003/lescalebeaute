@@ -28,7 +28,7 @@ class Categorie extends Model
 
             if ($services === true){
                 $req = $req->with(['service' => function ($q) {
-                    $q->take(5);
+//                    $q->take(5);
                 }]);
             }
 

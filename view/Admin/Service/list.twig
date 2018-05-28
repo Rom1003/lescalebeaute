@@ -14,6 +14,8 @@
         </div>
     {% endif %}
 
+    <input type="hidden" name="categorie_id" id="categorie_id" value="{{ categorie_id }}">
+    <a href="{{ getRouteUrl('admin_service_new') }}" class="button small"><i class="fas fa-plus"></i> Ajouter un service</a>
 
 <table class="hover">
     <thead>
@@ -30,34 +32,24 @@
 
 
 
-    <nav aria-label="Pagination">
+{#    <nav aria-label="Pagination">
         <ul class="pagination text-center">
-            <li class="pagination-previous disabled">Previous</li>
-            <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-            <li><a href="#" aria-label="Page 2">2</a></li>
-            <li><a href="#" aria-label="Page 3">3</a></li>
-            <li><a href="#" aria-label="Page 4">4</a></li>
+            <li class="disabled"><i class="fas fa-angle-double-left"></i></li>
+            <li class="disabled"><i class="fas fa-angle-left"></i></li>
+            <li class="current"><span class="show-for-sr"></span> 1</li>
+            <li><a>2</a></li>
+            <li><a>3</a></li>
+            <li><a>4</a></li>
             <li class="ellipsis"></li>
-            <li><a href="#" aria-label="Page 12">12</a></li>
-            <li><a href="#" aria-label="Page 13">13</a></li>
-            <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+            <li><a>12</a></li>
+            <li><a>13</a></li>
+            <li class="pagination-next"><a href="#" aria-label="Next page">Suivant</a></li>
         </ul>
+    </nav>#}
+
+    <nav aria-label="Pagination" id="pagination">
+
     </nav>
-
-    <div id="pagination">
-
-    </div>
-
-
-
-    <div class="reveal" id="modal" data-reveal data-close-on-click="true"></div>
-
-
-
-
-
-
-
 
 
 {% endblock %}

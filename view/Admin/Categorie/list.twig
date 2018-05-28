@@ -29,11 +29,11 @@
                 <tbody>
                     {% for menu2 in menu1.sub %}
                         <tr>
-                            <td>{{ menu2.libelle }}</td>
-                            <td>{{ menu2.description|length > 100 ? menu2.description|slice(0, 100) ~ '...' : menu2.description  }}</td>
+                            <td style="width: 35%">{{ menu2.libelle }}</td>
+                            <td style="width: 50%">{{ menu2.description|length > 100 ? menu2.description|slice(0, 100) ~ '...' : menu2.description  }}</td>
                             <td>
                                 <a href="{{ getRouteUrl('admin_categorie_edit', {'id': menu2.id}) }}" data-trigger-class data-tooltip title="Modifier"><i class="fas fa-edit"></i></a>
-                                <a href="{{ getRouteUrl('admin_categorie_new', {'categorie_id': menu1.id}) }}" data-trigger-class data-tooltip title="Voir les services"><i class="fas fa-list"></i></a>
+                                <a href="{{ getRouteUrl('admin_service_categorie', {'categorie_id': menu2.id}) }}" data-trigger-class data-tooltip title="Voir les services"><i class="fas fa-list"></i></a>
                             </td>
                         </tr>
                     {% endfor %}

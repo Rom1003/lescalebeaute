@@ -3,6 +3,8 @@
 $(document).ready(function () {
     $(document).foundation();
 
+    floatMask();
+
     //Resize des blocs
     $("div[data-match]").each(function () {
         var elem = '.' + $(this).data("match");
@@ -114,7 +116,7 @@ function removeInputBorder(elem) {
 
 }
 
-function sendForm(ajaxURL, mypost, onSuccess, onError) {
+function sendPost(ajaxURL, mypost, onSuccess, onError) {
     onSuccess = onSuccess || null;
     onError = onError || null;
 
@@ -126,7 +128,50 @@ function sendForm(ajaxURL, mypost, onSuccess, onError) {
         dataType : 'JSON',
         data : mypost,
         success : function(data){
-            console.log(data.etat);
+            if (data.etat == 'conf'){
+                if (onSuccess === null){
+                    showConf(data.message);
+                } else {
+                    onSuccess(data);
+                }
+            } else if(data.etat == 'err') {
+                if (onError === null){
+                    showError(data.message);
+                } else {
+                    onError(data);
+                }
+            } else {
+                showError('Une erreur est survenue');
+            }
+
+        },
+        statusCode : {
+            404: function () {
+                showError('Une erreur est survenue');
+            },
+            302: function () {
+                showError('Une erreur est survenue');
+            }
+        }
+    }).fail(function () {
+        showError('Une erreur est survenue');
+    });
+}
+function sendForm(ajaxURL, mypost, onSuccess, onError) {
+    onSuccess = onSuccess || null;
+    onError = onError || null;
+
+    removeInputBorder();
+
+    $.ajax({
+        type : "POST",
+        url : ajaxURL,
+        dataType : 'JSON',
+        data : mypost,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success : function(data){
             if (data.etat == 'conf'){
                 if (onSuccess === null){
                     showConf(data.message);
@@ -157,6 +202,8 @@ function sendForm(ajaxURL, mypost, onSuccess, onError) {
     });
 }
 
+
+
 function showError(message, titre){
     titre = titre || 'Erreur';
 
@@ -179,4 +226,68 @@ function showConf(message, titre){
         '</button>';
 
     $('#modal').html(html).addClass('callout').addClass('success').foundation('open');
+}
+
+function showWarn(message, titre){
+    titre = titre || 'Attention';
+
+    html = '<h5>'+titre+'</h5>\n' +
+        '<p>'+message+'</p>\n' +
+        '<button class="close-button" data-close aria-label="Close modal" type="button">\n' +
+        '   <span aria-hidden="true">&times;</span>\n' +
+        '</button>';
+
+    $('#modal').html(html).addClass('callout').addClass('warning').foundation('open');
+}
+
+/**
+ * Ajout d'un block input file
+ * @param name - Name de l'input
+ * @param block - Le block qui va acceuillir l'input
+ * @param limit - Le nombre maximum d'input dans le block défini
+ */
+function addInputFileBlock(name, block, limit) {
+    var nb = $('div[data-name="'+name+'"]').length;
+
+    var dataname = name;
+    if (name.substr(-2) == '[]'){
+        name = name.substr(0, (name.length -1))+nb+']';
+    }
+
+    var html = '            ' +
+        '           <div class="grid-x grid-padding-x" data-name="'+dataname+'">\n' +
+        '                <div class="medium-5 cell">\n' +
+        '                    <input type="file" id="'+name+'" name="'+name+'" class="">\n' +
+        '                </div>\n';
+
+    if (nb > 0){
+        html +=
+            '           <div class="medium-1 cell">\n' +
+            '               <button type="button" class="button tiny alert inputFile_remove"><i class="fas fa-minus"></i> Retirer</button>\n' +
+            '           </div>\n';
+    }
+
+    html += '           </div>';
+
+    if (nb < limit){
+        $(block).append(html);
+    } else {
+        showWarn("Nombre maximum atteint");
+    }
+}
+
+function removeInputFileBlock(delete_btn, name){
+    var div = delete_btn.parents('div[data-name="'+name+'"]');
+    var inputName = div.find('input').attr('name');
+    div.remove();
+}
+
+function floatMask() {
+    $('.mask-float').mask('nnnnnnnnnnn', {
+        translation : {
+            'n' : {
+                pattern : /[0-9.,]+/
+            }
+        }
+    });
 }

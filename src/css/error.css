@@ -831,6 +831,9 @@ body {
 .no-margin {
   margin: 0; }
 
+.button i, .button svg {
+  margin-right: 5px; }
+
 .none {
   display: none !important; }
 
@@ -6828,10 +6831,20 @@ a.thumbnail {
     text-transform: uppercase;
     text-align: center;
     font-size: 1em; }
+  .galerie-description .liste_tarifs {
+    color: #B96A81; }
+    .galerie-description .liste_tarifs p {
+      font-family: "Lato Light", sans-serif;
+      font-size: 1em;
+      margin-bottom: 0;
+      line-height: 1.4em; }
+    .galerie-description .liste_tarifs svg {
+      margin-right: 5px; }
   .galerie-description .description {
     font-family: "Lato Light", sans-serif;
     font-size: 0.9em;
-    text-align: justify; }
+    text-align: justify;
+    line-height: 1.5em; }
   .galerie-description a {
     display: block;
     text-decoration: underline;
