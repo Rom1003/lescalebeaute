@@ -20,6 +20,7 @@ class My_Twig_Extension extends Twig_Extension {
         $functions[] = new \Twig_Function('showAlert', array($this, 'showAlert'));
         $functions[] = new \Twig_Function('getVocabulaire', array($this, 'getVocabulaire'));
         $functions[] = new \Twig_Function('getRouteUrl', array($this, 'getRouteUrl'));
+        $functions[] = new \Twig_Function('toAscii', array($this, 'convertToAscii'));
 
         return $functions;
     }
@@ -119,6 +120,10 @@ class My_Twig_Extension extends Twig_Extension {
 
         return $url;
 
+    }
+
+    public function convertToAscii($string){
+        return toAscii($string);
     }
 
 }

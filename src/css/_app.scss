@@ -22,6 +22,10 @@ body {
   margin: 0;
 }
 
+.button i, .button svg {
+  margin-right: 5px;
+}
+
 .none {
   display: none !important;
 }

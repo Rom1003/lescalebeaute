@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'escale beauté</title>
     <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/base.css">
-    <script defer src="{{ glb['SRC_ROOT'] }}js/fontawesome-all.min.js"></script>
+    <script defer src="{{ glb['SRC_ROOT'] }}js/vendor/fontawesome-all.min.js"></script>
 </head>
 
 <body>
@@ -40,14 +40,14 @@
 
     <div class="grid-x text-center">
         <div class="cell" id="menu-image">
-            <a href="{{ glb['HTTP_ROOT'] }}"><img src="{{ glb['SRC_ROOT'] }}img/logo_full.png"></a>
+            <a href="{{ getRouteUrl("base") }}"><img src="{{ glb['SRC_ROOT'] }}img/logo_full.png"></a>
         </div>
 
     </div>
 
     <div id="nav-bar">
         <ul class="vertical medium-horizontal menu align-center">
-            <li><a href="{{ glb['HTTP_ROOT'] }}"><img src="{{ glb['SRC_ROOT'] }}img/logo_noir.png"/></a></li>
+            <li><a href="{{ getRouteUrl("base") }}"><img src="{{ glb['SRC_ROOT'] }}img/logo_noir.png"/></a></li>
             {% for menu1 in menu %}
                 <li class="menu-dropdown"><a href="#">{{ menu1.libelle | upper }}</a>
                     {% if menu1.sub is defined and menu1.sub %}
@@ -56,8 +56,8 @@
                                 <li class="sub-dropdown"><a href="#">{{ menu2.libelle }}</a>
                                     {#{% if menu2.service is defined and menu2.service %}#}
                                         <ul class="sub-menu-2 hidden">
-                                            {% for menu3 in menu2.service %}
-                                                <li><a href="#">{{ menu3.libelle }}</a></li>
+                                            {% for menu3 in menu2.service|slice(0, 5) %}
+                                                <li><a href="{{ getRouteUrl("service_detail", {'id':menu3.id, 'libelle':toAscii(menu3.libelle)}) }}">{{ menu3.libelle }}</a></li>
                                             {% endfor %}
                                         </ul>
                                     {#{% endif %}#}
@@ -154,10 +154,11 @@
 
 
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.js"></script>
-<script src="{{ glb['SRC_ROOT'] }}js/base.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/what-input.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/foundation.js"></script>
-<script src="{{ glb['SRC_ROOT'] }}js/jquery.matchHeight.js" type="text/javascript"></script>
+<script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.matchHeight.js" type="text/javascript"></script>
+<script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.mask.js"></script>
+<script src="{{ glb['SRC_ROOT'] }}js/base.js"></script>
 </body>
 
 </html>

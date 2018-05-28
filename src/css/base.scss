@@ -148,10 +148,24 @@
     font-size: 1em;
   }
 
+  .liste_tarifs {
+    color: $color-theme;
+    p {
+      @include font('Lato Light');
+      font-size: 1em;
+      margin-bottom: 0;
+      line-height: 1.4em;
+    }
+    svg {
+      margin-right: 5px;
+    }
+  }
+
   .description {
     @include font('Lato Light');
     font-size: 0.9em;
     text-align: justify;
+    line-height: 1.5em;
   }
 
   a {
