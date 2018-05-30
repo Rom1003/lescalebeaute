@@ -55,11 +55,13 @@
                             {% for menu2 in menu1.sub %}
                                 <li class="sub-dropdown"><a href="#">{{ menu2.libelle }}</a>
                                     {#{% if menu2.service is defined and menu2.service %}#}
-                                        <ul class="sub-menu-2 hidden">
-                                            {% for menu3 in menu2.service|slice(0, 5) %}
-                                                <li><a href="{{ getRouteUrl("service_detail", {'id':menu3.id, 'libelle':toAscii(menu3.libelle)}) }}">{{ menu3.libelle }}</a></li>
-                                            {% endfor %}
-                                        </ul>
+                                    <ul class="sub-menu-2 hidden">
+                                        {% for menu3 in menu2.service|slice(0, 5) %}
+                                            <li>
+                                                <a href="{{ getRouteUrl("service_detail", {'id':menu3.id, 'libelle':toAscii(menu3.libelle)}) }}">{{ menu3.libelle }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
                                     {#{% endif %}#}
                                 </li>
                             {% endfor %}
@@ -71,34 +73,34 @@
             {% endfor %}
         </ul>
     </div>
-    <!-- Slider -->
-    <div class="orbit" id="slider" role="region" aria-label="Favorite Space Pictures" data-orbit>
-        <div class="orbit-wrapper">
-            <div class="orbit-controls">
-                <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-                <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+    {% if slider is defined %}
+        <!-- Slider -->
+        <div class="orbit" id="slider" role="region" aria-label="Carroussel" data-orbit>
+            <div class="orbit-wrapper">
+                <div class="orbit-controls">
+                    <button class="orbit-previous"><span class="show-for-sr">Précédent</span>&#9664;&#xFE0E;</button>
+                    <button class="orbit-next"><span class="show-for-sr">Suivant</span>&#9654;&#xFE0E;</button>
+                </div>
+                <ul class="orbit-container" style="height: 100px;">
+                    {% for key, slide in slider %}
+                        <li class="{{ key == 0 ? 'is-active ' : '' }}orbit-slide">
+                            <figure class="orbit-figure">
+                                <img class="orbit-image" src="{{ image(slide.image.path~slide.image.filename) }}" alt="Space">
+                            </figure>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
-            <ul class="orbit-container" style="height: 100px;">
-                <li class="is-active orbit-slide">
-                    <figure class="orbit-figure">
-                        <img class="orbit-image" src="{{ glb['SRC_ROOT'] }}img/slider/1.png" alt="Space">
-                        <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
-                    </figure>
-                </li>
-                <li class="orbit-slide">
-                    <figure class="orbit-figure">
-                        <img class="orbit-image" src="{{ glb['SRC_ROOT'] }}img/slider/2.png" alt="Space">
-                        <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-                    </figure>
-                </li>
-            </ul>
+            <nav class="orbit-bullets">
+                {% for key, slide in slider %}
+                    <button class="{{ key == 0 ? 'is-active' : '' }}" data-slide="{{ key }}"></button>
+                {% endfor %}
+            </nav>
         </div>
-        <nav class="orbit-bullets">
-            <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span
-                        class="show-for-sr">Current Slide</span></button>
-            <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-        </nav>
-    </div>
+    {% else %}
+
+
+    {% endif %}
 </header>
 
 
@@ -109,9 +111,9 @@
 
 <footer>
     <div id="pre-footer">
-            <a href="https://www.facebook.com/people/Lescale-Beaut%C3%A9-Sainte-Savine/100014319492079" target="_blank" id="follow-us" class="text-center">
-                <p><i class="fab fa-facebook-square fa-2x"></i>Suivez-nous sur Facebook</p>
-            </a>
+        <a href="https://www.facebook.com/people/Lescale-Beaut%C3%A9-Sainte-Savine/100014319492079" target="_blank" id="follow-us" class="text-center">
+            <p><i class="fab fa-facebook-square fa-2x"></i>Suivez-nous sur Facebook</p>
+        </a>
     </div>
 
     <div id="footer" class="grid-x">

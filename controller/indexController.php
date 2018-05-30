@@ -5,6 +5,7 @@ namespace AppController;
 use \App\Config;
 use \App\Database;
 use \App\Tables\Categorie;
+use App\Tables\Slider;
 use \Illuminate\Database\Eloquent\Model;
 
 class indexController{
@@ -14,10 +15,11 @@ class indexController{
         $twig = $config->initTwig();
 
         $menu = Categorie::getMenu();
-
+        $slider = Slider::getSlides();
 
         echo $twig->render('index.twig', array(
-            'menu' => $menu
+            'menu' => $menu,
+            'slider' => $slider
         ));
     }
 }

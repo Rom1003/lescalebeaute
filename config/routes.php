@@ -153,7 +153,32 @@ $collection->attachRoute(new Route('/administration/services/edit/:id', array(
     'methods' => 'POST',
     'parameters' => ['id' => '\d+']
 )));
-
+//Ajax supression service_image
+$collection->attachRoute(new Route('/administration/services/ajax/image/delete', array(
+    'name' => 'admin_service_image_delete',
+    '_controller' => '\AppController\Admin\serviceController::imageDeleteAction',
+    'methods' => 'POST'
+)));
+//Slider
+$collection->attachRoute(new Route('/administration/slider', array(
+    'name' => 'admin_slider',
+    '_controller' => '\AppController\Admin\sliderController::indexAction',
+    'methods' => 'GET',
+)));
+//Ajout slide
+$collection->attachRoute(new Route('/administration/slider/add/:ordre', array(
+    'name' => 'admin_slider_add',
+    '_controller' => '\AppController\Admin\sliderController::addFormAction',
+    'methods' => 'GET',
+    'parameters' => ['ordre' => '\d+']
+)));
+//Traitement ajout slide
+$collection->attachRoute(new Route('/administration/slider/add/:ordre', array(
+    'name' => 'admin_slider_add_process',
+    '_controller' => '\AppController\Admin\sliderController::addProcessAction',
+    'methods' => 'POST',
+    'parameters' => ['ordre' => '\d+']
+)));
 
 $router = new Router($collection);
 $router->setBasePath('/');

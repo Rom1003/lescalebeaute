@@ -16,7 +16,9 @@
                     {# Affichage des tarifs #}
                     <div class="liste_tarifs">
                         {% for tarif in service.servicePrix %}
+                            {% if tarif.type == 1 %}
                             <p><i class="far fa-clock"></i> {{ tarif.libelle }}</p>
+                            {% endif %}
                             <p><i class="fas fa-ticket-alt" data-fa-transform="rotate-155"></i> {{ tarif.prix }} €</p>
                         {% endfor %}
 

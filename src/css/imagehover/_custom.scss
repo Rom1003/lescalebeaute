@@ -1,0 +1,14 @@
+@import "../assets/vars";
+// Imagehover.css overrides
+//
+// Copy variables from `_variables.scss` to this file to override default values without modifying source files.
+
+$image-bg:             $color-theme;
+$figcaption-bg:        $color-theme;
+$figcaption-padding:   30px !default;
+$text-color:           #ffffff !default;
+$border-color:         #ffffff !default;
+$border-margin:        5px !default;
+$border-width:         4px !default;
+$transition-duration:  0.35s !default;
+$shift-distance:       10px !default;

@@ -848,6 +848,12 @@ body {
   box-shadow: 0 3px 9px 6px rgba(0, 0, 0, 0.4);
   border-radius: 100%; }
 
+.border-top {
+  border-top: 1px solid #c5c5c5; }
+
+.relative {
+  position: relative; }
+
 /**********************
  * Chargement de page *
  **********************/
@@ -6819,9 +6825,9 @@ a.thumbnail {
 
 /* Slider */
 .orbit-container {
-  max-height: 500px; }
+  max-height: 600px; }
   .orbit-container img {
-    max-height: 500px; }
+    max-height: 600px; }
 
 .galerie-description {
   background-color: #1D1D1B;

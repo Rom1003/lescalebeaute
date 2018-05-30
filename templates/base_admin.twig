@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'escale beauté</title>
     <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/admin.css">
+    <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/imagehover/imagehover.css">
     <script defer src="{{ glb['SRC_ROOT'] }}js/vendor/fontawesome-all.min.js"></script>
 </head>
 
@@ -29,6 +30,15 @@
                               <i class="fas fa-info color-second" data-fa-transform="shrink-6 right-1"></i>
                             </span>
                             <span>Informations</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ getRouteUrl("admin_slider") }}">
+                            <span class="fa-layers fa-fw">
+                              <i class="fas fa-circle fa-lg"></i>
+                              <i class="fas fa-images color-second" data-fa-transform="shrink-6 right-1"></i>
+                            </span>
+                            <span>Carroussel</span>
                         </a>
                     </li>
                     <li>
@@ -71,7 +81,7 @@
         <div class="js-off-canvas-exit"></div>
     </div>
 </div>
-<div class="reveal" id="modal" data-reveal data-close-on-click="true"></div>
+{#<div class="reveal" id="modal" data-reveal data-close-on-click="true"></div>#}
 </body>
 
 

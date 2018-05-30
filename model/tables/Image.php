@@ -14,5 +14,9 @@ class Image extends Model
         return $this->hasMany('App\Tables\ServiceImage');
     }
 
+    public function slider()
+    {
+        return $this->hasMany('App\Tables\Slider');
+    }
 
 }
