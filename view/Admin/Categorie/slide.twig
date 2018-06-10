@@ -1,0 +1,43 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+    <div class="row column" id="admin-title">
+        <h4>Choix de l'image de l'entête : {{ categorie.libelle }}</h4>
+    </div>
+
+    {% if session.notification %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if slide is not empty %}
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <h5>Image actuelle</h5>
+                <img src="{{ image(slide.path~slide.filename) }}">
+                <hr>
+            </div>
+        </div>
+    {% endif %}
+
+    <form method="post" action="{{ getRouteUrl('admin_categorie_slide_process', {categorie_id : categorie.id}) }}" enctype="multipart/form-data">
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <h5>Sélectionner la nouvelle image</h5>
+                <input type="file" name="image" id="image">
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <button class="button">Valider</button>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}

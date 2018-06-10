@@ -18,6 +18,14 @@ $collection->attachRoute(new Route('/index', array(
     'methods' => 'GET',
 )));
 
+//Liste des catégories/services
+$collection->attachRoute(new Route('/categorie/:id/:libelle', array(
+    'name' => 'categorie_liste',
+    '_controller' => '\AppController\categorieController::listeAction',
+    'parameters' => ['id' => '\d+'],
+    'methods' => 'GET'
+)));
+
 //Detail d'un service
 $collection->attachRoute(new Route('/service/:id/:libelle', array(
     'name' => 'service_detail',
@@ -77,6 +85,20 @@ $collection->attachRoute(new Route('/administration/categories', array(
     'name' => 'admin_categorie',
     '_controller' => '\AppController\Admin\categorieController::indexAction',
     'methods' => 'GET',
+)));
+//Formulaire d'edition slide d'une catégorie
+$collection->attachRoute(new Route('/administration/categories/slide/:categorie_id', array(
+    'name' => 'admin_categorie_slide',
+    '_controller' => '\AppController\Admin\categorieController::slideFormAction',
+    'methods' => 'GET',
+    'parameters' => ['categorie_id' => '\d+']
+)));
+//Traitement ajout slide
+$collection->attachRoute(new Route('/administration/categories/slide/:categorie_id', array(
+    'name' => 'admin_categorie_slide_process',
+    '_controller' => '\AppController\Admin\categorieController::slideProcessAction',
+    'methods' => 'POST',
+    'parameters' => ['categorie_id' => '\d+']
 )));
 //Formulaire d'édition d'une catégorie
 $collection->attachRoute(new Route('/administration/categories/edit/:id', array(

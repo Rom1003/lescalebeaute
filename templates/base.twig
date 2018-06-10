@@ -49,11 +49,11 @@
         <ul class="vertical medium-horizontal menu align-center">
             <li><a href="{{ getRouteUrl("base") }}"><img src="{{ glb['SRC_ROOT'] }}img/logo_noir.png"/></a></li>
             {% for menu1 in menu %}
-                <li class="menu-dropdown"><a href="#">{{ menu1.libelle | upper }}</a>
+                <li class="menu-dropdown"><a href="{{ getRouteUrl('categorie_liste', {id: menu1.id, libelle: toAscii(menu1.libelle)}) }}">{{ menu1.libelle | upper }}</a>
                     {% if menu1.sub is defined and menu1.sub %}
                         <ul class="sub-menu hidden">
                             {% for menu2 in menu1.sub %}
-                                <li class="sub-dropdown"><a href="#">{{ menu2.libelle }}</a>
+                                <li class="sub-dropdown"><a href="{{ getRouteUrl('categorie_liste', {id: menu2.id, libelle: toAscii(menu2.libelle)}) }}">{{ menu2.libelle }}</a>
                                     {#{% if menu2.service is defined and menu2.service %}#}
                                     <ul class="sub-menu-2 hidden">
                                         {% for menu3 in menu2.service|slice(0, 5) %}
@@ -97,7 +97,11 @@
                 {% endfor %}
             </nav>
         </div>
-    {% else %}
+    {% elseif image_header is defined and image_header is not empty %}
+
+        <div>
+            <img class="orbit-image" src="{{ image(image_header) }}">
+        </div>
 
 
     {% endif %}

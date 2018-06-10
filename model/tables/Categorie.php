@@ -10,6 +10,28 @@ class Categorie extends Model
     protected $table = 'categorie';
     public $timestamps = false;
 
+    public function image()
+    {
+        return $this->belongsTo('App\Tables\Image', 'image_id');
+    }
+    public function slideImage()
+    {
+        return $this->belongsTo('App\Tables\Image', 'slide_image_id');
+    }
+    public function service()
+    {
+        return $this->hasMany('App\Tables\Service');
+    }
+
+    /**
+     * Récupération des catégories liées à une catégorie en particulier
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public static function listeCategorie($id){
+        return self::with('image')->where('categorie_id', $id)->get();
+    }
+
     /**
      * Récupération des catégories selon leur arborescence
      * @param bool $services - true pour récupérer les articles liés aux catégories
@@ -63,10 +85,23 @@ class Categorie extends Model
         return $menu;
     }
 
-    public function service()
-    {
-        return $this->hasMany('App\Tables\Service');
+    public static function getImageSlide($categorie){
+        if (is_string($categorie) || is_integer($categorie)){
+            $id = $categorie;
+        } elseif (!empty($categorie->slide_image_id)) {
+            $id = $categorie->slide_image_id;
+        } else {
+            return null;
+        }
+
+        $image = Image::find($id);
+        if (!empty($image)){
+            return $image->path.$image->filename;
+        }
+        return false;
     }
+
+
 
 
 }

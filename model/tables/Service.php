@@ -30,6 +30,15 @@ class Service extends Model
         return $query->first();
     }
 
+    /**
+     * récupération de la liste des services liés à une catégorie
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public static function servicesFromCategorie($id){
+        return self::with('serviceImage.image')->where('categorie_id', $id)->get();
+    }
+
     public static function pagination($page = 1, $nbParPage = 15, $categorie = '')
     {
         if ($page <= 1) {

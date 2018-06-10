@@ -3,7 +3,7 @@
 {% block content %}
     <section>
         {# Affichage du titre #}
-        {% include('titre.twig') with {'titre': '', 'texte': '', 'logo' : 'left'} only %}
+        {% include('titre.twig') with {'titre': categorie.libelle, 'texte': 'Découvrez nos massages', 'logo' : 'left'} only %}
 
         <div class="grid-container bloc-galerie">
 
@@ -11,36 +11,43 @@
             <div class="grid-x grid-margin-x grid-margin-y align-top">
 
                 <div class="cell small-12 medium-5 large-4 galerie-description" data-match="1">
-                    <p class="titre">{{ service.libelle }}</p>
-
-                    {# Affichage des tarifs #}
-                    <div class="liste_tarifs">
-                        {% for tarif in service.servicePrix %}
-                            <p>
-                            {% if tarif.type == 1 %}
-                            <i class="far fa-clock"></i>
-                            {% endif %}
-                            {{ tarif.libelle }}</p>
-                            <p><i class="fas fa-ticket-alt" data-fa-transform="rotate-155"></i> {{ tarif.prix }} €</p>
-                        {% endfor %}
-
-                    </div>
-
+                    <p class="titre">{{ categorie.libelle }}</p>
                     <hr>
-
-                    <p class="description">{{ service.description }}</p>
-                    <a href="#">RETOUR AUX MASSAGES ></a>
+                    <p class="description">{{ categorie.description }}</p>
+                    <a href="{{ getRouteUrl('base') }}">RETOUR A L'ACCUEIL ></a>
                 </div>
 
                 <div class="cell small-12 medium-7 large-8" data-match="1">
 
                     <div class="grid-x grid-margin-x grid-margin-y align-top">
 
-                        {% for image in service.serviceImage %}
+                        {% for service in services %}
+                            <div class="cell small-6 medium-8 large-6">
+                                <div class="image-gallerie">
+                                    <a href="{{ getRouteUrl('service_detail', {id:service.id, libelle: toAscii(service.libelle)}) }}">
+                                        <div class="image-gallerie-centent">
+                                            <img src="{{ image(service.serviceImage[0].image.path~service.serviceImage[0].image.filename) }}">
+                                            <div class="image-gallery-hover">
+                                                <p class="image-gallery-hover-text">
+                                                    <span class="image-gallery-hover-libelle">{{ service.libelle }}</span>
+                                                    {% for tarif in service.servicePrix %}
+                                                        <span class="color-theme">
+                                                        {% if tarif.type == 1 %}
+                                                            <span><i class="far fa-clock"></i> </span>
+                                                        {% endif %}
+                                                        {{ tarif.libelle }}
+                                                        <span><i class="fas fa-ticket-alt" data-fa-transform="rotate-155"></i> {{ tarif.prix }} €</span>
+                                                        </span>
+                                                        <br>
+                                                    {% endfor %}
 
-                        <div class="cell small-6 medium-8 large-6">
-                            <img src="{{ image(image.image.path~image.image.filename) }}">
-                        </div>
+                                                    {{ service.description|length > 400 ? service.description|slice(0, 400) ~ '...' : service.description }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
 
                         {% endfor %}
                     </div>
@@ -65,48 +72,42 @@
                     <div class="grid-x grid-margin-x grid-margin-y align-top">
                         <div class="cell small-6 medium-4 large-2 bloc-article">
                             <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
+                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
                             </div>
                             <p class="libelle-article">Gommage facile</p>
                             <p class="marque-article">Guinot</p>
                         </div>
                         <div class="cell small-6 medium-4 large-2 bloc-article">
                             <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
+                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
                             </div>
                             <p class="libelle-article">Gommage facile</p>
                             <p class="marque-article">Guinot</p>
                         </div>
                         <div class="cell small-6 medium-4 large-2 bloc-article">
                             <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
+                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
                             </div>
                             <p class="libelle-article">Gommage facile</p>
                             <p class="marque-article">Guinot</p>
                         </div>
                         <div class="cell small-6 medium-4 large-2 bloc-article">
                             <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
+                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
                             </div>
                             <p class="libelle-article">Gommage facile</p>
                             <p class="marque-article">Guinot</p>
                         </div>
                         <div class="cell small-6 medium-4 large-2 bloc-article">
                             <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
+                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
                             </div>
                             <p class="libelle-article">Gommage facile</p>
                             <p class="marque-article">Guinot</p>
                         </div>
                         <div class="cell small-6 medium-4 large-2 bloc-article">
                             <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
+                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
                             </div>
                             <p class="libelle-article">Gommage facile</p>
                             <p class="marque-article">Guinot</p>

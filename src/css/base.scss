@@ -130,12 +130,12 @@
 
 /* Slider */
 
-.orbit-container {
+/*.orbit-container {
   max-height: 600px;
   img {
     max-height: 600px;
   }
-}
+}*/
 
 .galerie-description {
   background-color: $color-black;
@@ -176,6 +176,71 @@
 }
 
 /* FIN Slider */
+
+/*  Liste des services/catégories */
+
+.image-gallerie {
+  height: 250px;
+  text-align: center;
+
+  .image-gallerie-centent {
+    position: relative;
+  }
+
+  .image-helper {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .image-gallery-hover {
+    //display: none;
+    background-color: $color-white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: $color-black;
+
+    .image-gallery-hover-text{
+      display: block;
+      font-size: 0.9em;
+      text-align: justify;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 100%;
+      @include font('Lato Light');
+    }
+
+    .image-gallery-hover-libelle {
+      display: block;
+      font-size: 1em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      @include font('Lato');
+    }
+
+    //Transition du hover
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s linear;
+
+  }
+
+  img {
+    max-height: 250px;
+    vertical-align: middle;
+  }
+}
+.image-gallerie:hover .image-gallery-hover{
+  visibility: visible;
+  opacity: 0.9;
+}
+
+
+/*  FIN Liste des services/catégories */
 
 /*  Liste des articles */
 .liste-articles {

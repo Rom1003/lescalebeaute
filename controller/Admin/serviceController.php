@@ -112,6 +112,11 @@ class serviceController
         }
 
         //Vérification des post
+
+        if (empty($_POST)){
+            $anomalies[] = 'Une erreur inatendue est survenue. Si des images ont été ajoutés, veuillez vérifier qu\'elles ne dépassent pas 8Mo';
+        }
+
         if (!isset($post['libelle']) || empty($post['libelle'])) {
             $anomalies[] = 'Un libellé doit être renseigné';
         }
@@ -346,6 +351,10 @@ class serviceController
         $anomalies = array();
         $post = trimArray($_POST);
         $images = array();
+
+        if (empty($_POST)){
+            $anomalies[] = 'Une erreur inatendue est survenue. Si des images ont été ajoutés, veuillez vérifier qu\'elles ne dépassent pas 8Mo';
+        }
 
         //Vérification des post
         if (!isset($post['libelle']) || empty($post['libelle'])) {

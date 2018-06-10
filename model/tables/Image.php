@@ -14,6 +14,16 @@ class Image extends Model
         return $this->hasMany('App\Tables\ServiceImage');
     }
 
+    public function categorie()
+    {
+        return $this->hasMany('App\Tables\Categorie');
+    }
+
+    public function categorieSlide()
+    {
+        return $this->hasMany('App\Tables\Categorie', 'slide_image_id');
+    }
+
     public function slider()
     {
         return $this->hasMany('App\Tables\Slider');
