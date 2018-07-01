@@ -55,6 +55,10 @@ body {
   text-transform: uppercase;
 }
 
+.text-underline {
+  text-decoration: underline;
+}
+
 /**********************
  * Chargement de page *
  **********************/
@@ -156,3 +160,9 @@ body {
 }
 
 /***********************/
+
+//Taille des images dans les tableaux
+td img {
+  max-width: 50px;
+  max-height: 50px;
+}

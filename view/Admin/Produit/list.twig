@@ -1,0 +1,65 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+    <div class="row column" id="admin-title">
+        <h4>Produits</h4>
+    </div>
+
+    {% if session.notification %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+    <a href="{{ getRouteUrl('admin_produit_add') }}" class="button small"><i class="fas fa-plus"></i> Ajouter un produit</a>
+
+    <h5>Recherche</h5>
+    <div id="search_form">
+        <div class="grid-x grid-padding-x">
+            <div class="medium-3 cell">
+                <label for="search_libelle">Libellé
+                    <input type="text" name="search_libelle" id="search_libelle" placeholder="Libelle"> </label>
+            </div>
+            <div class="medium-3 cell">
+                <label for="search_gamme">Gamme</label> <select name="search_gamme" id="search_gamme">
+                    <option value=""></option>
+                    {% for gamme in gammes %}
+                        <option value="{{ gamme.id }}">{{ gamme.libelle }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="medium-3 cell">
+                <br>
+                <button type="submit" class="button" id="search_btn"><i class="fas fa-search"></i> Rechercher</button>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x">
+        <div class="small-12 cell">
+            <table class="hover">
+                <thead>
+                <tr>
+                    <td>Libelle</td>
+                    <td>Gamme</td>
+                    <td>Prix</td>
+                    <td>Image</td>
+                    <td>Actions</td>
+                </tr>
+                </thead>
+                <tbody id="list_produits"></tbody>
+            </table>
+
+            <nav aria-label="Pagination" id="pagination">
+
+            </nav>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ glb['SRC_ROOT'] }}js/Admin/Produit/list.js"></script>
+{% endblock %}

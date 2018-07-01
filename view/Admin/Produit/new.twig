@@ -1,0 +1,69 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+    <div class="row column" id="admin-title">
+        <h4>Ajouter un produit</h4>
+    </div>
+
+    {% if session.notification %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+    <form method="post" id="form_new_produit" action="{{ getRouteUrl('admin_produit_new_process') }}" enctype="multipart/form-data">
+        <div class="grid-x grid-padding-x">
+            {# Gammes #}
+            <div class="medium-6 cell">
+                <label for="gamme">Gammes</label> <select name="gamme" id="gamme">
+                    <option value="">Sélectionner une gamme</option>
+                    {% for gamme in gammes %}
+                        <option value="{{ gamme.id }}">{{ gamme.libelle }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="grid-x grid-padding-x">
+
+            {# Libellé #}
+            <div class="medium-6 cell">
+                <label for="libelle"> Libellé <input type="text" name="libelle" id="libelle"> </label>
+            </div>
+        </div>
+
+        <div class="tarif">
+            <div class="grid-x grid-padding-x">
+                <div class="medium-2 cell">
+                    <label for="tarif">Tarif</label>
+                    <div class="input-group">
+                        <span class="input-group-label">€</span>
+                        <input class="input-group-field mask-float" type="text" id="tarif" name="tarif">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-5 cell">
+                <label for="image">Image <input type="file" id="image" name="image"></label>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            {# Validation #}
+            <div class="medium-6 cell">
+                <button class="button">Valider les modifications</button>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="{{ glb['SRC_ROOT'] }}js/Admin/Produit/new.js"></script>
+{% endblock %}

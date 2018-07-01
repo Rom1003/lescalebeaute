@@ -857,6 +857,9 @@ body {
 .text-uppercase {
   text-transform: uppercase; }
 
+.text-underline {
+  text-decoration: underline; }
+
 /**********************
  * Chargement de page *
  **********************/
@@ -942,6 +945,10 @@ body {
     color: #B96A81; }
 
 /***********************/
+td img {
+  max-width: 50px;
+  max-height: 50px; }
+
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 /* Document
        ========================================================================== */

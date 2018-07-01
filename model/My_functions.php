@@ -1,5 +1,7 @@
 <?php
 
+use App\Config;
+
 function getRouteUrl($routeName, $params = array())
 {
 
@@ -107,4 +109,12 @@ function toAscii($str, $replace=array(), $delimiter='-') {
     $clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
 
     return $clean;
+}
+
+function imagePath($path){
+    $config = new Config();
+    if (!$config)return false;
+    $url = $config->getGlobal('IMG_ROOT');
+    if (!$url)return false;
+    return $url.$path;
 }

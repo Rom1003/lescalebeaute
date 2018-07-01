@@ -394,6 +394,8 @@ class serviceController
                     $anomalies[] = 'Un tarif n\'a pas de prix renseigné';
                     break;
                 }
+                //Remplacement des "," par des "."
+                $tarif = str_replace(",", ".", $tarif);
                 if (!v::floatVal()->validate($tarif) || $tarif <= 0) {
                     $anomalies[] = 'Un tarif renseigné est incorrect';
                     break;
@@ -407,6 +409,8 @@ class serviceController
             if (!isset($post['tarif_fixe']) || empty($post['tarif_fixe'])) {
                 $anomalies[] = 'Un tarif doit être renseigné';
             }
+            //Remplacement des "," par des "."
+            $post['tarif_fixe'] = str_replace(",", ".", $post['tarif_fixe']);
             if (!v::floatVal()->validate($post['tarif_fixe']) || $post['tarif_fixe'] <= 0) {
                 $anomalies[] = 'Le tarif renseigné est incorrect';
             }

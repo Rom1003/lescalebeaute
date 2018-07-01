@@ -1,0 +1,51 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+<div class="row column" id="admin-title">
+    <h4>Gammes</h4>
+</div>
+
+{% if session.notification %}
+
+    <div class="grid-x grid-padding-x">
+        <div class="medium-6 cell">
+            {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
+        </div>
+    </div>
+{% endif %}
+
+<div class="grid-x grid-padding-x">
+    <div class="medium-6 cell">
+        <a href="{{ getRouteUrl('admin_gamme_add') }}" class="button small"><i class="fas fa-plus"></i> Ajouter une gamme</a>
+    </div>
+</div>
+
+{% if gammes is not empty %}
+    <table class="hover">
+        <thead>
+        <tr>
+            <td>Libelle</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for gamme in gammes %}
+            <tr>
+                <td style="width: 35%">{{ gamme.libelle }}</td>
+                <td>
+                    <a href="{{ getRouteUrl('admin_service_edit', {'id': gamme.id}) }}" data-trigger-class data-tooltip title="Modifier"><i class="fas fa-edit"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+<div class="grid-x grid-padding-x">
+    <div class="medium-6 cell">
+        {{ showAlert("info", "Aucune gamme existante", "Information")|raw }}
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

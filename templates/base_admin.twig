@@ -8,7 +8,7 @@
     <title>L'escale beauté</title>
     <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/admin.css">
     <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/imagehover/imagehover.css">
-    <script defer src="{{ glb['SRC_ROOT'] }}js/vendor/fontawesome-all.min.js"></script>
+    <script defer src="{{ glb['SRC_ROOT'] }}js/vendor/fontawesome-all.js"></script>
 </head>
 
 <body>
@@ -59,6 +59,24 @@
                             <span>Services</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ getRouteUrl("admin_gamme") }}">
+                            <span class="fa-layers fa-fw">
+                              <i class="fas fa-circle fa-lg"></i>
+                              <i class="fas fa-female color-second" data-fa-transform="shrink-6 right-1"></i>
+                            </span>
+                            <span>Gammes des produits</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ getRouteUrl("admin_produit") }}">
+                            <span class="fa-layers fa-fw">
+                              <i class="fas fa-circle fa-lg"></i>
+                              <i class="fas fa-dolly color-second" data-fa-transform="shrink-6 right-1"></i>
+                            </span>
+                            <span>Produits</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -82,9 +100,6 @@
     </div>
 </div>
 {#<div class="reveal" id="modal" data-reveal data-close-on-click="true"></div>#}
-</body>
-
-
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/what-input.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/foundation.js"></script>

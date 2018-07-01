@@ -29,4 +29,9 @@ class Image extends Model
         return $this->hasMany('App\Tables\Slider');
     }
 
+    public function produit()
+    {
+        return $this->hasMany('App\Tables\Produit');
+    }
+
 }
