@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="row column" id="admin-title">
-        <h4>Modifier un service</h4>
+        <h4>Modifier un produit</h4>
     </div>
 
 
@@ -15,19 +15,17 @@
         </div>
     {% endif %}
 
-    <form method="post" id="form_edit_service" action="{{ getRouteUrl('admin_service_edit_process', {id: service.id }) }}" enctype="multipart/form-data">
+    <form method="post" id="form_edit_produit" action="{{ getRouteUrl('admin_produit_edit_process', {id:produit.id}) }}" enctype="multipart/form-data">
         <div class="grid-x grid-padding-x">
-            {# Catégorie #}
+            {# Gammes #}
             <div class="medium-6 cell">
-                <label for="categorie">Catégorie</label> <select name="categorie" id="categorie">
-                    <option value="">Sélectionner une catégorie</option>
-                    {% for categorie in categories %}
-                        {% if categorie.sub is defined and categorie.sub %}
-                            <optgroup label="{{ categorie.libelle }}">
-                                {% for category in categorie.sub %}
-                                    <option value="{{ category.id }}" {{ category.id == service.categorie.id ? 'selected' : '' }}>{{ category.libelle }}</option>
-                                {% endfor %}
-                            </optgroup>
+                <label for="gamme">Gammes</label> <select name="gamme" id="gamme">
+                    <option value="">Sélectionner une gamme</option>
+                    {% for gamme in gammes %}
+                        {% if gamme.id == produit.gamme.id %}
+                        <option value="{{ gamme.id }}" selected>{{ gamme.libelle }}</option>
+                        {% else %}
+                        <option value="{{ gamme.id }}">{{ gamme.libelle }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
@@ -37,133 +35,32 @@
 
             {# Libellé #}
             <div class="medium-6 cell">
-                <label for="libelle"> Libellé
-                    <input type="text" name="libelle" id="libelle" value="{{ service.libelle }}"> </label>
-            </div>
-        </div>
-        <div class="grid-x grid-padding-x">
-            {# Description #}
-            <div class="medium-6 cell">
-                <label for="descrition">Description</label>
-                <textarea name="description" id="descrition" rows="10">{{ service.description }}</textarea>
+                <label for="libelle"> Libellé <input type="text" name="libelle" id="libelle" value="{{ produit.libelle }}"> </label>
             </div>
         </div>
 
-        <div class="grid-x grid-padding-x">
-            {# Validation #}
-            <div class="medium-12 cell">
-                <h5>Tarif(s) du service</h5>
-            </div>
-        </div>
-        <div class="grid-x grid-padding-x">
-            {# Validation #}
-            <div class="medium-3 cell">
-                <label for="tarif_type">Type de tarif</label> <select name="tarif_type" id="tarif_type">
-                    <option value="1" {{ service.servicePrix[0].type == 1 ? 'selected' : '' }}>Durée</option>
-                    <option value="2" {{ service.servicePrix[0].type == 2 ? 'selected' : '' }}>Fixe</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="tarif_duree">
-            <div id="liste_tarifs_duree">
-                {% for key, tarif in service.servicePrix if service.servicePrix[0].type == 1 %}
-                    <div class="tarif_duree_block grid-x grid-padding-x">
-                        <div class="medium-3 cell">
-                            <div class="input-group">
-                                <span class="input-group-label"><i class="far fa-clock"></i></span>
-                                <input class="input-group-field" type="text" name="duree[]" id="duree_{{ key }}" placeholder="ex: 50 minutes" value="{{ tarif.libelle }}">
-                            </div>
-                        </div>
-                        <div class="medium-2 cell">
-                            <div class="input-group">
-                                <span class="input-group-label">€</span>
-                                <input class="input-group-field mask-float" type="text" name="tarif[]" id="tarif_{{ key }}" placeholder="ex: 100" value="{{ tarif.prix }}">
-                            </div>
-                        </div>
-                    </div>
-                {% else %}
-                    <div class="tarif_duree_block grid-x grid-padding-x">
-                        <div class="medium-3 cell">
-                            <div class="input-group">
-                                <span class="input-group-label"><i class="far fa-clock"></i></span>
-                                <input class="input-group-field" type="text" name="duree[]" id="duree_0" placeholder="ex: 50 minutes">
-                            </div>
-                        </div>
-                        <div class="medium-2 cell">
-                            <div class="input-group">
-                                <span class="input-group-label">€</span>
-                                <input class="input-group-field mask-float" type="text" name="tarif[]" id="tarif_0" placeholder="ex: 100">
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-
-            </div>
-            <div class="grid-x grid-padding-x">
-                <div class="medium-6 cell">
-                    <button type="button" class="button" id="add_tarif_input">
-                        <i class="fas fa-plus"></i> Ajouter un autre tarif
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="tarif_fixe hidden">
+        <div class="tarif">
             <div class="grid-x grid-padding-x">
                 <div class="medium-2 cell">
-                    <label for="tarif_fixe">Tarif</label>
+                    <label for="tarif">Tarif</label>
                     <div class="input-group">
                         <span class="input-group-label">€</span>
-                        <input class="input-group-field mask-float" type="text" id="tarif_fixe" name="tarif_fixe"{{ service.servicePrix[0].type == 2 ? ' value="'~service.servicePrix[0].prix~'"' : '' }}>
+                        <input class="input-group-field mask-float" type="text" id="tarif" name="tarif" value="{{ produit.tarif }}">
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="grid-x grid-padding-x">
-            <div class="medium-6 cell">
-                <hr>
+            <div class="medium-3 cell">
+                <label>Image actuelle</label>
+                <img src="{{ image(produit.image.path~produit.image.filename) }}">
+            </div>
+            <div class="medium-5 cell">
+                <label for="image">Remplacer l'image <input type="file" id="image" name="image"></label>
             </div>
         </div>
-
-        {# Images existantes #}
-        <div id="image_liste" data-url="{{ getRouteUrl('admin_service_image_delete') }}">
-            {% for image in service.serviceimage %}
-                {% if loop.index0 is divisible by(3) %}
-                    <div class="grid-x grid-padding-x gallery-image-delete">
-                {% endif %}
-                <div class="medium-2 cell text-center relative image-delete">
-                    <img src="{{ image(image.image.path~image.image.filename) }}" onerror="javascript:this.src='{{ image('no_image.jpg') }}'" class="thumbnail">
-                    <button class="close-button button alert image-delete-btn" data-id="{{ image.id }}" aria-label="Close alert" type="button" title="Supprimer">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                {% if loop.index == loop.length or loop.index is divisible by(3) %}
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div class="grid-x grid-padding-x">
-            {# Validation #}
-            <div class="medium-12 cell">
-                <h5>Ajout d'image(s)</h5>
-            </div>
-        </div>
-        <div id="block_uploader"></div>
-        <div class="grid-x grid-padding-x">
-            <div class="medium-6 cell">
-                <button type="button" class="button" id="add_image_input">
-                    <i class="fas fa-plus"></i> Ajouter une autre image
-                </button>
-            </div>
-        </div>
-
-        <div class="grid-x grid-padding-x">
-            <div class="medium-6 cell">
-                <hr>
-            </div>
-        </div>
-        <div class="grid-x grid-padding-x">
+        <div class="grid-x grid-padding-x margin-top">
             {# Validation #}
             <div class="medium-6 cell">
                 <button class="button">Valider les modifications</button>
@@ -176,6 +73,5 @@
 
 
 {% block javascript %}
-    <script src="{{ glb['SRC_ROOT'] }}js/Admin/Service/service.js"></script>
-    <script src="{{ glb['SRC_ROOT'] }}js/Admin/Service/edit.js"></script>
+    <script src="{{ glb['SRC_ROOT'] }}js/Admin/Produit/edit.js"></script>
 {% endblock %}

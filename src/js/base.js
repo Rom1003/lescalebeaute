@@ -48,7 +48,11 @@ $(document).ready(function () {
 
     $('.mask-phone').mask('00 00 00 00 00');
 
-    pageLoader(0);
+    $('.timepicker').timepicker({
+        timeFormat: 'H:i'
+    });
+
+    pageLoader(1000);
 });
 
 function pageLoader(sec) {
@@ -59,9 +63,7 @@ function pageLoader(sec) {
     setTimeout(function () {
         elem.fadeOut("slow");
         //Supprimer la div
-        setTimeout(function () {
-            elem.remove();
-        }, 3000);
+        elem.remove();
     }, sec);
 }
 

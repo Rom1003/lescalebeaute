@@ -34,11 +34,17 @@ $collection->attachRoute(new Route('/service/:id/:libelle', array(
     'methods' => 'GET'
 )));
 
-//Voir un produit
-$collection->attachRoute(new Route('/produit', array(
-    'name' => 'produit',
+//Liste des produits
+$collection->attachRoute(new Route('/produits', array(
+    'name' => 'liste_produits',
     '_controller' => '\AppController\produitController::indexAction',
     'methods' => 'GET',
+)));
+//Pagination liste des produits
+$collection->attachRoute(new Route('/produits/ajax/paginate', array(
+    'name' => 'ajax_pagine_produits',
+    '_controller' => '\AppController\produitController::paginateAction',
+    'methods' => 'POST',
 )));
 
 
@@ -87,7 +93,7 @@ $collection->attachRoute(new Route('/administration/informations', array(
     'methods' => 'GET',
 )));
 //Traitement des modification des informations
-$collection->attachRoute(new Route('/administration/informations', array(
+$collection->attachRoute(new Route('/administration/informations/edit', array(
     'name' => 'admin_information_edit',
     '_controller' => '\AppController\Admin\vocabulaireController::editAction',
     'methods' => 'POST',
@@ -236,14 +242,14 @@ $collection->attachRoute(new Route('/administration/gamme/add', array(
 )));
 //Formulaire d'édition d'une gamme
 $collection->attachRoute(new Route('/administration/gamme/edit/:id', array(
-    'name' => 'admin_service_edit',
+    'name' => 'admin_gamme_edit',
     '_controller' => '\AppController\Admin\gammeController::editFormAction',
     'methods' => 'GET',
     'parameters' => ['id' => '\d+']
 )));
 //Traitement d'édition d'une gamme
 $collection->attachRoute(new Route('/administration/gamme/edit/:id', array(
-    'name' => 'admin_service_edit_process',
+    'name' => 'admin_gamme_edit_process',
     '_controller' => '\AppController\Admin\gammeController::editProcessAction',
     'methods' => 'POST',
     'parameters' => ['id' => '\d+']
@@ -274,6 +280,28 @@ $collection->attachRoute(new Route('/administration/produit/add', array(
     '_controller' => '\AppController\Admin\produitController::addProcessAction',
     'methods' => 'POST'
 )));
+//Formulaire d'édition d'un produit
+$collection->attachRoute(new Route('/administration/produit/edit/:id', array(
+    'name' => 'admin_produit_edit',
+    '_controller' => '\AppController\Admin\produitController::editFormAction',
+    'methods' => 'GET',
+    'parameters' => ['id' => '\d+']
+)));
+//Traitement d'édition d'une gamme
+$collection->attachRoute(new Route('/administration/produit/edit/:id', array(
+    'name' => 'admin_produit_edit_process',
+    '_controller' => '\AppController\Admin\produitController::editProcessAction',
+    'methods' => 'POST',
+    'parameters' => ['id' => '\d+']
+)));
+//Traitement activation/desactivation produit
+$collection->attachRoute(new Route('/administration/produit/etat/:id/:actif', array(
+    'name' => 'admin_produit_etat',
+    '_controller' => '\AppController\Admin\produitController::editEtatAction',
+    'methods' => 'POST',
+    'parameters' => ['id' => '\d+', 'actif' => '0|1']
+)));
+
 
 $router = new Router($collection);
 $router->setBasePath('/');

@@ -19,7 +19,9 @@ include_once __DIR__.'/config/routes.php';
 include_once __DIR__.'/model/My_functions.php';
 
 //Création des sessions si elles n'existent pas
-if (!session_id())@session_start();
+if (!session_id()){
+    @session_start();
+}
 
 
 
@@ -34,5 +36,11 @@ if ($goto === false){
 
 if (isset($_SESSION['notification'])){
     unset($_SESSION['notification']);
+}
+
+if (!isset($_SESSION['chargement'])){
+    $_SESSION['chargement'] = true;
+} else {
+    $_SESSION['chargement'] = false;
 }
 //var_dump(\AppController\indexController::)

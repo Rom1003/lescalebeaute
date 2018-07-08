@@ -860,6 +860,12 @@ body {
 .text-underline {
   text-decoration: underline; }
 
+.margin-top {
+  margin-top: 2em; }
+
+.cursor-p {
+  cursor: pointer; }
+
 /**********************
  * Chargement de page *
  **********************/
@@ -6945,7 +6951,7 @@ a.thumbnail {
 /* Footer */
 #pre-footer {
   margin-top: 100px;
-  height: 100px;
+  height: 130px;
   background-color: #EFEFEF;
   display: -webkit-box;
   display: -webkit-flex;
@@ -6968,7 +6974,7 @@ a.thumbnail {
     font-family: "Lato Light", sans-serif;
     text-transform: uppercase;
     color: #FFFFFF;
-    padding: 10px 15px 10px 15px;
+    padding: 20px;
     border-radius: 50px; }
     #pre-footer #follow-us p {
       margin: 0; }

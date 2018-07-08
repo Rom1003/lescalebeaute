@@ -3,7 +3,7 @@
 {% block content %}
     <section>
         {# Affichage du titre #}
-        {% include('titre.twig') with {'titre': categorie.libelle, 'texte': 'Découvrez nos massages', 'logo' : 'left'} only %}
+        {% include('titre.twig') with {'titre': '', 'texte': '', 'logo' : 'left'} only %}
 
         <div class="grid-container bloc-galerie">
 
@@ -70,48 +70,15 @@
                 <div class="cell small-12 liste-articles" data-match="2">
 
                     <div class="grid-x grid-margin-x grid-margin-y align-top">
-                        <div class="cell small-6 medium-4 large-2 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
+                        {% for produit in produits %}
+                            <div class="cell small-6 medium-4 large-2 bloc-article">
+                                <div class="image-article">
+                                    <span class="image-helper"></span> <img src="{{ image(produit.image.path~produit.image.filename) }}">
+                                </div>
+                                <p class="libelle-article">{{ produit.libelle }}</p>
+                                <p class="marque-article">{{ produit.gamme.libelle }}</p>
                             </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-4 large-2 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-4 large-2 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-4 large-2 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-4 large-2 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-4 large-2 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

@@ -33,7 +33,7 @@
             <tr>
                 <td style="width: 35%">{{ gamme.libelle }}</td>
                 <td>
-                    <a href="{{ getRouteUrl('admin_service_edit', {'id': gamme.id}) }}" data-trigger-class data-tooltip title="Modifier"><i class="fas fa-edit"></i></a>
+                    <a href="{{ getRouteUrl('admin_gamme_edit', {'id': gamme.id}) }}" data-trigger-class data-tooltip title="Modifier"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% endfor %}

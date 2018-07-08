@@ -6,6 +6,7 @@ use \App\Config;
 use \App\Database;
 use \App\Tables\Categorie;
 use \App\Tables\Service;
+use \App\Tables\Produit;
 use \Illuminate\Database\Eloquent\Model;
 
 class categorieController
@@ -36,7 +37,6 @@ class categorieController
             exit;
         }
 
-
     }
 
     public static function listeCategoriesAction($id)
@@ -57,11 +57,14 @@ class categorieController
         //Récupération de la liste des catégories liées
         $categories = Categorie::listeCategorie($id);
 
+        $produits = Produit::with('image')->with('gamme')->where('actif', 1)->inRandomOrder()->limit(6)->get();
+
         echo $twig->render('liste_categories.twig', array(
             'menu' => $menu,
             'categorie' => $categorie,
             'categories' => $categories,
-            'image_header' => $image_header
+            'image_header' => $image_header,
+            'produits' => $produits
         ));
     }
 
@@ -83,10 +86,13 @@ class categorieController
         //Récupération de la liste des services liés
         $services = Service::servicesFromCategorie($id);
 
+        $produits = Produit::with('image')->with('gamme')->inRandomOrder()->limit(6)->get();
+
         echo $twig->render('liste_services.twig', array(
             'menu' => $menu,
             'categorie' => $categorie,
             'services' => $services,
+            'produits' => $produits,
             'image_header' => $image_header
         ));
 

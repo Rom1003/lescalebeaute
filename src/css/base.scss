@@ -284,7 +284,7 @@
 
 #pre-footer {
   margin-top: 100px;
-  height: 100px;
+  height: 130px;
   background-color: $color-light-grey;
   display: flex;
   justify-content: center;
@@ -297,7 +297,7 @@
     @include font("Lato Light");
     text-transform: uppercase;
     color: $color-white;
-    padding: 10px 15px 10px 15px;
+    padding: 20px;
     border-radius: 50px;
 
     p {

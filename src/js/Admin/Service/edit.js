@@ -44,7 +44,7 @@ $(document).ready(function () {
                 block.remove();
                 showConf(data.message);
             });
-        })
+        });
     });
 
     $('#tarif_type').on('change', function () {

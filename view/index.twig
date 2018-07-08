@@ -16,30 +16,30 @@
 
                 <div class="cell small-12 medium-5 large-4 galerie-description" data-match="1">
                     <p class="titre">Détendez-vous !</p>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                        nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
-                        veniam, quis nostrud exerci erat molestie consequat, vel illum dolore eu feugiat nulla facilisis
-                        at vero eros et accumsan et iusto odio dignissim qui blan. Lorem ipsum dolor sit amet,
-                        consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt. Lorem ipsum dolor sit
-                        amet consectetuer adipiscing elit.</p>
+                    <p class="description">{{ getVocabulaire(constant('App\\Tables\\Vocabulaire::TEXTE_MASSAGES')) }}</p>
                     <a href="{{ getRouteUrl("base") }}">VOIR TOUS LES MASSAGES</a>
                 </div>
 
                 <div class="cell small-12 medium-7 large-8" data-match="1">
 
                     <div class="grid-x grid-margin-x grid-margin-y align-top">
+                        {% for massage in massages %}
                         <div class="cell small-6 medium-8 large-6">
-                            <img src="{{ image('photo1.png') }}">
+                            <div class="image-gallerie">
+                                <a href="{{ getRouteUrl('categorie_liste', {id:massage.id, libelle: toAscii(massage.libelle)}) }}">
+                                    <div class="image-gallerie-centent">
+                                        <img src="{{ image(massage.image.path~massage.image.filename) }}">
+                                        <div class="image-gallery-hover">
+                                            <p class="image-gallery-hover-text">
+                                                <span class="image-gallery-hover-libelle">{{ massage.libelle }}</span>
+                                                {{ massage.description|length > 400 ? massage.description|slice(0, 400) ~ '...' : massage.description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <div class="cell small-6 medium-8 large-6">
-                            <img src="{{ image('photo2.png') }}">
-                        </div>
-                        <div class="cell small-6 medium-8 large-6">
-                            <img src="{{ image('photo2.png') }}">
-                        </div>
-                        <div class="cell small-6 medium-8 large-6">
-                            <img src="{{ image('photo3.png') }}">
-                        </div>
+                        {% endfor %}
                     </div>
 
                 </div>
@@ -60,85 +60,36 @@
                 <div class="cell small-12 medium-7 large-8 liste-articles" data-match="2">
 
                     <div class="grid-x grid-margin-x grid-margin-y align-top">
-                        <div class="cell small-6 medium-6 large-3 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
+                        {% for produit in produits|slice(0, 4) %}
+                            <div class="cell small-6 medium-6 large-3 bloc-article">
+                                <div class="image-article">
+                                    <span class="image-helper"></span>
+                                    <img src="{{ image(produit.image.path~produit.image.filename) }}">
+                                </div>
+                                <p class="libelle-article">{{ produit.libelle }}</p>
+                                <p class="marque-article">{{ produit.gamme.libelle }}</p>
                             </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-6 large-3 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-6 large-3 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-6 large-3 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
+                        {% endfor %}
                     </div>
 
                     <div class="grid-x grid-margin-x grid-margin-y align-top">
-                        <div class="cell small-6 medium-6 large-3 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
+                        {% for produit in produits|slice(4, 4) %}
+                            <div class="cell small-6 medium-6 large-3 bloc-article">
+                                <div class="image-article">
+                                    <span class="image-helper"></span>
+                                    <img src="{{ image(produit.image.path~produit.image.filename) }}">
+                                </div>
+                                <p class="libelle-article">{{ produit.libelle }}</p>
+                                <p class="marque-article">{{ produit.gamme.libelle }}</p>
                             </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-6 large-3 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-6 large-3 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
-                        <div class="cell small-6 medium-6 large-3 bloc-article">
-                            <div class="image-article">
-                                <span class="image-helper"></span>
-                                <img src="{{ image('produit.jpg') }}">
-                            </div>
-                            <p class="libelle-article">Gommage facile</p>
-                            <p class="marque-article">Guinot</p>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
 
                 <div class="cell small-12 medium-5 large-4 galerie-description" data-match="2">
                     <p class="titre">Retrouvez les en institut !</p>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                        nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
-                        veniam, quis nostrud exerci erat molestie consequat, vel illum dolore eu feugiat nulla facilisis
-                        at vero eros et accumsan et iusto odio dignissim qui blan. Lorem ipsum dolor sit amet,
-                        consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt. Lorem ipsum dolor sit
-                        amet consectetuer adipiscing elit.</p>
-                    <a href="#">VOIR TOUS LES MASSAGES</a>
+                    <p class="description">{{ getVocabulaire(constant('App\\Tables\\Vocabulaire::TEXTE_PRODUITS')) }}</p>
+                    <a href="{{ getRouteUrl("liste_produits") }}">VOIR TOUS LES PRODUITS</a>
                 </div>
             </div>
 

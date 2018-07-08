@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'escale beauté</title>
     <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/base.css">
+    <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/jquery.timepicker.min.css">
     <script defer src="{{ glb['SRC_ROOT'] }}js/vendor/fontawesome-all.js"></script>
 </head>
 
 <body>
 
-<div class="page-loader none">
+<div class="page-loader{{ session.chargement == true ? '' : ' none' }}">
     <div id="loader-content">
         <div id="loader-img">
             <div id="loader-img-border"></div>
@@ -30,8 +31,8 @@
     <div class="top-bar">
         <div class="top-bar-right">
             <ul class="menu">
-                <li><i class="fas fa-phone fa-sm" data-fa-transform="rotate-100"></i> {{ getVocabulaire(1)|phone }}</li>
-                <li><i class="fas fa-map-marker-alt fa-sm"></i> {{ getVocabulaire(2) }}</li>
+                <li><i class="fas fa-phone fa-sm" data-fa-transform="rotate-100"></i> {{ getVocabulaire(constant('App\\Tables\\Vocabulaire::TELEPHONE'))|phone }}</li>
+                <li><i class="fas fa-map-marker-alt fa-sm"></i> {{ getVocabulaire(constant('App\\Tables\\Vocabulaire::ADRESSE')) }}</li>
                 <li><i class="far fa-clock fa-sm"></i> Ouvert</li>
             </ul>
         </div>
@@ -71,6 +72,9 @@
                 </li>
 
             {% endfor %}
+            <li class="menu-dropdown"><a href="{{ getRouteUrl('epilations') }}">EPILATIONS</a></li>
+            <li class="menu-dropdown"><a href="{{ getRouteUrl('liste_produits') }}">PRODUITS</a></li>
+            <li class="menu-dropdown"><a href="{{ getRouteUrl('a_propos') }}">A PROPOS</a></li>
         </ul>
     </div>
     {% if slider is defined %}
@@ -116,7 +120,7 @@
 <footer>
     <div id="pre-footer">
         <a href="https://www.facebook.com/people/Lescale-Beaut%C3%A9-Sainte-Savine/100014319492079" target="_blank" id="follow-us" class="text-center">
-            <p><i class="fab fa-facebook-square fa-2x"></i>Suivez-nous sur Facebook</p>
+            <p><i class="fab fa-facebook-square fa-2x"></i><span>Suivez-nous sur Facebook</span></p>
         </a>
     </div>
 
@@ -128,10 +132,9 @@
             <p>Accès rapide</p>
             <ul>
                 <li><a href="#">Massages</a></li>
-                <li><a href="#">Soins visages</a></li>
                 <li><a href="#">Hammam</a></li>
-                <li><a href="#">Epilations</a></li>
-                <li><a href="#">Produits</a></li>
+                <li><a href="{{ getRouteUrl('epilations') }}">Epilations</a></li>
+                <li><a href="{{ getRouteUrl('liste_produits') }}">Produits</a></li>
             </ul>
         </div>
         <div class="cell large-auto medium-auto small-6">
@@ -144,7 +147,7 @@
         <div class="cell large-auto medium-auto small-6">
             <p>Contactez-nous</p>
             <ul>
-                <li>06 06 06 06 06</li>
+                <li>{{ getVocabulaire(constant('App\\Tables\\Vocabulaire::TELEPHONE'))|phone }}</li>
                 <li>lescalebeaute@gmail.com</li>
             </ul>
         </div>
@@ -164,7 +167,11 @@
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/foundation.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.matchHeight.js" type="text/javascript"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.mask.js"></script>
+<script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.timepicker.min.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/base.js"></script>
+
+{% block javascript %}
+{% endblock %}
 </body>
 
 </html>
