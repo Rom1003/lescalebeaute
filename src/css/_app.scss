@@ -42,6 +42,31 @@ body {
   box-shadow: 0 3px 9px 6px rgba(0, 0, 0, 0.4);
   border-radius: 100%;
 }
+
+.border-top {
+  border-top: 1px solid #c5c5c5;
+}
+
+.relative {
+  position: relative;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.margin-top {
+  margin-top: 2em;
+}
+
+.cursor-p {
+  cursor: pointer;
+}
+
 /**********************
  * Chargement de page *
  **********************/
@@ -143,3 +168,9 @@ body {
 }
 
 /***********************/
+
+//Taille des images dans les tableaux
+td img {
+  max-width: 50px;
+  max-height: 50px;
+}

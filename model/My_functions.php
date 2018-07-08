@@ -1,8 +1,9 @@
 <?php
 
+use App\Config;
+
 function getRouteUrl($routeName, $params = array())
 {
-
     try {
         require dirname(dirname(__FILE__)) . '/config/routes.php';
         $url = $router->generate($routeName, $params);
@@ -29,12 +30,12 @@ function generatePagination($page, $total, $nbParPage)
 //Affichage du premier et page précédente
     if ($page > 1) {
         $pagination .= '
-                <li><a class="pagination-page" data-page="1"><i class="fas fa-angle-double-left"></i></a></li>
-                <li><a class="pagination-page" data-page="' . ($page - 1) . '"><i class="fas fa-angle-left"></i></a></li>';
+                <li><a class="pagination-page" data-page="' . ($page - 1) . '"><i class="fas fa-angle-left"></i></a></li>
+                <li><a class="pagination-page" data-page="1"><i class="fas fa-angle-double-left"></i></a></li>';
     } else {
         $pagination .= '
-                <li class="disabled"><i class="fas fa-angle-double-left"></i></li>
-                <li class="disabled"><i class="fas fa-angle-left"></i></li>';
+                <li class="disabled"><i class="fas fa-angle-left"></i></li>
+                <li class="disabled"><i class="fas fa-angle-double-left"></i></li>';
     }
 
 //Affichage des pages autour de la page actuelle
@@ -107,4 +108,30 @@ function toAscii($str, $replace=array(), $delimiter='-') {
     $clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
 
     return $clean;
+}
+
+function imagePath($path){
+    $config = new Config();
+    if (!$config)return false;
+    $url = $config->getGlobal('IMG_ROOT');
+    if (!$url)return false;
+    return $url.$path;
+}
+
+function isJson($string){
+    $reg = "/(\[|\{).*(\]|\})$/";
+    if (preg_match($reg, $string) === 0 ){
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function timeVerification($time){
+    $reg = '/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/';
+    if (preg_match($reg, $time) != 1){
+        return false;
+    } else {
+        return true;
+    }
 }

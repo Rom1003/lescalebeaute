@@ -14,7 +14,7 @@
         </div>
     {% endif %}
 
-    <form method="post" action="{{ getRouteUrl('admin_categorie_new_process', {categorie_id : categorie.id}) }}">
+    <form method="post" action="{{ getRouteUrl('admin_categorie_new_process', {categorie_id : categorie.id}) }}" enctype="multipart/form-data">
         <div class="grid-x grid-padding-x">
 
             {# Libellé #}
@@ -30,6 +30,13 @@
             <div class="medium-6 cell">
                 <label for="descrition">Description</label>
                 <textarea name="description" id="descrition" rows="10">{{ vars['post']['description'] is defined ? vars['post']['description'] : '' }}</textarea>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <label for="image">Ajouter une image</label>
+                <input type="file" name="image" id="image">
             </div>
         </div>
 

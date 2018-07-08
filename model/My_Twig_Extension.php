@@ -52,17 +52,21 @@ class My_Twig_Extension extends Twig_Extension {
         return $url.$name;
     }
 
-    public function getVocabulaire($id, $vocabulaires = array()){
+    public function getVocabulaire($id, $vocabulaires = array(), $isArray = false){
         if (empty($vocabulaires)){
             $valeur = Vocabulaire::getValeur($id);
             if ($valeur === false){
                 return '';
             } else {
+                if (isJson($valeur))return json_decode($valeur);
                 return $valeur;
             }
         } else {
             foreach ($vocabulaires as $vocabulaire){
-                if ($vocabulaire['id'] == $id)return $vocabulaire;
+                if ($vocabulaire['id'] == $id){
+                    if (isJson($vocabulaire['valeur']))$vocabulaire['valeur'] = json_decode($vocabulaire['valeur']);
+                    return $vocabulaire;
+                }
             }
             return false;
         }

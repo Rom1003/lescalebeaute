@@ -27,6 +27,20 @@ class Config {
         return true;
     }
 
+    public function admin($redirect = true){
+        if (isset($_SESSION['ADMIN']) && $_SESSION['ADMIN'] == $this->getGlobal("PASSWORD")){
+            return true;
+        } else {
+            if ($redirect === true){
+                header('location: ' . getRouteUrl('admin_login'));
+                exit();
+            } else {
+                return false;
+            }
+
+        }
+    }
+
     public function getGlobal($index = ''){
         if ($index !== ''){
             if (isset($this->global[$index]))return $this->global[$index];

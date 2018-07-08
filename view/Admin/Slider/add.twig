@@ -1,0 +1,34 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+    <div class="row column" id="admin-title">
+        <h4>Ajout d'une image dans le carroussel</h4>
+    </div>
+
+    {% if session.notification %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+
+    <form method="post" action="{{ getRouteUrl('admin_slider_add_process', {ordre : ordre}) }}" enctype="multipart/form-data">
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <h5>Sélectionner l'image</h5>
+                <input type="file" name="image" id="image">
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <button class="button">Valider</button>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}

@@ -6,6 +6,7 @@ use \App\Config;
 use \App\Database;
 use \App\Tables\Categorie;
 use \App\Tables\Service;
+use \App\Tables\Produit;
 use \Illuminate\Database\Eloquent\Model;
 
 class serviceController{
@@ -21,15 +22,16 @@ class serviceController{
 
         $menu = Categorie::getMenu();
         $service = Service::detail($id);
-        var_dump($service->toArray());
         if (!$service || empty($service)){
             \AppController\errorController::error404();
             exit;
         }
+        $produits = Produit::with('image')->with('gamme')->where('actif', 1)->inRandomOrder()->limit(8)->get();
 
         echo $twig->render('service.twig', array(
             'menu' => $menu,
-            'service' => $service
+            'service' => $service,
+            'produits' => $produits
         ));
     }
 }

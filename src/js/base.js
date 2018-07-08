@@ -48,7 +48,11 @@ $(document).ready(function () {
 
     $('.mask-phone').mask('00 00 00 00 00');
 
-    pageLoader(0);
+    $('.timepicker').timepicker({
+        timeFormat: 'H:i'
+    });
+
+    pageLoader(1000);
 });
 
 function pageLoader(sec) {
@@ -59,9 +63,7 @@ function pageLoader(sec) {
     setTimeout(function () {
         elem.fadeOut("slow");
         //Supprimer la div
-        setTimeout(function () {
-            elem.remove();
-        }, 3000);
+        elem.remove();
     }, sec);
 }
 
@@ -201,43 +203,84 @@ function sendForm(ajaxURL, mypost, onSuccess, onError) {
         showError('Une erreur est survenue');
     });
 }
-
-
-
-function showError(message, titre){
+function showError(message, titre) {
     titre = titre || 'Erreur';
 
-    html = '<h5>'+titre+'</h5>\n' +
+    var html = '<div class="reveal callout alert" id="modal">'+
+        '<h5>'+titre+'</h5>\n' +
         '<p>'+message+'</p>\n' +
         '<button class="close-button" data-close aria-label="Close modal" type="button">\n' +
         '   <span aria-hidden="true">&times;</span>\n' +
-        '</button>';
+        '</button>\n' +
+        '</div>';
+    $('body').append(html);
+    var modal = new Foundation.Reveal($('#modal'));
+    modal.open();
 
-    $('#modal').html(html).addClass('callout').addClass('alert').foundation('open');
+    $(document).on('closed.zf.reveal', '#modal', function() {
+        // remove from dom when closed
+        $('#modal').remove();
+    });
 }
 
-function showConf(message, titre){
+function showConf(message, titre) {
     titre = titre || 'Confirmation';
 
-    html = '<h5>'+titre+'</h5>\n' +
+    var html = '<div class="reveal callout success" id="modal">'+
+        '<h5>'+titre+'</h5>\n' +
         '<p>'+message+'</p>\n' +
         '<button class="close-button" data-close aria-label="Close modal" type="button">\n' +
         '   <span aria-hidden="true">&times;</span>\n' +
-        '</button>';
+        '</button>\n' +
+        '</div>';
+    $('body').append(html);
+    var modal = new Foundation.Reveal($('#modal'));
+    modal.open();
 
-    $('#modal').html(html).addClass('callout').addClass('success').foundation('open');
+    $(document).on('closed.zf.reveal', '#modal', function() {
+        // remove from dom when closed
+        $('#modal').remove();
+    });
 }
 
-function showWarn(message, titre){
+function showWarn(message, titre) {
     titre = titre || 'Attention';
 
-    html = '<h5>'+titre+'</h5>\n' +
+    var html = '<div class="reveal callout warning" id="modal">'+
+        '<h5>'+titre+'</h5>\n' +
         '<p>'+message+'</p>\n' +
         '<button class="close-button" data-close aria-label="Close modal" type="button">\n' +
         '   <span aria-hidden="true">&times;</span>\n' +
-        '</button>';
+        '</button>\n' +
+        '</div>';
+    $('body').append(html);
+    var modal = new Foundation.Reveal($('#modal'));
+    modal.open();
 
-    $('#modal').html(html).addClass('callout').addClass('warning').foundation('open');
+    $(document).on('closed.zf.reveal', '#modal', function() {
+        // remove from dom when closed
+        $('#modal').remove();
+    });
+}
+
+function showInfo(message, titre) {
+    titre = titre || 'Information';
+
+    var html = '<div class="reveal callout secondary" id="modal">'+
+        '<h5>'+titre+'</h5>\n' +
+        '<p>'+message+'</p>\n' +
+        '<button class="close-button" data-close aria-label="Close modal" type="button">\n' +
+        '   <span aria-hidden="true">&times;</span>\n' +
+        '</button>\n' +
+        '</div>';
+    $('body').append(html);
+    var modal = new Foundation.Reveal($('#modal'));
+    modal.open();
+
+    $(document).on('closed.zf.reveal', '#modal', function() {
+        // remove from dom when closed
+        $('#modal').remove();
+    });
 }
 
 /**
@@ -290,4 +333,34 @@ function floatMask() {
             }
         }
     });
+}
+
+function confirm(title, message, callback) {
+    // create your modal template
+    var modal = '<div class="reveal small" id="confirmation">'+
+        '<h2>'+title+'</h2>'+
+        '<p class="lead">'+message+'</p>'+
+        '<button class="button success yes">Yes</button>'+
+        '<button class="button alert float-right" data-close>No</button>'+
+        '</div>';
+    // appending new reveal modal to the page
+    $('body').append(modal);
+    // registergin this modal DOM as Foundation reveal
+    var confirmation = new Foundation.Reveal($('#modal'));
+    // open
+    confirmation.open();
+    // listening for yes click
+
+    $('#modal').children('.yes').on('click', function() {
+        // close and REMOVE FROM DOM to avoid multiple binding
+        confirmation.close();
+        $('#modal').remove();
+        // calling the function to process
+        callback.call();
+    });
+    $(document).on('closed.zf.reveal', '#confirmation', function() {
+        // remove from dom when closed
+        $('#modal').remove();
+    });
+
 }

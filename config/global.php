@@ -13,6 +13,8 @@ if ($_SERVER['HTTP_HOST'] == '144.172.80.209'){
     $global['MODE'] = 'prod';
 }
 
+$global['LOGIN'] = 'admin';
+$global['PASSWORD'] = '$2y$10$eRC31c8kR0osHQV6uEEU.uQvlwt24jgFrMDMy2ULrfVlfH3RPfucu';
 
 
 if ($global['MODE'] != 'prod'){

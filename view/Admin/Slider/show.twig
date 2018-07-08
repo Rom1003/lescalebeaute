@@ -1,0 +1,69 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+    <div class="row column" id="admin-title">
+        <h4>Carroussel</h4>
+    </div>
+
+    {% if session.notification %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="grid-x grid-padding-x">
+        <div class="medium-6 cell">
+            <h5>1<sup>ère</sup> image :</h5>
+            {% if slides[1] is not empty %}
+            <a class="button" href="{{ getRouteUrl('admin_slider_add', {'ordre' : 1}) }}"><i class="fas fa-edit"></i> Remplacer l'image</a>
+            <br>
+            <img src="{{ image(slides[1].image.path~slides[1].image.filename) }}">
+            {% else %}
+                <a class="button" href="{{ getRouteUrl('admin_slider_add', {'ordre' : 1}) }}"><i class="fas fa-plus"></i> Ajouter une image</a>
+                <div class="callout warning">
+                    <h5>Aucune image</h5>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="grid-x grid-padding-x">
+        <div class="medium-6 cell">
+            <hr>
+            <h5>2<sup>ème</sup> image :</h5>
+            {% if slides[2] is not empty %}
+            <a class="button" href="{{ getRouteUrl('admin_slider_add', {'ordre' : 2}) }}"><i class="fas fa-edit"></i> Remplacer l'image</a>
+            <br>
+            <img src="{{ image(slides[2].image.path~slides[2].image.filename) }}">
+            {% else %}
+                <a class="button" href="{{ getRouteUrl('admin_slider_add', {'ordre' : 2}) }}"><i class="fas fa-plus"></i> Ajouter une image</a>
+                <div class="callout warning">
+                    <h5>Aucune image</h5>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="grid-x grid-padding-x">
+        <div class="medium-6 cell">
+            <hr>
+            <h5>3<sup>ème</sup> image :</h5>
+            {% if slides[3] is not empty %}
+            <a class="button" href="{{ getRouteUrl('admin_slider_add', {'ordre' : 3}) }}"><i class="fas fa-edit"></i> Remplacer l'image</a>
+            <br>
+            <img src="{{ image(slides[3].image.path~slides[3].image.filename) }}">
+            {% else %}
+                <a class="button" href="{{ getRouteUrl('admin_slider_add', {'ordre' : 3}) }}"><i class="fas fa-plus"></i> Ajouter une image</a>
+                <div class="callout warning">
+                    <h5>Aucune image</h5>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+{% endblock %}

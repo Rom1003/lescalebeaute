@@ -18,6 +18,14 @@ $collection->attachRoute(new Route('/index', array(
     'methods' => 'GET',
 )));
 
+//Liste des catégories/services
+$collection->attachRoute(new Route('/categorie/:id/:libelle', array(
+    'name' => 'categorie_liste',
+    '_controller' => '\AppController\categorieController::listeAction',
+    'parameters' => ['id' => '\d+'],
+    'methods' => 'GET'
+)));
+
 //Detail d'un service
 $collection->attachRoute(new Route('/service/:id/:libelle', array(
     'name' => 'service_detail',
@@ -26,11 +34,17 @@ $collection->attachRoute(new Route('/service/:id/:libelle', array(
     'methods' => 'GET'
 )));
 
-//Voir un produit
-$collection->attachRoute(new Route('/produit', array(
-    'name' => 'produit',
+//Liste des produits
+$collection->attachRoute(new Route('/produits', array(
+    'name' => 'liste_produits',
     '_controller' => '\AppController\produitController::indexAction',
     'methods' => 'GET',
+)));
+//Pagination liste des produits
+$collection->attachRoute(new Route('/produits/ajax/paginate', array(
+    'name' => 'ajax_pagine_produits',
+    '_controller' => '\AppController\produitController::paginateAction',
+    'methods' => 'POST',
 )));
 
 
@@ -50,6 +64,20 @@ $collection->attachRoute(new Route('/upload/remove', array(
 /*************************
  * Partie Administration *
  *************************/
+
+//Page de login
+$collection->attachRoute(new Route('/administration/login', array(
+    'name' => 'admin_login',
+    '_controller' => '\AppController\Admin\adminController::loginFormAction',
+    'methods' => 'GET',
+)));
+//Page de login
+$collection->attachRoute(new Route('/administration/login', array(
+    'name' => 'admin_login',
+    '_controller' => '\AppController\Admin\adminController::loginProcessAction',
+    'methods' => 'POST',
+)));
+
 //Index de l'administration
 $collection->attachRoute(new Route('/administration', array(
     'name' => 'administration',
@@ -65,7 +93,7 @@ $collection->attachRoute(new Route('/administration/informations', array(
     'methods' => 'GET',
 )));
 //Traitement des modification des informations
-$collection->attachRoute(new Route('/administration/informations', array(
+$collection->attachRoute(new Route('/administration/informations/edit', array(
     'name' => 'admin_information_edit',
     '_controller' => '\AppController\Admin\vocabulaireController::editAction',
     'methods' => 'POST',
@@ -77,6 +105,20 @@ $collection->attachRoute(new Route('/administration/categories', array(
     'name' => 'admin_categorie',
     '_controller' => '\AppController\Admin\categorieController::indexAction',
     'methods' => 'GET',
+)));
+//Formulaire d'edition slide d'une catégorie
+$collection->attachRoute(new Route('/administration/categories/slide/:categorie_id', array(
+    'name' => 'admin_categorie_slide',
+    '_controller' => '\AppController\Admin\categorieController::slideFormAction',
+    'methods' => 'GET',
+    'parameters' => ['categorie_id' => '\d+']
+)));
+//Traitement ajout slide
+$collection->attachRoute(new Route('/administration/categories/slide/:categorie_id', array(
+    'name' => 'admin_categorie_slide_process',
+    '_controller' => '\AppController\Admin\categorieController::slideProcessAction',
+    'methods' => 'POST',
+    'parameters' => ['categorie_id' => '\d+']
 )));
 //Formulaire d'édition d'une catégorie
 $collection->attachRoute(new Route('/administration/categories/edit/:id', array(
@@ -152,6 +194,112 @@ $collection->attachRoute(new Route('/administration/services/edit/:id', array(
     '_controller' => '\AppController\Admin\serviceController::editProcessAction',
     'methods' => 'POST',
     'parameters' => ['id' => '\d+']
+)));
+//Ajax supression service_image
+$collection->attachRoute(new Route('/administration/services/ajax/image/delete', array(
+    'name' => 'admin_service_image_delete',
+    '_controller' => '\AppController\Admin\serviceController::imageDeleteAction',
+    'methods' => 'POST'
+)));
+//Slider
+$collection->attachRoute(new Route('/administration/slider', array(
+    'name' => 'admin_slider',
+    '_controller' => '\AppController\Admin\sliderController::indexAction',
+    'methods' => 'GET',
+)));
+//Ajout slide
+$collection->attachRoute(new Route('/administration/slider/add/:ordre', array(
+    'name' => 'admin_slider_add',
+    '_controller' => '\AppController\Admin\sliderController::addFormAction',
+    'methods' => 'GET',
+    'parameters' => ['ordre' => '\d+']
+)));
+//Traitement ajout slide
+$collection->attachRoute(new Route('/administration/slider/add/:ordre', array(
+    'name' => 'admin_slider_add_process',
+    '_controller' => '\AppController\Admin\sliderController::addProcessAction',
+    'methods' => 'POST',
+    'parameters' => ['ordre' => '\d+']
+)));
+
+//Liste des gammes
+$collection->attachRoute(new Route('/administration/gammes', array(
+    'name' => 'admin_gamme',
+    '_controller' => '\AppController\Admin\gammeController::indexAction',
+    'methods' => 'GET',
+)));
+//Ajout gamme
+$collection->attachRoute(new Route('/administration/gamme/add', array(
+    'name' => 'admin_gamme_add',
+    '_controller' => '\AppController\Admin\gammeController::addFormAction',
+    'methods' => 'GET',
+)));
+//Traitement ajout gamme
+$collection->attachRoute(new Route('/administration/gamme/add', array(
+    'name' => 'admin_gamme_add_process',
+    '_controller' => '\AppController\Admin\gammeController::addProcessAction',
+    'methods' => 'POST'
+)));
+//Formulaire d'édition d'une gamme
+$collection->attachRoute(new Route('/administration/gamme/edit/:id', array(
+    'name' => 'admin_gamme_edit',
+    '_controller' => '\AppController\Admin\gammeController::editFormAction',
+    'methods' => 'GET',
+    'parameters' => ['id' => '\d+']
+)));
+//Traitement d'édition d'une gamme
+$collection->attachRoute(new Route('/administration/gamme/edit/:id', array(
+    'name' => 'admin_gamme_edit_process',
+    '_controller' => '\AppController\Admin\gammeController::editProcessAction',
+    'methods' => 'POST',
+    'parameters' => ['id' => '\d+']
+)));
+
+
+//Liste des produits
+$collection->attachRoute(new Route('/administration/produits', array(
+    'name' => 'admin_produit',
+    '_controller' => '\AppController\Admin\produitController::indexAction',
+    'methods' => 'GET',
+)));
+//Ajax de pagination de la liste des produits
+$collection->attachRoute(new Route('/administration/produit/ajax/paginate', array(
+    'name' => 'admin_produit_paginate',
+    '_controller' => '\AppController\Admin\produitController::paginateAction',
+    'methods' => 'POST',
+)));
+//Ajout produit
+$collection->attachRoute(new Route('/administration/produit/add', array(
+    'name' => 'admin_produit_add',
+    '_controller' => '\AppController\Admin\produitController::addFormAction',
+    'methods' => 'GET',
+)));
+//Traitement ajout produit
+$collection->attachRoute(new Route('/administration/produit/add', array(
+    'name' => 'admin_produit_add_process',
+    '_controller' => '\AppController\Admin\produitController::addProcessAction',
+    'methods' => 'POST'
+)));
+//Formulaire d'édition d'un produit
+$collection->attachRoute(new Route('/administration/produit/edit/:id', array(
+    'name' => 'admin_produit_edit',
+    '_controller' => '\AppController\Admin\produitController::editFormAction',
+    'methods' => 'GET',
+    'parameters' => ['id' => '\d+']
+)));
+//Traitement d'édition d'une gamme
+$collection->attachRoute(new Route('/administration/produit/edit/:id', array(
+    'name' => 'admin_produit_edit_process',
+    '_controller' => '\AppController\Admin\produitController::editProcessAction',
+    'methods' => 'POST',
+    'parameters' => ['id' => '\d+']
+)));
+//Traitement activation/desactivation produit
+$collection->attachRoute(new Route('/administration/produit/etat/:id/:actif', array(
+    'name' => 'admin_produit_etat',
+    '_controller' => '\AppController\Admin\produitController::editEtatAction',
+    'methods' => 'POST',
+    'parameters' => ['id' => '\d+', 'actif' => '0|1']
 )));
 
 

@@ -1,0 +1,38 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <section>
+        {# Affichage du titre #}
+        {% include('titre.twig') with {'titre': '', 'texte': '', 'logo' : 'left'} only %}
+
+        <div class="grid-container bloc-galerie">
+
+            {# Bloc de description #}
+            <div class="grid-x grid-margin-x grid-margin-y align-top liste-articles">
+
+                <div class="cell small-12 medium-5 large-4 galerie-description" data-match="1">
+                    <p class="titre">produits</p>
+                    <hr>
+                    <p class="description">{{ getVocabulaire(constant('App\\Tables\\Vocabulaire::TEXTE_PRODUITS')) }}</p>
+                    <a href="{{ getRouteUrl('base') }}">RETOUR A L'ACCUEIL ></a>
+                </div>
+
+                <div class="cell small-12 medium-7 large-8" data-match="1">
+
+                    <div class="grid-x grid-margin-x grid-margin-y align-top" id="list_produits">
+                    </div>
+
+                    <div id="pagination" class="margin-top">
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ glb['SRC_ROOT'] }}js/produit.js"></script>
+{% endblock %}

@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'escale beauté</title>
     <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/admin.css">
-    <script defer src="{{ glb['SRC_ROOT'] }}js/vendor/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/imagehover/imagehover.css">
+    <link rel="stylesheet" href="{{ glb['SRC_ROOT'] }}css/jquery.timepicker.min.css">
+    <script defer src="{{ glb['SRC_ROOT'] }}js/vendor/fontawesome-all.js"></script>
 </head>
 
 <body>
@@ -32,6 +34,15 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ getRouteUrl("admin_slider") }}">
+                            <span class="fa-layers fa-fw">
+                              <i class="fas fa-circle fa-lg"></i>
+                              <i class="fas fa-images color-second" data-fa-transform="shrink-6 right-1"></i>
+                            </span>
+                            <span>Carroussel</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ getRouteUrl("admin_categorie") }}">
                             <span class="fa-layers fa-fw">
                               <i class="fas fa-circle fa-lg"></i>
@@ -47,6 +58,24 @@
                               <i class="fas fa-handshake color-second" data-fa-transform="shrink-6 right-1"></i>
                             </span>
                             <span>Services</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ getRouteUrl("admin_gamme") }}">
+                            <span class="fa-layers fa-fw">
+                              <i class="fas fa-circle fa-lg"></i>
+                              <i class="fas fa-female color-second" data-fa-transform="shrink-6 right-1"></i>
+                            </span>
+                            <span>Gammes des produits</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ getRouteUrl("admin_produit") }}">
+                            <span class="fa-layers fa-fw">
+                              <i class="fas fa-circle fa-lg"></i>
+                              <i class="fas fa-dolly color-second" data-fa-transform="shrink-6 right-1"></i>
+                            </span>
+                            <span>Produits</span>
                         </a>
                     </li>
                 </ul>
@@ -71,15 +100,13 @@
         <div class="js-off-canvas-exit"></div>
     </div>
 </div>
-<div class="reveal" id="modal" data-reveal data-close-on-click="true"></div>
-</body>
-
-
+{#<div class="reveal" id="modal" data-reveal data-close-on-click="true"></div>#}
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/what-input.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/foundation.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.mask.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.matchHeight.js" type="text/javascript"></script>
+<script src="{{ glb['SRC_ROOT'] }}js/vendor/jquery.timepicker.min.js"></script>
 <script src="{{ glb['SRC_ROOT'] }}js/base.js"></script>
 {% block javascript %}
 {% endblock %}

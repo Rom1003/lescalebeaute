@@ -5,38 +5,92 @@
         <h4>Informations</h4>
     </div>
 
-    {% if vars.notification %}
+    {% if session.notification %}
 
         <div class="grid-x grid-padding-x">
             <div class="medium-6 cell">
-                {{ showAlert(vars.notification.type, vars.notification.message, vars.notification.titre)|raw }}
+                {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
             </div>
         </div>
     {% endif %}
 
 
-    <form method="post" action="{{ getRouteUrl('admin_information_edit') }}">
+    <form method="post" action="{{ getRouteUrl('admin_information_edit') }}" id="form_edit_vocabulaire">
         <div class="grid-x grid-padding-x">
 
             {# N° de téléphone #}
-            {% set voc = getVocabulaire(1, vocabulaire) %}
+            {% set voc = getVocabulaire(constant('App\\Tables\\Vocabulaire::TELEPHONE'), vocabulaire) %}
             <div class="medium-6 cell">
                 <label for="vocabulaire_{{ voc['id'] }}">
                     {{ voc['libelle'] }}
-                    <input type="text" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}"
-                           value="{{ vars['form_voc'][voc['id']] is defined ? vars['form_voc'][voc['id']]|phone : voc['valeur']|phone }}" class="mask-phone">
+                    <input type="text" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}" value="{{ voc['valeur']|phone }}" class="mask-phone">
                 </label>
             </div>
         </div>
         <div class="grid-x grid-padding-x">
             {# Adresse #}
-            {% set voc = getVocabulaire(2, vocabulaire) %}
+            {% set voc = getVocabulaire(constant('App\\Tables\\Vocabulaire::ADRESSE'), vocabulaire) %}
             <div class="medium-6 cell">
                 <label for="vocabulaire_{{ voc['id'] }}">
                     {{ voc['libelle'] }}
                     <input type="text" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}"
-                           value="{{ vars['form_voc'][voc['id']] is defined ? vars['form_voc'][voc['id']] : voc['valeur'] }}">
+                           value="{{ voc['valeur'] }}">
                 </label>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            {# Texte massages #}
+            {% set voc = getVocabulaire(constant('App\\Tables\\Vocabulaire::TEXTE_MASSAGES'), vocabulaire) %}
+            <div class="medium-6 cell">
+                <label for="vocabulaire_{{ voc['id'] }}">
+                    {{ voc['libelle'] }}
+                    <textarea rows="10" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}">{{ voc['valeur'] }}</textarea>
+                </label>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            {# Texte produits #}
+            {% set voc = getVocabulaire(constant('App\\Tables\\Vocabulaire::TEXTE_PRODUITS'), vocabulaire) %}
+            <div class="medium-6 cell">
+                <label for="vocabulaire_{{ voc['id'] }}">
+                    {{ voc['libelle'] }}
+                    <textarea rows="10" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}">{{ voc['valeur'] }}</textarea>
+                </label>
+            </div>
+        </div>
+
+            {# Horaires d'ouverture #}
+            {% set voc = getVocabulaire(constant('App\\Tables\\Vocabulaire::HORAIRES'), vocabulaire) %}
+            <div class="grid-x grid-padding-x">
+                <div class="medium-6 cell">
+                    <hr>
+                    <h4>Horaires d'ouvertures</h4>
+                    <h6 class="subheader"><em>Laisser vide si partie de la journée fermé</em></h6>
+                </div>
+            </div>
+            {% for key, horaire in voc['valeur'] %}
+                <div class="grid-x grid-padding-x">
+                    <div class="medium-12 cell">
+                        <h5>{{ constant('App\\Tables\\Vocabulaire::HORAIRES_JOURS')[key]|capitalize }}</h5>
+                    </div>
+                </div>
+            <div class="grid-x grid-padding-x">
+                <div class="small-6 medium-3 large-2 cell">
+                    <label for="vocabulaire_{{ voc['id'] }}_{{ key }}_am">Matin</label>
+                    <input type="text" class="timepicker" name="vocabulaire_{{ voc['id'] }}_{{ key }}_am" id="vocabulaire_{{ voc['id'] }}_{{ key }}_am" value="{{ horaire|split('-')[0] }}">
+                </div>
+                <div class="small-6 medium-3 large-2 cell">
+                    <label for="vocabulaire_{{ voc['id'] }}_{{ key }}_pm">Après midi</label>
+                    <input type="text" class="timepicker" name="vocabulaire_{{ voc['id'] }}_{{ key }}_pm" id="vocabulaire_{{ voc['id'] }}_{{ key }}_pm" value="{{ horaire|split('-')[1] }}">
+                </div>
+            </div>
+            {% endfor %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <hr>
             </div>
         </div>
 
@@ -47,4 +101,8 @@
             </div>
         </div>
     </form>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ glb['SRC_ROOT'] }}js/Admin/Vocabulaire/edit.js"></script>
 {% endblock %}

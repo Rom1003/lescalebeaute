@@ -2,9 +2,27 @@
 //Ajout du framework css "Foundation"
 @include foundation-everything;
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6 {
   @include font("Lato");
 }
+
+#background_theme {
+  @include degrade($color-theme, $color-second);
+  display: table;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+}
+
+#log-in-form {
+  margin-top: 25%;
+  border: 1px solid $medium-gray;
+  padding: $form-spacing;
+  border-radius: $global-radius;
+  background-color: white;
+}
+
 
 #admin_logo {
   @include font("Great Vibes");
@@ -61,4 +79,8 @@ a:hover {
 #admin-title {
   border-bottom: 1px solid $color-black;
   margin-bottom: 50px;
+}
+
+.gallery-image-delete .close-button{
+   padding: 0.1em 0.25em;;
 }
