@@ -1,0 +1,109 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+    <div class="row column" id="admin-title">
+        <h4>Informations</h4>
+    </div>
+
+    {% if session.notification %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+
+    <form method="post" action="{{ getRouteUrl('admin_apropos_edit') }}" id="form_edit_vocabulaire"  enctype="multipart/form-data">
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <h5>Image de l'entête de la page</h5>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+        {% if slide is not empty %}
+
+                <div class="medium-6 cell">
+                    <h6>Image actuelle</h6>
+                    <img src="{{ image(slide.path~slide.filename) }}">
+                    <hr>
+                </div>
+
+        {% endif %}
+
+            <div class="medium-6 cell">
+                <h6>Sélectionner la nouvelle image</h6>
+                <input type="file" name="slide" id="slide">
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            {# Texte Description #}
+            <div class="medium-6 cell">
+                <label for="vocabulaire_{{ description.id }}">
+                    {{ description.libelle }}
+                    <textarea rows="10" id="vocabulaire_{{ description.id }}" name="vocabulaire_{{ description.id }}">{{ description.valeur }}</textarea>
+                </label>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <hr>
+            </div>
+        </div>
+
+        {# Images existantes #}
+        <div id="image_liste" data-url="{{ getRouteUrl('admin_apropos_image_delete') }}">
+            {% for image in images %}
+                {% if loop.index0 is divisible by(3) %}
+                    <div class="grid-x grid-padding-x gallery-image-delete">
+                {% endif %}
+                <div class="medium-2 cell text-center relative image-delete">
+                    <img src="{{ image(image.path~image.filename) }}" onerror="javascript:this.src='{{ image('no_image.jpg') }}'" class="thumbnail">
+                    <button class="close-button button alert image-delete-btn" data-id="{{ image.id }}" aria-label="Close alert" type="button" title="Supprimer">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% if loop.index == loop.length or loop.index is divisible by(3) %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="grid-x grid-padding-x">
+            {# Validation #}
+            <div class="medium-12 cell">
+                <h5>Ajout d'image(s)</h5>
+            </div>
+        </div>
+        <div id="block_uploader"></div>
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <button type="button" class="button" id="add_image_input">
+                    <i class="fas fa-plus"></i> Ajouter une autre image
+                </button>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <hr>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            {# Validation #}
+            <div class="medium-6 cell">
+                <button class="button">Valider les modifications</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ glb['SRC_ROOT'] }}js/Admin/Vocabulaire/edit.js"></script>
+    <script src="{{ glb['SRC_ROOT'] }}js/Admin/Vocabulaire/apropos.js"></script>
+{% endblock %}

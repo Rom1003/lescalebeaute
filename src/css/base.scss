@@ -148,10 +148,11 @@
     font-size: 1em;
   }
 
-  .liste_tarifs {
+  .liste_tarifs, .liste_informations {
     color: $color-theme;
-    p {
+    p, a {
       @include font('Lato Light');
+      text-align: left;
       font-size: 1em;
       margin-bottom: 0;
       line-height: 1.4em;
@@ -166,6 +167,12 @@
     font-size: 0.9em;
     text-align: justify;
     line-height: 1.5em;
+  }
+
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+    font-size: 1.1em;
   }
 
   a {

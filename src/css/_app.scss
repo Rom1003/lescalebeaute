@@ -174,3 +174,10 @@ td img {
   max-width: 50px;
   max-height: 50px;
 }
+
+//Cacher sur un telephone
+@media print, screen and (max-width: 600px) {
+    .hide-phone {
+      display: none !important;
+    }
+}

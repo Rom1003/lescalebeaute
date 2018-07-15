@@ -7,6 +7,8 @@ use \App\Database;
 use \App\Tables\Categorie;
 use App\Tables\Produit;
 use App\Tables\Slider;
+use App\Tables\Image;
+use App\Tables\Vocabulaire;
 use \Illuminate\Database\Eloquent\Model;
 
 class indexController{
@@ -25,6 +27,41 @@ class indexController{
             'slider' => $slider,
             'produits' => $produits,
             'massages' => $massages
+        ));
+    }
+
+    public static function aproposAction(){
+        $config = new Config();
+        $twig = $config->initTwig();
+        $menu = Categorie::getMenu();
+
+        //récupération de la description
+        $description = Vocabulaire::find(Vocabulaire::TEXTE_APROPOS);
+
+        //récupération du slide
+        $slide = Vocabulaire::find(Vocabulaire::SLIDER_APROPOS);
+        $image_header = false;
+        if (!empty($slide)){
+            $image = Image::find($slide->valeur);
+            if (!empty($image)){
+                $image_header = $image->path.$image->filename;
+            }
+        }
+
+        //récupération des images
+        $images = array();
+        $voc_images = Vocabulaire::find(Vocabulaire::IMAGES_APROPOS);
+        if (!empty($voc_images)){
+            foreach (unserialize($voc_images->valeur) as $id_image){
+                $images[] = Image::find($id_image);
+            }
+        }
+
+        echo $twig->render('a_propos.twig', array(
+            'menu' => $menu,
+            'image_header' => $image_header,
+            'description' => $description,
+            'images' => $images
         ));
     }
 }
