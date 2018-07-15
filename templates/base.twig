@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
 <div class="page-loader{{ session.chargement == true ? '' : ' none' }}">
     <div id="loader-content">
         <div id="loader-img">
@@ -28,12 +27,12 @@
 
 <header>
     <!-- Barre info -->
-    <div class="top-bar">
+    <div class="top-bar hide-phone">
         <div class="top-bar-right">
             <ul class="menu">
                 <li><i class="fas fa-phone fa-sm" data-fa-transform="rotate-100"></i> {{ getVocabulaire(constant('App\\Tables\\Vocabulaire::TELEPHONE'))|phone }}</li>
                 <li><i class="fas fa-map-marker-alt fa-sm"></i> {{ getVocabulaire(constant('App\\Tables\\Vocabulaire::ADRESSE')) }}</li>
-                <li><i class="far fa-clock fa-sm"></i> Ouvert</li>
+                <li><i class="far fa-clock fa-sm"></i> {% if isOpen() is same as(true) %}Ouvert{% else %} Fermé{% endif %}</li>
             </ul>
         </div>
     </div>
@@ -52,7 +51,7 @@
             {% for menu1 in menu %}
                 <li class="menu-dropdown"><a href="{{ getRouteUrl('categorie_liste', {id: menu1.id, libelle: toAscii(menu1.libelle)}) }}">{{ menu1.libelle | upper }}</a>
                     {% if menu1.sub is defined and menu1.sub %}
-                        <ul class="sub-menu hidden">
+                        <ul class="sub-menu hidden hide-phone">
                             {% for menu2 in menu1.sub %}
                                 <li class="sub-dropdown"><a href="{{ getRouteUrl('categorie_liste', {id: menu2.id, libelle: toAscii(menu2.libelle)}) }}">{{ menu2.libelle }}</a>
                                     {#{% if menu2.service is defined and menu2.service %}#}
@@ -116,10 +115,9 @@
 {% block content %}
 {% endblock %}
 
-
 <footer>
     <div id="pre-footer">
-        <a href="https://www.facebook.com/people/Lescale-Beaut%C3%A9-Sainte-Savine/100014319492079" target="_blank" id="follow-us" class="text-center">
+        <a href="{{ getVocabulaire(constant('App\\Tables\\Vocabulaire::FACEBOOK_URL')) }}" target="_blank" id="follow-us" class="text-center">
             <p><i class="fab fa-facebook-square fa-2x"></i><span>Suivez-nous sur Facebook</span></p>
         </a>
     </div>
@@ -148,7 +146,7 @@
             <p>Contactez-nous</p>
             <ul>
                 <li>{{ getVocabulaire(constant('App\\Tables\\Vocabulaire::TELEPHONE'))|phone }}</li>
-                <li>lescalebeaute@gmail.com</li>
+                <li>{{ getVocabulaire(constant('App\\Tables\\Vocabulaire::MAIL')) }}</li>
             </ul>
         </div>
         <div class="cell large-auto medium-auto small-6">

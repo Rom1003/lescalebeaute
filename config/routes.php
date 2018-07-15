@@ -17,6 +17,12 @@ $collection->attachRoute(new Route('/index', array(
     '_controller' => '\AppController\indexController::indexAction',
     'methods' => 'GET',
 )));
+//Page à propos
+$collection->attachRoute(new Route('/a_propos', array(
+    'name' => 'a_propos',
+    '_controller' => '\AppController\indexController::aproposAction',
+    'methods' => 'GET',
+)));
 
 //Liste des catégories/services
 $collection->attachRoute(new Route('/categorie/:id/:libelle', array(
@@ -97,6 +103,26 @@ $collection->attachRoute(new Route('/administration/informations/edit', array(
     'name' => 'admin_information_edit',
     '_controller' => '\AppController\Admin\vocabulaireController::editAction',
     'methods' => 'POST',
+)));
+
+//A propos
+//Liste des infos
+$collection->attachRoute(new Route('/administration/a_propos', array(
+    'name' => 'admin_apropos',
+    '_controller' => '\AppController\Admin\vocabulaireController::aproposAction',
+    'methods' => 'GET',
+)));
+//Traitement des modification a propos
+$collection->attachRoute(new Route('/administration/a_propos/edit', array(
+    'name' => 'admin_apropos_edit',
+    '_controller' => '\AppController\Admin\vocabulaireController::aproposEditAction',
+    'methods' => 'POST',
+)));
+//Ajax supression image a propos
+$collection->attachRoute(new Route('/administration/a_propos/ajax/image/delete', array(
+    'name' => 'admin_apropos_image_delete',
+    '_controller' => '\AppController\Admin\vocabulaireController::imageAproposDeleteAction',
+    'methods' => 'POST'
 )));
 
 //Catégories

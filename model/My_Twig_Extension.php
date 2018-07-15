@@ -4,6 +4,7 @@ namespace App;
 
 use \App\Config;
 use \Twig_Extension;
+use \DateTime;
 use App\Tables\Vocabulaire;
 use \Illuminate\Database\Eloquent\Model;
 use PHPRouter\Router;
@@ -21,6 +22,7 @@ class My_Twig_Extension extends Twig_Extension {
         $functions[] = new \Twig_Function('getVocabulaire', array($this, 'getVocabulaire'));
         $functions[] = new \Twig_Function('getRouteUrl', array($this, 'getRouteUrl'));
         $functions[] = new \Twig_Function('toAscii', array($this, 'convertToAscii'));
+        $functions[] = new \Twig_Function('isOpen', array($this, 'isOpen'));
 
         return $functions;
     }
@@ -128,6 +130,24 @@ class My_Twig_Extension extends Twig_Extension {
 
     public function convertToAscii($string){
         return toAscii($string);
+    }
+
+    public function isOpen(){
+        $horaires = $this->getVocabulaire(Vocabulaire::HORAIRES);
+        $jour = date('N') - 1;
+
+        if (!isset($horaires[$jour]))return false;
+        $heures = explode('-', $horaires[$jour]);
+        if (empty($heures) || !isset($heures[1]))return false;
+
+        $currentTime = (new DateTime(date('H:i')))->modify('+1 day');
+        $startTime = new DateTime($heures[0]);
+        $endTime = (new DateTime($heures[1]))->modify('+1 day');
+
+        if ($currentTime >= $startTime && $currentTime <= $endTime) {
+            return true;
+        }
+        return false;
     }
 
 }

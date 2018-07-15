@@ -40,6 +40,30 @@
         </div>
 
         <div class="grid-x grid-padding-x">
+            {# E-mail #}
+            {% set voc = getVocabulaire(constant('App\\Tables\\Vocabulaire::MAIL'), vocabulaire) %}
+            <div class="medium-6 cell">
+                <label for="vocabulaire_{{ voc['id'] }}">
+                    {{ voc['libelle'] }}
+                    <input type="text" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}"
+                           value="{{ voc['valeur'] }}">
+                </label>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            {# Facebook #}
+            {% set voc = getVocabulaire(constant('App\\Tables\\Vocabulaire::FACEBOOK_URL'), vocabulaire) %}
+            <div class="medium-6 cell">
+                <label for="vocabulaire_{{ voc['id'] }}">
+                    {{ voc['libelle'] }}
+                    <input type="text" id="vocabulaire_{{ voc['id'] }}" name="vocabulaire_{{ voc['id'] }}"
+                           value="{{ voc['valeur'] }}">
+                </label>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
             {# Texte massages #}
             {% set voc = getVocabulaire(constant('App\\Tables\\Vocabulaire::TEXTE_MASSAGES'), vocabulaire) %}
             <div class="medium-6 cell">
@@ -78,12 +102,12 @@
                 </div>
             <div class="grid-x grid-padding-x">
                 <div class="small-6 medium-3 large-2 cell">
-                    <label for="vocabulaire_{{ voc['id'] }}_{{ key }}_am">Matin</label>
-                    <input type="text" class="timepicker" name="vocabulaire_{{ voc['id'] }}_{{ key }}_am" id="vocabulaire_{{ voc['id'] }}_{{ key }}_am" value="{{ horaire|split('-')[0] }}">
+                    <label for="vocabulaire_{{ voc['id'] }}_{{ key }}_debut">Ouverture</label>
+                    <input type="text" class="timepicker" name="vocabulaire_{{ voc['id'] }}_{{ key }}_debut" id="vocabulaire_{{ voc['id'] }}_{{ key }}_debut" value="{{ horaire|split('-')[0] }}">
                 </div>
                 <div class="small-6 medium-3 large-2 cell">
-                    <label for="vocabulaire_{{ voc['id'] }}_{{ key }}_pm">Après midi</label>
-                    <input type="text" class="timepicker" name="vocabulaire_{{ voc['id'] }}_{{ key }}_pm" id="vocabulaire_{{ voc['id'] }}_{{ key }}_pm" value="{{ horaire|split('-')[1] }}">
+                    <label for="vocabulaire_{{ voc['id'] }}_{{ key }}_fin">Fermeture</label>
+                    <input type="text" class="timepicker" name="vocabulaire_{{ voc['id'] }}_{{ key }}_fin" id="vocabulaire_{{ voc['id'] }}_{{ key }}_fin" value="{{ horaire|split('-')[1] }}">
                 </div>
             </div>
             {% endfor %}

@@ -955,6 +955,10 @@ td img {
   max-width: 50px;
   max-height: 50px; }
 
+@media print, screen and (max-width: 600px) {
+  .hide-phone {
+    display: none !important; } }
+
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 /* Document
        ========================================================================== */
@@ -6854,20 +6858,25 @@ a.thumbnail {
     text-transform: uppercase;
     text-align: center;
     font-size: 1em; }
-  .galerie-description .liste_tarifs {
+  .galerie-description .liste_tarifs, .galerie-description .liste_informations {
     color: #B96A81; }
-    .galerie-description .liste_tarifs p {
+    .galerie-description .liste_tarifs p, .galerie-description .liste_tarifs a, .galerie-description .liste_informations p, .galerie-description .liste_informations a {
       font-family: "Lato Light", sans-serif;
+      text-align: left;
       font-size: 1em;
       margin-bottom: 0;
       line-height: 1.4em; }
-    .galerie-description .liste_tarifs svg {
+    .galerie-description .liste_tarifs svg, .galerie-description .liste_informations svg {
       margin-right: 5px; }
   .galerie-description .description {
     font-family: "Lato Light", sans-serif;
     font-size: 0.9em;
     text-align: justify;
     line-height: 1.5em; }
+  .galerie-description ul {
+    list-style-type: none;
+    margin-left: 0;
+    font-size: 1.1em; }
   .galerie-description a {
     display: block;
     text-decoration: underline;

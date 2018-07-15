@@ -12,7 +12,12 @@ class Vocabulaire extends Model
     CONST ADRESSE = 2;
     CONST TEXTE_MASSAGES = 3;
     CONST TEXTE_PRODUITS = 4;
-    CONST HORAIRES = 5;
+    CONST MAIL = 5;
+    CONST HORAIRES = 6;
+    CONST TEXTE_APROPOS = 7;
+    CONST SLIDER_APROPOS = 8;
+    CONST IMAGES_APROPOS = 9;
+    CONST FACEBOOK_URL = 10;
 
     CONST HORAIRES_JOURS = [
         0 => 'lundi',
