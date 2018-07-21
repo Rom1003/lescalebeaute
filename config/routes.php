@@ -328,6 +328,25 @@ $collection->attachRoute(new Route('/administration/produit/etat/:id/:actif', ar
     'parameters' => ['id' => '\d+', 'actif' => '0|1']
 )));
 
+//Liste des épilations
+$collection->attachRoute(new Route('/administration/epilations', array(
+    'name' => 'admin_epilation',
+    '_controller' => '\AppController\Admin\epilationController::indexAction',
+    'methods' => 'GET',
+)));
+//Suppression d'une épilation
+$collection->attachRoute(new Route('/administration/epilations/remove', array(
+    'name' => 'admin_epilation_remove',
+    '_controller' => '\AppController\Admin\epilationController::removeAction',
+    'methods' => 'POST',
+)));
+//Traitement des épilations
+$collection->attachRoute(new Route('/administration/epilations/edit', array(
+    'name' => 'admin_epilation_edit',
+    '_controller' => '\AppController\Admin\epilationController::editAction',
+    'methods' => 'POST',
+)));
+
 
 $router = new Router($collection);
 $router->setBasePath('/');

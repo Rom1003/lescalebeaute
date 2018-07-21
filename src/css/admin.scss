@@ -84,3 +84,35 @@ a:hover {
 .gallery-image-delete .close-button{
    padding: 0.1em 0.25em;;
 }
+
+/* Tableau epilation */
+.table_admin_epilation {
+  input {
+    margin-bottom: 0;
+  }
+  tr th:nth-child(1), tr td:nth-child(1) {
+    width: 1%;
+    min-width: 50px;
+  }
+  tr th:nth-child(2), tr td:nth-child(2) {
+    width: 50%;
+  }
+  tr th:nth-child(3), tr td:nth-child(3) {
+    width: 10%;
+    min-width: 100px;
+  }
+  tr th:nth-child(4), tr td:nth-child(4) {
+    width: 1%;
+    min-width: 50px;
+    position: relative;
+    svg {
+      position: absolute;
+      top: 12px;
+    }
+  }
+
+  .in-error td:nth-child(2), .in-error td:nth-child(3) {
+    background-color: $color-err;
+  }
+
+}
