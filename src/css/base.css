@@ -828,6 +828,9 @@ body {
 .color-white {
   color: #fefefe; }
 
+.color-err {
+  color: #9e0d09; }
+
 .no-margin {
   margin: 0; }
 
@@ -865,6 +868,10 @@ body {
 
 .cursor-p {
   cursor: pointer; }
+
+.full-width {
+  width: 100%;
+  max-width: 100%; }
 
 /**********************
  * Chargement de page *

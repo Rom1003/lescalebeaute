@@ -1,0 +1,67 @@
+{% extends "base_admin.twig" %}
+
+{% block content %}
+    <div class="row column" id="admin-title">
+        <h4>Epilations</h4>
+    </div>
+
+    {% if session.notification %}
+
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                {{ showAlert(session.notification.type, session.notification.message, session.notification.titre)|raw }}
+            </div>
+        </div>
+    {% endif %}
+
+    <form action="{{ getRouteUrl('admin_epilation_edit') }}" method="post" id="form_edit_epilation">
+
+
+        {% for type, libelle in constant('App\\Tables\\Epilation::TYPES') %}
+            <section>
+                <div class="row column">
+                    <h4>{{ libelle }}</h4>
+                </div>
+                <table class="table_admin_epilation" data-type="{{ type }}">
+                    <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Libellé</th>
+                        <th>Prix</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for epilation in epilations[type] %}
+                        <tr data-key="{{ epilation.id }}">
+                            <td>{{ epilation.id }}</td>
+                            <td><input type="text" name="libelle[{{ epilation.id }}]" value="{{ epilation.libelle }}"></td>
+                            <td><input type="text" name="prix[{{ epilation.id }}]" value="{{ epilation.prix }}"></td>
+                            <td><i class="fas fa-times-circle color-err fa-2x btn-delete cursor-p" title="Supprimer" data-etat="exist"></i></td>
+                            <input type="hidden" name="id[{{ epilation.id }}]" value="{{ epilation.id }}">
+                            <input type="hidden" name="type[{{ epilation.id }}]" value="{{ epilation.type }}">
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                <button type="button" class="button small add-row" data-type="{{ type }}"><i class="fas fa-plus"></i> Ajouter une ligne</button>
+
+                <div class="row column">
+                    <hr class="full-width">
+                </div>
+            </section>
+        {% endfor %}
+
+        <div class="row column">
+            <button type="submit" class="button"><i class="fas fa-plus"></i> Valider les modifications</button>
+        </div>
+
+    </form>
+
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ glb['SRC_ROOT'] }}js/Admin/Epilation/list.js"></script>
+{% endblock %}
