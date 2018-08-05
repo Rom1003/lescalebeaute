@@ -24,6 +24,19 @@ $collection->attachRoute(new Route('/a_propos', array(
     'methods' => 'GET',
 )));
 
+//Page des épilations
+$collection->attachRoute(new Route('/epilations', array(
+    'name' => 'epilations',
+    '_controller' => '\AppController\indexController::epilationAction',
+    'methods' => 'GET',
+)));
+//PDF des épilations
+$collection->attachRoute(new Route('/epilations/download', array(
+    'name' => 'epilations_pdf',
+    '_controller' => '\AppController\indexController::epilationPDFAction',
+    'methods' => 'GET',
+)));
+
 //Liste des catégories/services
 $collection->attachRoute(new Route('/categorie/:id/:libelle', array(
     'name' => 'categorie_liste',

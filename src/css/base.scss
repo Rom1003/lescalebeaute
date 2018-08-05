@@ -353,3 +353,54 @@
 }
 
 /* FIN Footer */
+
+/* PAGE EPILATIONS */
+
+.liste-epilations {
+  h1{
+    text-align: center;
+  }
+
+
+  ul {
+    margin-top: 35px;
+    margin-left: 0;
+    list-style: none;
+    font-size: 1.1em;
+  }
+
+  .epilation-libelle {
+    display: inline-block;
+    width: 65%;
+    @include font("Lato");
+    color: $color-theme;
+  }
+
+  .epilation-prix {
+    text-align: right;
+    display: inline-block;
+    @include font("Lato Light");
+    width: 35%;
+
+    span {
+      width: 40px;
+      display: inline-block;
+    }
+  }
+
+  .epilation-prix:before {
+    text-align: left;
+    float: left;
+    content: ".....................";
+    padding-right: 10px;
+  }
+
+  @media print, screen and (max-width: 1024px) {
+    .epilation-prix:before {
+      content: "";
+      padding-right: 0;
+    }
+  }
+}
+
+/* FIN EPILATIONS */

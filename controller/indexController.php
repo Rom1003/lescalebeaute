@@ -5,10 +5,12 @@ namespace AppController;
 use \App\Config;
 use \App\Database;
 use \App\Tables\Categorie;
+use App\Tables\Epilation;
 use App\Tables\Produit;
 use App\Tables\Slider;
 use App\Tables\Image;
 use App\Tables\Vocabulaire;
+use App\pdf\EpilationPDF;
 use \Illuminate\Database\Eloquent\Model;
 
 class indexController{
@@ -64,6 +66,48 @@ class indexController{
             'images' => $images
         ));
     }
+
+    public static function epilationAction(){
+        $config = new Config();
+        $twig = $config->initTwig();
+
+        $menu = Categorie::getMenu();
+        //récupération du slide
+        $slide = Vocabulaire::find(Vocabulaire::SLIDER_EPILATION);
+        $image_header = false;
+        if (!empty($slide)){
+            $image = Image::find($slide->valeur);
+            if (!empty($image)){
+                $image_header = $image->path.$image->filename;
+            }
+        }
+
+        $produits = Produit::with('image')->with('gamme')->where('actif', 1)->inRandomOrder()->limit(6)->get();
+
+        $epilations = Epilation::getListByType();
+
+
+
+        echo $twig->render('epilations.twig', array(
+            'menu' => $menu,
+            'image_header' => $image_header,
+            'epilations' => $epilations,
+            'produits' => $produits
+        ));
+    }
+
+    public static function epilationPDFAction(){
+        //Récupération des épilations
+        $epilations = Epilation::getListByType();
+
+        if (empty($epilations)){
+            \AppController\errorController::error500();
+            exit;
+        }
+
+        EpilationPDF::listeTarifs($epilations);
+    }
+
 }
 
 

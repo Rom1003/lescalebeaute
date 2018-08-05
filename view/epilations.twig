@@ -1,0 +1,72 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <section>
+        {# Affichage du titre #}
+        {% include('titre.twig') with {'titre': '', 'texte': '', 'logo' : 'left'} only %}
+
+        <div class="grid-container bloc-galerie">
+
+            {# Bloc de description #}
+            <div class="grid-x grid-margin-x grid-margin-y align-top">
+
+                <div class="cell small-12 medium-5 large-4 galerie-description" data-match="1">
+                    <p class="titre">EPILATIONS</p>
+                    <div class="liste_informations">
+                        <a href="{{ getRouteUrl('epilations_pdf') }}" class="decoration-none"><i class="fas fa-download fa-sm"></i> Télécharger nos tarifs</a>
+                    </div>
+                    <hr>
+                    <p class="description">{{ getVocabulaire(constant('App\\Tables\\Vocabulaire::TEXTE_EPILATION')) }}</p>
+                    <a href="{{ getRouteUrl('base') }}">RETOUR A L'ACCUEIL ></a>
+                </div>
+
+                <div class="cell small-12 medium-7 large-8 liste-epilations" data-match="1">
+
+                    {% for type, libelle in constant('App\\Tables\\Epilation::TYPES') %}
+
+                        <div class="grid-x grid-margin-x grid-margin-y align-top">
+                            <div class="cell small-12 medium-12 large-8 large-offset-2">
+                                <h1>Epilation {{ libelle|lower }}</h1>
+                                <ul>
+                                    {% for epilation in epilations[type] %}
+                                    <li><span class="epilation-libelle">{{ epilation.libelle|upper }}</span><span class="epilation-prix"><i class="fas fa-ticket-alt" data-fa-transform="rotate-155"></i> <span>{{ epilation.prix }}€</span></span></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        {# Affichage du titre #}
+        {% include('titre.twig') with {'titre': 'Nos produits', 'texte': 'Découvrez nos <span>produits</span> à retrouver en institut', 'logo' : 'right'} only %}
+
+        <div class="grid-container bloc-galerie">
+
+            {# Bloc de description #}
+            <div class="grid-x grid-margin-x grid-margin-y align-top">
+
+                <div class="cell small-12 liste-articles" data-match="2">
+
+                    <div class="grid-x grid-margin-x grid-margin-y align-top">
+                        {% for produit in produits %}
+                            <div class="cell small-6 medium-4 large-2 bloc-article">
+                                <div class="image-article">
+                                    <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
+                                </div>
+                                <p class="libelle-article">Gommage facile</p>
+                                <p class="marque-article">Guinot</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

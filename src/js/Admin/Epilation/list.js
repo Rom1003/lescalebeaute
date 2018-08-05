@@ -64,7 +64,9 @@ $(document).ready(function () {
                 if (data.anomalies) {
                     var texte = '<ul>';
                     $.each(data.anomalies, function (key, message) {
-                        $('tr[data-key='+key+']').addClass('in-error');
+                        if ($.isNumeric(key)){
+                            $('tr[data-key='+key+']').addClass('in-error');
+                        }
                         texte = texte +"<li>"+message+"</li>";
                     });
                     texte = texte +"</ul>";

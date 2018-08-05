@@ -16,6 +16,41 @@
 
     <form action="{{ getRouteUrl('admin_epilation_edit') }}" method="post" id="form_edit_epilation">
 
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <h5>Image de l'entête de la page</h5>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            {% if slide is not empty %}
+
+                <div class="medium-6 cell">
+                    <h6>Image actuelle</h6>
+                    <img src="{{ image(slide.path~slide.filename) }}">
+                    <hr>
+                </div>
+
+            {% endif %}
+
+            <div class="medium-6 cell">
+                <h6>Sélectionner la nouvelle image</h6>
+                <input type="file" name="slide" id="slide">
+            </div>
+        </div>
+
+        {#Texte des épilations#}
+        <div class="grid-x grid-padding-x">
+            {# Texte Description #}
+            <div class="medium-6 cell">
+                <label for="vocabulaire_{{ description.id }}">
+                    {{ description.libelle }}
+                    <textarea rows="10" id="vocabulaire_{{ description.id }}" name="vocabulaire_{{ description.id }}">{{ description.valeur }}</textarea>
+                </label>
+            </div>
+        </div>
+
+
 
         {% for type, libelle in constant('App\\Tables\\Epilation::TYPES') %}
             <section>

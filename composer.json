@@ -9,14 +9,16 @@
         "illuminate/database": "^5.7@dev",
         "respect/validation": "^2.0@dev",
         "codeguy/upload": "dev-master",
-        "illuminate/pagination": "^5.7@dev"
+        "illuminate/pagination": "^5.7@dev",
+        "setasign/fpdf": "1.8.1"
     },
 
     "autoload": {
         "psr-4": {
             "App\\": "model/",
             "AppController\\": "controller/",
-            "App\\Tables\\": "model/tables/"
+            "App\\Tables\\": "model/tables/",
+            "App\\PDF\\": "model/pdf/"
         }
     }
 }
