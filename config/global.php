@@ -27,3 +27,7 @@ if ($global['MODE'] != 'prod'){
 
 $global['SRC_ROOT'] = $global['HTTP_ROOT'].'/src/';
 $global['IMG_ROOT'] = $global['SRC_ROOT'].'img/';
+
+
+//Changement du path pour charger les fonts de FPDF
+//define('FPDF_FONTPATH', $global['FILE_ROOT']."model/pdf/font/");

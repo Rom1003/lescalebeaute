@@ -873,6 +873,9 @@ body {
   width: 100%;
   max-width: 100%; }
 
+.decoration-none {
+  text-decoration: none !important; }
+
 /**********************
  * Chargement de page *
  **********************/
@@ -7023,6 +7026,43 @@ a.thumbnail {
   max-width: 80%; }
 
 /* FIN Footer */
+/* PAGE EPILATIONS */
+.liste-epilations h1 {
+  text-align: center; }
+
+.liste-epilations ul {
+  margin-top: 35px;
+  margin-left: 0;
+  list-style: none;
+  font-size: 1.1em; }
+
+.liste-epilations .epilation-libelle {
+  display: inline-block;
+  width: 65%;
+  font-family: "Lato", sans-serif;
+  color: #B96A81; }
+
+.liste-epilations .epilation-prix {
+  text-align: right;
+  display: inline-block;
+  font-family: "Lato Light", sans-serif;
+  width: 35%; }
+  .liste-epilations .epilation-prix span {
+    width: 40px;
+    display: inline-block; }
+
+.liste-epilations .epilation-prix:before {
+  text-align: left;
+  float: left;
+  content: ".....................";
+  padding-right: 10px; }
+
+@media print, screen and (max-width: 1024px) {
+  .liste-epilations .epilation-prix:before {
+    content: "";
+    padding-right: 0; } }
+
+/* FIN EPILATIONS */
 .page-error {
   background-color: #B96A81;
   background-image: -webkit-linear-gradient(30deg, #B96A81, #6d80a1);

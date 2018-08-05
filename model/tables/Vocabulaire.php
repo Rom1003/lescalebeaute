@@ -18,6 +18,8 @@ class Vocabulaire extends Model
     CONST SLIDER_APROPOS = 8;
     CONST IMAGES_APROPOS = 9;
     CONST FACEBOOK_URL = 10;
+    CONST SLIDER_EPILATION = 11;
+    CONST TEXTE_EPILATION = 12;
 
     CONST HORAIRES_JOURS = [
         0 => 'lundi',
