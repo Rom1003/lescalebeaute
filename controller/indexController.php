@@ -108,6 +108,20 @@ class indexController{
         EpilationPDF::listeTarifs($epilations);
     }
 
+    public static function hammamAction(){
+        //On récupère l'ID de la page hammam
+        $hammam = Categorie::where('hammam', 1)->first();
+        if (empty($hammam)){
+            \AppController\errorController::error404();
+            exit;
+        }
+
+        //Redirection vers la page correspondante
+        categorieController::listeServicesAction($hammam->id);
+//        header('location: ' . getRouteUrl('categorie_liste', array('id' => $hammam->id, 'libelle' => toAscii($hammam->libelle))));
+
+    }
+
 }
 
 

@@ -66,6 +66,12 @@
                                 </li>
                             {% endfor %}
                         </ul>
+                    {% elseif menu1.niveau_max == 0 and menu1.service is not empty %}
+                    <ul class="sub-menu hidden hide-phone">
+                        {% for menu2 in menu1.service|slice(0, 5) %}
+                            <li class="sub-dropdown"><a href="{{ getRouteUrl("service_detail", {'id':menu2.id, 'libelle':toAscii(menu2.libelle)}) }}">{{ menu2.libelle }}</a></li>
+                        {% endfor %}
+                    </ul>
                     {% endif %}
 
                 </li>
@@ -130,7 +136,7 @@
             <p>Accès rapide</p>
             <ul>
                 <li><a href="#">Massages</a></li>
-                <li><a href="#">Hammam</a></li>
+                <li><a href="{{ getRouteUrl('hammam') }}">Hammam</a></li>
                 <li><a href="{{ getRouteUrl('epilations') }}">Epilations</a></li>
                 <li><a href="{{ getRouteUrl('liste_produits') }}">Produits</a></li>
             </ul>

@@ -29,7 +29,7 @@
                     <hr>
 
                     <p class="description">{{ service.description }}</p>
-                    <a href="#">RETOUR AUX MASSAGES ></a>
+                    <a href="{{ getRouteUrl('categorie_liste', {id: service.categorie.id, libelle: toAscii(service.categorie.libelle)}) }}">RETOUR ></a>
                 </div>
 
                 <div class="cell small-12 medium-7 large-8" data-match="1">

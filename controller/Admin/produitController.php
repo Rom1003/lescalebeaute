@@ -93,7 +93,7 @@ class produitController
             $anomalies[] = 'Veuillez renseigner un libellé';
         }
 
-        //Si libellé vide
+/*        //Si tarif vide
         if (!isset($post['tarif']) || empty($post['libelle'])){
             $anomalies[] = 'Veuillez renseigner un tarif';
         } else {
@@ -102,7 +102,7 @@ class produitController
             if (!v::floatVal()->validate($post['tarif']) || $post['tarif'] <= 0) {
                 $anomalies[] = 'Le tarif renseigné est incorrect';
             }
-        }
+        }*/
 
 
         //Création du message d'anomalie
@@ -171,7 +171,7 @@ class produitController
             //On ajoute dans la table produit
             $produit = new Produit;
             $produit->libelle = $post['libelle'];
-            $produit->tarif = $post['tarif'];
+//            $produit->tarif = $post['tarif'];
             $produit->actif = 1;
             $produit->image_id = $image_id;
             $produit->gamme_id = $gamme->id;
@@ -262,7 +262,7 @@ class produitController
             $anomalies[] = 'Veuillez renseigner un libellé';
         }
 
-        //Si libellé vide
+/*        //Si tarif vide
         if (!isset($post['tarif']) || empty($post['libelle'])){
             $anomalies[] = 'Veuillez renseigner un tarif';
         } else {
@@ -271,7 +271,7 @@ class produitController
             if (!v::floatVal()->validate($post['tarif']) || $post['tarif'] <= 0) {
                 $anomalies[] = 'Le tarif renseigné est incorrect';
             }
-        }
+        }*/
 
 
         //Création du message d'anomalie
@@ -341,7 +341,7 @@ class produitController
 
             //On effectue l'update
             $produit->libelle = $post['libelle'];
-            $produit->tarif = $post['tarif'];
+//            $produit->tarif = $post['tarif'];
             $produit->actif = 1;
             if ($setImage === true)$produit->image_id = $image_id;
             $produit->gamme_id = $gamme->id;

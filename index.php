@@ -23,7 +23,11 @@ if (!session_id()){
     @session_start();
 }
 
-
+if (!isset($_SESSION['chargement'])){
+    $_SESSION['chargement'] = true;
+} else {
+    $_SESSION['chargement'] = false;
+}
 
 new Database();
 $goto = $router->matchCurrentRequest();
@@ -38,9 +42,4 @@ if (isset($_SESSION['notification'])){
     unset($_SESSION['notification']);
 }
 
-if (!isset($_SESSION['chargement'])){
-    $_SESSION['chargement'] = true;
-} else {
-    $_SESSION['chargement'] = false;
-}
 //var_dump(\AppController\indexController::)

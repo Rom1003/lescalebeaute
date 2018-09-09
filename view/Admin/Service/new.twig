@@ -14,6 +14,8 @@
         </div>
     {% endif %}
 
+    {{ dump(categories) }}
+
     <form method="post" id="form_new_service" action="{{ getRouteUrl('admin_service_new_process') }}"
           enctype="multipart/form-data">
         <div class="grid-x grid-padding-x">
@@ -29,6 +31,8 @@
                                     <option value="{{ category.id }}">{{ category.libelle }}</option>
                                 {% endfor %}
                             </optgroup>
+                        {% elseif categorie.niveau_max == 0 %}
+                            <option value="{{ categorie.id }}">{{ categorie.libelle }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
