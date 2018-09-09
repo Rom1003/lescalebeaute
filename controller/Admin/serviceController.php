@@ -367,7 +367,10 @@ class serviceController
             $anomalies[] = 'Une catégorie doit être sélectionnée';
         } else {
             //Vérifie que la catégorie existe
-            $categorie = Categorie::where('id', $post['categorie'])->where('niveau', 1)->where('editable', 1)->get()->first();
+            $categorie = Categorie::where('id', $post['categorie'])->where(function ($query){
+                $query->where('niveau', 1)
+                ->orWhere('niveau_max', 0);
+            })->where('editable', 1)->get()->first();
             if ($categorie === false || empty($categorie)) {
                 $anomalies[] = 'Impossible de retrouver la catégorie sélectionnée';
             }

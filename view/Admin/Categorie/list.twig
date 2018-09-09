@@ -18,7 +18,11 @@
         <h5>{{ menu1.libelle|capitalize }}</h5>
         <a href="{{ getRouteUrl('admin_categorie_slide', {'categorie_id': menu1.id}) }}" class="button small"><i class="fas fa-image"></i> Modifier l'image de l'entête</a>
         {% if menu1.editable == 1 %}
+            {% if menu1.niveau_max > 0 %}
             <a href="{{ getRouteUrl('admin_categorie_new', {'categorie_id': menu1.id}) }}" class="button small"><i class="fas fa-plus"></i> Ajouter une sous catégorie</a>
+            {% else %}
+            <a href="{{ getRouteUrl('admin_service_categorie', {'categorie_id': menu1.id}) }}" class="button small"><i class="fas fa-search"></i> Voir les services proposés</a>
+            {% endif %}
         {% endif %}
         {% if menu1.sub is defined and menu1.sub %}
             <table class="hover">

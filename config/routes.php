@@ -17,6 +17,14 @@ $collection->attachRoute(new Route('/index', array(
     '_controller' => '\AppController\indexController::indexAction',
     'methods' => 'GET',
 )));
+
+//Page hammam
+$collection->attachRoute(new Route('/hammam', array(
+    'name' => 'hammam',
+    '_controller' => '\AppController\indexController::hammamAction',
+    'methods' => 'GET',
+)));
+
 //Page à propos
 $collection->attachRoute(new Route('/a_propos', array(
     'name' => 'a_propos',
@@ -358,6 +366,13 @@ $collection->attachRoute(new Route('/administration/epilations/edit', array(
     'name' => 'admin_epilation_edit',
     '_controller' => '\AppController\Admin\epilationController::editAction',
     'methods' => 'POST',
+)));
+
+//SCRIPTS
+$collection->attachRoute(new Route('/administration/script/produits', array(
+    'name' => 'script_produits',
+    '_controller' => '\AppController\Admin\scriptController::produitsAction',
+    'methods' => 'GET',
 )));
 
 

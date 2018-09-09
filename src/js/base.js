@@ -13,6 +13,7 @@ $(document).ready(function () {
 
 
     /* Gestion du menu */
+    /* On masque tout les sous-menu */
     //Menu de base
     $('.menu-dropdown').on('mouseenter', function () {
         var submenu = $(this).find('.sub-menu');
@@ -37,14 +38,25 @@ $(document).ready(function () {
     /****************/
 
     //Egaliser la hauteur des sous-menu
-    $(function() {
+/*    $(function() {
         $('.sub-menu-2, .sub-menu').matchHeight();
     });
     $.fn.matchHeight._afterUpdate = function(event, groups) {
         $('.sub-menu').each(function () {
             $(this).hide()
         })
-    };
+    };*/
+
+    //Mettre à la même hauteurs chaques blocs du menu
+    max_height = -1;
+    $('.sub-menu,.sub-menu-2').each(function () {
+        if ($(this).height() > max_height)max_height = $(this).height();
+    }).promise().done(function () {
+        $('.sub-menu,.sub-menu-2').each(function () {
+            $(this).height(max_height);
+        });
+    });
+
 
     $('.mask-phone').mask('00 00 00 00 00');
 

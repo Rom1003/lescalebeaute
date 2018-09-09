@@ -56,7 +56,7 @@ class Produit extends Model
             <tr data-id="'.$row['id'].'">
                 <td>'.$row['libelle'].'</td>
                 <td>'.$row['gamme']['libelle'].'</td>
-                <td>'.number_format($row['tarif'], '2', ',', ' ').' €</td>
+                <!--<td>'.number_format($row['tarif'], '2', ',', ' ').' €</td>-->
                 <td><img src="'.imagePath($row['image']['path'].$row['image']['filename']).'" alt="'.$row['image']['title'].'"></td>
                 <td>
                     <a href="'.getRouteUrl('admin_produit_edit', ['id' => $row['id']]).'" data-trigger-class data-tooltip title="Modifier" target="_blank"><i class="fas fa-edit"></i></a>

@@ -27,14 +27,11 @@ class categorieController
         }
 
         //Si la catégorie est une catégorie de niveau 0 : on récupère la liste catégories
-        if ($categorie->niveau == 0) {
+        if ($categorie->niveau == 0 && $categorie->niveau_max > 0) {
             self::listeCategoriesAction($id);
-        } elseif ($categorie->niveau == 1) {
+        } else {
             //Afficher la liste des servicesc liés
             self::listeServicesAction($id);
-        } else {
-            \AppController\errorController::error404();
-            exit;
         }
 
     }
