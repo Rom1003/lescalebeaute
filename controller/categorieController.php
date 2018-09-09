@@ -7,10 +7,35 @@ use \App\Database;
 use \App\Tables\Categorie;
 use \App\Tables\Service;
 use \App\Tables\Produit;
+use \App\Tables\Slider;
 use \Illuminate\Database\Eloquent\Model;
 
 class categorieController
 {
+
+    public static function listeAllAction(){
+        $config = new Config();
+        $twig = $config->initTwig();
+
+        //récupérations des catégories à afficher
+        $categories = Categorie::with('image')->where('niveau', 1)->orderBy('libelle')->get();
+        if ($categories === false || empty($categories)){
+            \AppController\errorController::error500();
+            exit;
+        }
+        var_dump($categories->toArray());
+
+        $menu = Categorie::getMenu();
+        $slider = Slider::getSlides();
+        $produits = Produit::with('image')->with('gamme')->where('actif', 1)->inRandomOrder()->limit(8)->get();
+
+        echo $twig->render('liste_categories.twig', array(
+            'menu' => $menu,
+            'categories' => $categories,
+            'produits' => $produits,
+            'slider' => $slider,
+        ));
+    }
 
     public static function listeAction($id)
     {

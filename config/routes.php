@@ -18,6 +18,13 @@ $collection->attachRoute(new Route('/index', array(
     'methods' => 'GET',
 )));
 
+//Page massages
+$collection->attachRoute(new Route('/massages', array(
+    'name' => 'massages',
+    '_controller' => '\AppController\categorieController::listeAllAction',
+    'methods' => 'GET',
+)));
+
 //Page hammam
 $collection->attachRoute(new Route('/hammam', array(
     'name' => 'hammam',
