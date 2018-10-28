@@ -47,6 +47,11 @@
   li {
     //margin-left: 20px;
   }
+
+  #menu-list-image {
+    padding-top: 7px;
+  }
+
 }
 
 
@@ -57,7 +62,7 @@
 
 .sub-menu {
   position: absolute;
-  top: 49px;
+  top: 45px;
   left: -75px;
   background-color: $color-black;
   opacity: 0.9;
@@ -260,10 +265,12 @@
   height: 180px;
   border-bottom: solid 1px $color-grey;
   padding-bottom: 5px;
+  text-align: center;
 
   .image-helper {
     display: inline-block;
     vertical-align: middle;
+    height: 100%;
   }
 
   img {

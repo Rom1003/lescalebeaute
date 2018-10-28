@@ -24,8 +24,14 @@ class Database {
 
     public function getConfig() {
         $config = new Config();
+
         $global = $config->getGlobal();
-        return Yaml::parseFile($global['FILE_ROOT'].'/config/config.yml');
+        if ($global['MODE'] == 'prod'){
+            return Yaml::parseFile($global['FILE_ROOT'].'/config/config.yml');
+        } else {
+            return Yaml::parseFile($global['FILE_ROOT'].'/config/config_wamp.yml');
+        }
+
     }
 }
 

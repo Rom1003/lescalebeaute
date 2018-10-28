@@ -2,8 +2,8 @@ bdd:
   driver: mysql
   host: localhost
   database: lescalebeaute
-  username: root
-  password:
+  username: lescalebeaute
+  password: aurelie
   charset: utf8
   collation: utf8_general_ci
   prefix:

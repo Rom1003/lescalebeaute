@@ -6225,7 +6225,7 @@ a.thumbnail {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0;
+  padding: 5px;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
@@ -6793,12 +6793,15 @@ a.thumbnail {
 #nav-bar a:hover {
   color: #B96A81; }
 
+#nav-bar #menu-list-image {
+  padding-top: 7px; }
+
 .menu-dropdown {
   position: relative; }
 
 .sub-menu {
   position: absolute;
-  top: 49px;
+  top: 45px;
   left: -75px;
   background-color: #1D1D1B;
   opacity: 0.9;
@@ -6946,10 +6949,12 @@ a.thumbnail {
 .image-article {
   height: 180px;
   border-bottom: solid 1px #B3B3B3;
-  padding-bottom: 5px; }
+  padding-bottom: 5px;
+  text-align: center; }
   .image-article .image-helper {
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+    height: 100%; }
   .image-article img {
     max-height: 179px;
     vertical-align: middle; }

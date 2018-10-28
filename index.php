@@ -18,10 +18,13 @@ $router = Router::parseConfig($config);*/
 include_once __DIR__.'/config/routes.php';
 include_once __DIR__.'/model/My_functions.php';
 
+
 //Création des sessions si elles n'existent pas
 if (!session_id()){
     @session_start();
 }
+
+
 
 if (!isset($_SESSION['chargement'])){
     $_SESSION['chargement'] = true;
@@ -30,8 +33,8 @@ if (!isset($_SESSION['chargement'])){
 }
 
 new Database();
-$goto = $router->matchCurrentRequest();
 
+$goto = $router->matchCurrentRequest();
 
 //Si aucune route trouvée
 if ($goto === false){

@@ -9,7 +9,7 @@
 $global = array();
 
 $global['MODE'] = 'test';
-if ($_SERVER['HTTP_HOST'] == '144.172.80.209'){
+if ($_SERVER['HTTP_HOST'] == 'lescalebeaute.ferist.fr'){
     $global['MODE'] = 'prod';
 }
 
@@ -21,8 +21,8 @@ if ($global['MODE'] != 'prod'){
     $global['HTTP_ROOT'] = 'http://lescalebeaute';
     $global['FILE_ROOT'] = 'C:\\wamp64\\www\\lescalebeaute/';
 } else {
-    $global['HTTP_ROOT'] = 'http://144.172.80.209/lescalebeaute';
-    $global['FILE_ROOT'] = '/var/www/html/lescalebeaute/';
+    $global['HTTP_ROOT'] = 'http://lescalebeaute.ferist.fr';
+    $global['FILE_ROOT'] = '/var/www/html/';
 }
 
 $global['SRC_ROOT'] = $global['HTTP_ROOT'].'/src/';

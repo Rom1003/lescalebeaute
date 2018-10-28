@@ -66,10 +66,10 @@
                         {% for produit in produits %}
                             <div class="cell small-6 medium-4 large-2 bloc-article">
                                 <div class="image-article">
-                                    <span class="image-helper"></span> <img src="{{ image('produit.jpg') }}">
+                                    <span class="image-helper"></span> <img src="{{ image(produit.image.path~produit.image.filename) }}">
                                 </div>
-                                <p class="libelle-article">Gommage facile</p>
-                                <p class="marque-article">Guinot</p>
+                                <p class="libelle-article">{{ produit.libelle }}</p>
+                                <p class="marque-article">{{ produit.gamme.libelle }}</p>
                             </div>
                         {% endfor %}
                     </div>

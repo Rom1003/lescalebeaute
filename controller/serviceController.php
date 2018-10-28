@@ -26,7 +26,7 @@ class serviceController{
             \AppController\errorController::error404();
             exit;
         }
-        $produits = Produit::with('image')->with('gamme')->where('actif', 1)->inRandomOrder()->limit(8)->get();
+        $produits = Produit::with('image')->with('gamme')->where('actif', 1)->inRandomOrder()->limit(6)->get();
 
         echo $twig->render('service.twig', array(
             'menu' => $menu,

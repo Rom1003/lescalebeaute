@@ -23,7 +23,6 @@ class categorieController
             \AppController\errorController::error500();
             exit;
         }
-        var_dump($categories->toArray());
 
         $menu = Categorie::getMenu();
         $slider = Slider::getSlides();
